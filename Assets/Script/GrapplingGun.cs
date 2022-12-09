@@ -100,8 +100,12 @@ public class GrapplingGun : MonoBehaviour
     public void StopGrapple()
     {
         Destroy(joint);
-        isGrappling = false;
-        playerController.SetCanDoubleJump(true);
+        if (isGrappling)
+        { 
+            isGrappling = false;
+            playerController.SetCanDoubleJump(true);
+        }
+
     }
 
     private Vector3 currentGrapplePosition;
