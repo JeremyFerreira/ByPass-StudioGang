@@ -23,7 +23,8 @@ public class GrapplingGun : MonoBehaviour
     public bool isGrappling;
     public PlayerController playerController;
     public bool canGrapple;
-    
+    [SerializeField] SlowTime slowTime;
+    RaycastHit hit;
     void Awake()
     {
         input = new Input();
@@ -51,8 +52,8 @@ public class GrapplingGun : MonoBehaviour
     void Update()
     {
         playerController.SetGrappin(isGrappling);
-        RaycastHit hit;
-        canGrapple = Physics.Raycast(camera.position, camera.forward, out hit, maxDistanceShoot, whatIsGrappleable);
+        
+        canGrapple = Physics.Raycast(camera.position, camera.forward, out hit, slowTime.IsSlowTime()? maxDistanceShoot * 1.5f : maxDistanceShoot, whatIsGrappleable);
             
     }
     private void FixedUpdate()
@@ -68,8 +69,7 @@ public class GrapplingGun : MonoBehaviour
     /// </summary>
     public void StartGrapple()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistanceShoot, whatIsGrappleable))
+        if (canGrapple)
         {
             grapplePoint = hit.point;
             joint = player.gameObject.AddComponent<SpringJoint>();

@@ -153,6 +153,7 @@ public class PlayerController : MonoBehaviour
         resetWalkSpeed = walkSpeed;
         accelerationTimeReset = accelerationTimer;
         earlyPressTimeReset = earlyPressTime;
+        earlyPressTime = 0;
         resetMaxJumpTime = _maxJumpTime;
     }
 

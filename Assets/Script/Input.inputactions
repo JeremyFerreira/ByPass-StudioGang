@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SlowTime",
+                    "type": "Button",
+                    "id": "f4cc6f05-3446-4943-aa78-3166be56b54a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -172,6 +181,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Grappling",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d464c362-b08d-42f1-b211-e78f561179e2",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SlowTime",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bac7399f-207b-4916-b624-818aa229ea56",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SlowTime",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

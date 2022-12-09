@@ -182,6 +182,7 @@ MonoBehaviour:
   isGrappling: 0
   playerController: {fileID: 3015355731997460528}
   canGrapple: 0
+  slowTime: {fileID: 6133515676857324274}
 --- !u!114 &4451289488210097966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5847,6 +5848,7 @@ GameObject:
   - component: {fileID: 3015355731997460528}
   - component: {fileID: 8207861838699191658}
   - component: {fileID: 8207861838699191657}
+  - component: {fileID: 6133515676857324274}
   m_Layer: 3
   m_Name: PlayerController
   m_TagString: Untagged
@@ -5992,7 +5994,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   wallRunForce: 500
-  wallJumpUpForce: 15
+  wallJumpUpForce: 20
   wallJumpSideForce: 40
   wallClimbSpeed: 0
   maxWallRunTime: 5
@@ -6004,6 +6006,18 @@ MonoBehaviour:
   gravityCounterForce: 30
   orientation: {fileID: 8207861837982318808}
   cam: {fileID: 5548919493217708270}
+--- !u!114 &6133515676857324274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8207861838492297157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0fb8f8bc3647ef4b8bc85ec5eeecb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3018046977138526313
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -62,6 +62,15 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SlowTime"",
+                    ""type"": ""Button"",
+                    ""id"": ""f4cc6f05-3446-4943-aa78-3166be56b54a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -196,6 +205,28 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""action"": ""Grappling"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d464c362-b08d-42f1-b211-e78f561179e2"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlowTime"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bac7399f-207b-4916-b624-818aa229ea56"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlowTime"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -208,6 +239,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         m_InGame_Move = m_InGame.FindAction("Move", throwIfNotFound: true);
         m_InGame_Jump = m_InGame.FindAction("Jump", throwIfNotFound: true);
         m_InGame_Grappling = m_InGame.FindAction("Grappling", throwIfNotFound: true);
+        m_InGame_SlowTime = m_InGame.FindAction("SlowTime", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -271,6 +303,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
     private readonly InputAction m_InGame_Move;
     private readonly InputAction m_InGame_Jump;
     private readonly InputAction m_InGame_Grappling;
+    private readonly InputAction m_InGame_SlowTime;
     public struct InGameActions
     {
         private @Input m_Wrapper;
@@ -279,6 +312,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_InGame_Move;
         public InputAction @Jump => m_Wrapper.m_InGame_Jump;
         public InputAction @Grappling => m_Wrapper.m_InGame_Grappling;
+        public InputAction @SlowTime => m_Wrapper.m_InGame_SlowTime;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -300,6 +334,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Grappling.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnGrappling;
                 @Grappling.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnGrappling;
                 @Grappling.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnGrappling;
+                @SlowTime.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnSlowTime;
+                @SlowTime.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnSlowTime;
+                @SlowTime.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnSlowTime;
             }
             m_Wrapper.m_InGameActionsCallbackInterface = instance;
             if (instance != null)
@@ -316,6 +353,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @Grappling.started += instance.OnGrappling;
                 @Grappling.performed += instance.OnGrappling;
                 @Grappling.canceled += instance.OnGrappling;
+                @SlowTime.started += instance.OnSlowTime;
+                @SlowTime.performed += instance.OnSlowTime;
+                @SlowTime.canceled += instance.OnSlowTime;
             }
         }
     }
@@ -326,5 +366,6 @@ public partial class @Input : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnGrappling(InputAction.CallbackContext context);
+        void OnSlowTime(InputAction.CallbackContext context);
     }
 }
