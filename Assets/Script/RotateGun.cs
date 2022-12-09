@@ -8,7 +8,7 @@ public class RotateGun : MonoBehaviour
     private Quaternion desiredRotation;
     private float rotationSpeed = 5f;
 
-    void Update()
+    void LateUpdate()
     {
         if (!grappling.IsGrappling())
         {

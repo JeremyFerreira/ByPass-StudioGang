@@ -90,8 +90,6 @@ public class GrapplingGun : MonoBehaviour
             currentGrapplePosition = gunTip.position;
 
             isGrappling = true;
-
-            
         }
     }
 
