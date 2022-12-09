@@ -16,16 +16,17 @@ public class Timer : MonoBehaviour
     }
     private void OnEnable()
     {
-        _startRunEvent.OnLaunchEvent += LaunchTimer;
+        _startRunEvent.OnLaunchEvent += LaunchRun;
         _reachFinishLineEvent.OnLaunchEvent += StopTimer;
     }
     private void OnDisable()
     {
-        _startRunEvent.OnLaunchEvent -= LaunchTimer;
+        _startRunEvent.OnLaunchEvent -= LaunchRun;
         _reachFinishLineEvent.OnLaunchEvent -= StopTimer;
     }
-    private void LaunchTimer()
+    private void LaunchRun()
     {
+        _timer.ChangeTimer(0f);
         _timerIsLaunch = true;
     }
     private void StopTimer()
