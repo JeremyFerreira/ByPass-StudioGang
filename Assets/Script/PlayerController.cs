@@ -11,9 +11,18 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     private float moveSpeed;
     [SerializeField] float speedMax;
+    public float SpeedMax()
+    {
+        return speedMax;
+    }
+
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
     [SerializeField] float walkSpeed;
+    public float WalkSpeed()
+    {
+        return walkSpeed;
+    }
     [SerializeField] float grapplinAcceleration;
     [SerializeField] float acceleration;
     [SerializeField] float accelerationTimer;
