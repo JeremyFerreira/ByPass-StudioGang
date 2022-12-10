@@ -5475,8 +5475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d48eb09601ed50944baa0901c0568352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensibilityMouse: 250
-  sensibilityGamePad: 250
+  sensibilityMouse: 50
+  sensibilityGamePad: 50
   orientation: {fileID: 8207861837982318808}
   camHolder: {fileID: 8207861838349422292}
   IsGamePad: 1
