@@ -36,6 +36,9 @@ public class CountDownHUD : MonoBehaviour
 
     private void ChangeText(float value)
     {
-        textMeshProUGUI.text = TimerFormat.FormatTime(value);
+        if (value != 0)
+            textMeshProUGUI.text = value.ToString();
+        else
+            textMeshProUGUI.text = "";
     }
 }
