@@ -16,7 +16,7 @@ public class PlayerpositionRef : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        if(Physics.Raycast(player.position, Vector3.down,out hit))
+        if(Physics.Raycast(player.position, Vector3.down,out hit, 1000, layer))
         {
             transform.position =new Vector3(player.position.x, hit.point.y, player.position.z);
             transform.up = hit.normal;
