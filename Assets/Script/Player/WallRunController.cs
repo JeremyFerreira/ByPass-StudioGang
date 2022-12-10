@@ -58,38 +58,34 @@ public class WallRunController : MonoBehaviour
     float timerDouble = 0.3f;
     bool stopWallRun;
 
-    static Input input;
+    [SerializeField]SOInputButton jumpButton;
 
+    [SerializeField] EventSO startRun;
+    [SerializeField] EventSO stopRun;
 
+    private void EnableInput()
+    {
+        jumpButton.OnPressed += WallJump;
+    }
+    private void DisableInput()
+    {
+        jumpButton.OnPressed -= WallJump;
+    }
     // LOOPS AND FUNCTIONS///////////////////////////////////////////////////////////////////
     private void Awake()
     {
         Instance = this;
-        input = new Input();
-
-
     }
-
-    private void OnEnable()
-    {
-        input.Enable();
-        input.InGame.Jump.performed += context => WallJump();
-    }
-    private void OnDisable()
-    {
-        input.Disable();
-        input.InGame.Jump.performed += context => WallJump();
-    }
-
-
-    //get inputs
-
 
     private void Start()
     {
+        startRun.OnLaunchEvent += EnableInput;
+        stopRun.OnLaunchEvent += DisableInput;
+
         rb = GetComponent<Rigidbody>();
         playerController = GetComponent<PlayerController>();
         timerFoostep = 0f;
+        
     }
 
     private void Update()

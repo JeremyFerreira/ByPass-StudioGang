@@ -6,34 +6,40 @@ using DG.Tweening;
 public class PlayerCam : MonoBehaviour
 {
     public static PlayerCam Instance;
-    [SerializeField] float sensibilityMouse;
-    [SerializeField] float sensibilityGamePad;
+    [SerializeField] float sensibility;
 
     [SerializeField] Transform orientation;
     [SerializeField] Transform camHolder;
+
+    [SerializeField] SOInputVector lookInput;
+    Vector2 looking;
 
     float xRotation;
     float yRotation;
 
 
     [SerializeField] bool IsGamePad;
-    static Input input;
 
+    [SerializeField] EventSO startRun;
+    [SerializeField] EventSO stopRun;
+
+    private void EnableInput()
+    {
+        lookInput.OnValueChanged += SetLookInput;
+    }
+    private void DisableInput()
+    {
+        lookInput.OnValueChanged -= SetLookInput;
+    }
     private void Awake()
     {
         Instance = this;
-        input = new Input();
-    }
-    private void OnEnable()
-    {
-        input.Enable();
-    }
-    private void OnDisable()
-    {
-        input.Disable();
     }
     private void Start()
     {
+        startRun.OnLaunchEvent += EnableInput;
+        stopRun.OnLaunchEvent += DisableInput;
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         
@@ -43,23 +49,17 @@ public class PlayerCam : MonoBehaviour
     {
         DoLooking();
     }
+    private void SetLookInput(Vector2 look)
+    {
+        looking = look;
+    }
     private void DoLooking()
     {
         //getMouse Inputs
         float lookX;
         float lookY;
-        Vector2 looking = input.InGame.Look.ReadValue<Vector2>();
-
-        if (IsGamePad == false)
-        {
-            lookX = looking.x * sensibilityMouse * Time.unscaledDeltaTime;
-            lookY = looking.y * sensibilityMouse * Time.unscaledDeltaTime;
-        }
-        else
-        {
-            lookX = looking.x * sensibilityGamePad * Time.unscaledDeltaTime;
-            lookY = looking.y * sensibilityGamePad * Time.unscaledDeltaTime;
-        }
+        lookX = looking.x * sensibility * Time.unscaledDeltaTime;
+        lookY = looking.y * sensibility * Time.unscaledDeltaTime;
 
 
         yRotation += lookX;

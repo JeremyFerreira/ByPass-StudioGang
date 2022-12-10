@@ -8,29 +8,31 @@ public class SlowTime : MonoBehaviour
     bool isSlowTime;
     public bool IsSlowTime()
         { return isSlowTime; }
-    Input input;
-    private void Awake()
-    {
-        input = new Input();
-    }
+    [SerializeField] SOInputButton slowTimeInput;
 
-    private void OnEnable()
+    [SerializeField] EventSO startRun;
+    [SerializeField] EventSO stopRun;
+
+    private void EnableInput()
     {
-        input.Enable();
-        input.InGame.SlowTime.performed += context => StartSlowTime();
-        input.InGame.SlowTime.canceled += context => StopSlowTime();
+        slowTimeInput.OnPressed += StartSlowTime;
+        slowTimeInput.OnReleased += StopSlowTime;
     }
-    private void OnDisable()
+    private void DisableInput()
     {
-        input.Disable();
-        input.InGame.SlowTime.performed -= context => StartSlowTime();
-        input.InGame.SlowTime.canceled -= context => StopSlowTime();
+        slowTimeInput.OnPressed -= StartSlowTime;
+        slowTimeInput.OnReleased -= StopSlowTime;
+    }
+    private void Start()
+    {
+        startRun.OnLaunchEvent += EnableInput;
+        stopRun.OnLaunchEvent += DisableInput;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(IsSlowTime());
     }
     public void StartSlowTime()
     {

@@ -12775,6 +12775,10 @@ PrefabInstance:
       value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5548919493217708270, guid: 2fbc3e81219259f4aaf2c708e19afbff, type: 3}
+      propertyPath: sensibility
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548919493217708270, guid: 2fbc3e81219259f4aaf2c708e19afbff, type: 3}
       propertyPath: sensibilityMouse
       value: 30
       objectReference: {fileID: 0}
@@ -12990,6 +12994,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c1944f1e8014d9443928a3efacfa5eb7, type: 2}
+    - target: {fileID: 8207861838699191657, guid: 2fbc3e81219259f4aaf2c708e19afbff, type: 3}
+      propertyPath: jumpButton
+      value: 
+      objectReference: {fileID: 11400000, guid: 10db7215801b18d4c85ae3736cddb8e2, type: 2}
     - target: {fileID: 8207861838699191658, guid: 2fbc3e81219259f4aaf2c708e19afbff, type: 3}
       propertyPath: m_NotificationBehavior
       value: 2
@@ -13073,6 +13081,10 @@ PrefabInstance:
     - target: {fileID: 8207861838699191658, guid: 2fbc3e81219259f4aaf2c708e19afbff, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: OnButtonReleased
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207861838699191658, guid: 2fbc3e81219259f4aaf2c708e19afbff, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnButtonPressed
       objectReference: {fileID: 0}
     - target: {fileID: 8207861838699191658, guid: 2fbc3e81219259f4aaf2c708e19afbff, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

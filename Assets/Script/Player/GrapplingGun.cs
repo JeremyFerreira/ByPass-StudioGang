@@ -19,35 +19,30 @@ public class GrapplingGun : MonoBehaviour
     public LayerMask whatIsGrappleable;
     public Transform gunTip, camera, player;
     private SpringJoint joint;
-    Input input;
     public bool isGrappling;
     public PlayerController playerController;
     public bool canGrapple;
     [SerializeField] SlowTime slowTime;
     RaycastHit hit;
-    void Awake()
+    [SerializeField] SOInputButton grapplingInput;
+
+    [SerializeField] EventSO startRun;
+    [SerializeField] EventSO stopRun;
+
+    private void EnableInput()
     {
-        input = new Input();
+        grapplingInput.OnPressed += StartGrapple;
+        grapplingInput.OnReleased += StopGrapple;
     }
-
-   
-
-
-    // LOOPS AND FUNCTIONS///////////////////////////////////////////////////////////////////
-
-    private void OnEnable()
+    private void DisableInput()
     {
-        input.Enable();
-
-        input.InGame.Grappling.performed += context => StartGrapple();
-        input.InGame.Grappling.canceled += context => StopGrapple();
+        grapplingInput.OnPressed -= StartGrapple;
+        grapplingInput.OnReleased -= StopGrapple;
     }
-    private void OnDisable()
+    private void Start()
     {
-        input.Disable();
-
-        input.InGame.Grappling.performed += context => StartGrapple();
-        input.InGame.Grappling.canceled += context => StopGrapple();
+        startRun.OnLaunchEvent += EnableInput;
+        stopRun.OnLaunchEvent += DisableInput;
     }
     void Update()
     {

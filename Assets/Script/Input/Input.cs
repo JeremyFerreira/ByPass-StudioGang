@@ -186,6 +186,17 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""c85be87b-c879-4906-bed0-d1ac4aaa0e63"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""f415523c-441b-495b-9846-95ff6c01dcbc"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",

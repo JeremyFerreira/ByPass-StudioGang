@@ -112,37 +112,44 @@ public class PlayerController : MonoBehaviour
     public float timeToPress;
 
     bool stateGroundOld;
-    Input input;
     bool isGrappling;
     CapsuleCollider collider;
     public void SetGrappin(bool a) { isGrappling = a; }
 
+    [SerializeField] SOInputButton buttonJump;
+    [SerializeField] SOInputVector vectorMove;
 
+
+    [SerializeField] EventSO startRun;
+    [SerializeField] EventSO stopRun;
+
+    private void EnableInput()
+    {
+        buttonJump.OnPressed += GetPlayerJump;
+        buttonJump.OnReleased += CancelJump;
+
+        vectorMove.OnValueChanged += MyInput;
+    }
+    private void DisableInput()
+    {
+        buttonJump.OnPressed -= GetPlayerJump;
+        buttonJump.OnReleased -= CancelJump;
+        vectorMove.OnValueChanged -= MyInput;
+    }
     // LOOPS AND FUNCTIONS///////////////////////////////////////////////////////////////////
     private void Awake()
     {
         Instance = this;
         stateGroundOld = true;
-        input = new Input();
 
         collider = GetComponent<CapsuleCollider>();
     }
 
-    private void OnEnable()
-    {
-        input.Enable();
-        input.InGame.Jump.performed += context => GetPlayerJump();
-        input.InGame.Jump.canceled += context => PlayerJumpDown(false);
-    }
-    private void OnDisable()
-    {
-        input.Disable();
-        input.InGame.Jump.performed += context => GetPlayerJump();
-        input.InGame.Jump.canceled += context => PlayerJumpDown(false);
-    }
-
     private void Start()
     {
+        startRun.OnLaunchEvent += EnableInput;
+        stopRun.OnLaunchEvent += DisableInput;
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         readyToJump = true;
@@ -159,7 +166,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(state);
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, collider.height * 0.5f + Physics.defaultContactOffset * 2, whatIsGround);
         behindGround = Physics.Raycast(transform.position - (Vector3.up * 0.3f), moveDirection.normalized, playerHeight, whatIsGround) || Physics.Raycast(transform.position + (Vector3.up * 0.3f), moveDirection.normalized, playerHeight, whatIsGround);
@@ -188,7 +194,6 @@ public class PlayerController : MonoBehaviour
         {
             canDoubleJump = true;
         }
-        MyInput();
         StateHandler();
     }
 
@@ -214,10 +219,10 @@ public class PlayerController : MonoBehaviour
     }
 
     //Input////////////////////////////////////////////////////////////////
-    private void MyInput()
+    private void MyInput(Vector2 direction)
     {
-        horizontalInput = input.InGame.Move.ReadValue<Vector2>().x;
-        verticalInput = input.InGame.Move.ReadValue<Vector2>().y;
+        horizontalInput = direction.x;
+        verticalInput = direction.y;
     }
 
     //STATEMACHINE////////////////////////////////////////////////////////////
@@ -399,6 +404,10 @@ public class PlayerController : MonoBehaviour
         {
             earlyPressTime = earlyPressTimeReset;
         }
+    }
+    public void CancelJump()
+    {
+        isJumping = false;
     }
     public void PlayerJumpDown(bool a)
     {

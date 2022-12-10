@@ -183,6 +183,9 @@ MonoBehaviour:
   playerController: {fileID: 3015355731997460528}
   canGrapple: 0
   slowTime: {fileID: 6133515676857324274}
+  grapplingInput: {fileID: 11400000, guid: 14eef5570f65a7d4fb996b7807674d8e, type: 2}
+  startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
+  stopRun: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
 --- !u!114 &4451289488210097966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5475,11 +5478,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d48eb09601ed50944baa0901c0568352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensibilityMouse: 50
-  sensibilityGamePad: 50
+  sensibility: 30
   orientation: {fileID: 8207861837982318808}
   camHolder: {fileID: 8207861838349422292}
+  lookInput: {fileID: 11400000, guid: 4c596e50aa0ab5d448fbdd866796d577, type: 2}
   IsGamePad: 1
+  startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
+  stopRun: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
 --- !u!114 &4945448416241398194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5945,6 +5950,10 @@ MonoBehaviour:
   wallrunning: 0
   deltaTime: 0
   timeToPress: 0
+  buttonJump: {fileID: 11400000, guid: 10db7215801b18d4c85ae3736cddb8e2, type: 2}
+  vectorMove: {fileID: 11400000, guid: ee42ec2862b19b64da16190453a0584e, type: 2}
+  startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
+  stopRun: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
 --- !u!114 &8207861838699191658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5958,7 +5967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: b99a399a9390c6c4aa01418933a80dc9, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -5969,7 +5978,123 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 4c596e50aa0ab5d448fbdd866796d577, type: 2}
+        m_TargetAssemblyTypeName: SOInputVector, Assembly-CSharp
+        m_MethodName: OnJoystickMoved
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7ec08776-947f-4d33-9086-fc947d227485
+    m_ActionName: InGame/Look[/XInputControllerWindows/rightStick,/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: ee42ec2862b19b64da16190453a0584e, type: 2}
+        m_TargetAssemblyTypeName: SOInputVector, Assembly-CSharp
+        m_MethodName: OnJoystickMoved
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e84ed3bc-e5ac-4126-abc4-12c840e5b4db
+    m_ActionName: InGame/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 10db7215801b18d4c85ae3736cddb8e2, type: 2}
+        m_TargetAssemblyTypeName: SOInputButton, Assembly-CSharp
+        m_MethodName: OnButtonPressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 10db7215801b18d4c85ae3736cddb8e2, type: 2}
+        m_TargetAssemblyTypeName: SOInputButton, Assembly-CSharp
+        m_MethodName: OnButtonReleased
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: db0b3a8f-6d8b-4482-9763-d341cdb291f4
+    m_ActionName: InGame/Jump[/XInputControllerWindows/rightShoulder,/Keyboard/space,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 14eef5570f65a7d4fb996b7807674d8e, type: 2}
+        m_TargetAssemblyTypeName: SOInputButton, Assembly-CSharp
+        m_MethodName: OnButtonPressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 14eef5570f65a7d4fb996b7807674d8e, type: 2}
+        m_TargetAssemblyTypeName: SOInputButton, Assembly-CSharp
+        m_MethodName: OnButtonReleased
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 40314271-4b28-41f9-bfcb-40d549e7d606
+    m_ActionName: InGame/Grappling[/XInputControllerWindows/rightTrigger,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: d2ef8f050695cf247b6b209f6f335d3a, type: 2}
+        m_TargetAssemblyTypeName: SOInputButton, Assembly-CSharp
+        m_MethodName: OnButtonReleased
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: d2ef8f050695cf247b6b209f6f335d3a, type: 2}
+        m_TargetAssemblyTypeName: SOInputButton, Assembly-CSharp
+        m_MethodName: OnButtonReleased
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f4cc6f05-3446-4943-aa78-3166be56b54a
+    m_ActionName: InGame/SlowTime[/Mouse/rightButton,/XInputControllerWindows/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: InGame
@@ -6006,6 +6131,9 @@ MonoBehaviour:
   gravityCounterForce: 30
   orientation: {fileID: 8207861837982318808}
   cam: {fileID: 5548919493217708270}
+  jumpButton: {fileID: 11400000, guid: 10db7215801b18d4c85ae3736cddb8e2, type: 2}
+  startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
+  stopRun: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
 --- !u!114 &6133515676857324274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6018,6 +6146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0fb8f8bc3647ef4b8bc85ec5eeecb4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slowTimeInput: {fileID: 11400000, guid: d2ef8f050695cf247b6b209f6f335d3a, type: 2}
+  startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
+  stopRun: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
 --- !u!1001 &3018046977138526313
 PrefabInstance:
   m_ObjectHideFlags: 0
