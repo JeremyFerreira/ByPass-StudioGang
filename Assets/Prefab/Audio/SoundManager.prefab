@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3094583091581869028
+--- !u!1 &8369667838631307675
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3094583091581869030}
-  - component: {fileID: 3094583091581869031}
+  - component: {fileID: 8369667838631307674}
+  - component: {fileID: 4776912868463006070}
   m_Layer: 0
-  m_Name: CountDown
+  m_Name: SoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3094583091581869030
+--- !u!4 &8369667838631307674
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3094583091581869028}
+  m_GameObject: {fileID: 8369667838631307675}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3094583091581869031
+--- !u!114 &4776912868463006070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3094583091581869028}
+  m_GameObject: {fileID: 8369667838631307675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38db3908cb7dc7c459de48503fe82e81, type: 3}
+  m_Script: {fileID: 11500000, guid: b7ea2b86ba520844186d8f38ce0bc660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventStartLevel: {fileID: 11400000, guid: 4758eda0a1896e64f8d2d256c3342cc7, type: 2}
-  _eventStartRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
-  _countDownData: {fileID: 11400000, guid: 56dfb17714d724a44925c90dcfa0ad7f, type: 2}
-  timeOfCountDown: 2
-  writeinCountDown:
-  - 3
-  - 2
-  - 1
-  - 0
+  _factory: {fileID: 11400000, guid: 0791f4179c8120645a6ce68275ccc5f9, type: 2}
+  _pool: {fileID: 11400000, guid: 3e0bd1c2a82b40a438537a5e8447ad97, type: 2}
+  _initialSize: 10
+  _SFXEventChannel: {fileID: 11400000, guid: c55fbeaad229d874d82957c05a5a947f, type: 2}
+  _musicEventChannel: {fileID: 11400000, guid: 1d7141577b149c54bb141de7af8e69d8, type: 2}
+  audioMixer: {fileID: 24100000, guid: 548a7f001ca6d3d4cb67c8edf84f62a3, type: 2}
+  _masterVolume: 1
+  _musicVolume: 1
+  _sfxVolume: 1
