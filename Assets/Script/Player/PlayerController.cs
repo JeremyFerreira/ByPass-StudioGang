@@ -114,7 +114,13 @@ public class PlayerController : MonoBehaviour
     bool stateGroundOld;
     bool isGrappling;
     CapsuleCollider collider;
+    private bool dash;
+    [SerializeField] float dashSpeed;
+    [SerializeField] float timeToDash;
+    float timeTodashReset;
     public void SetGrappin(bool a) { isGrappling = a; }
+
+    
 
     [SerializeField] SOInputButton buttonJump;
     [SerializeField] SOInputVector vectorMove;
@@ -161,6 +167,7 @@ public class PlayerController : MonoBehaviour
         accelerationTimeReset = accelerationTimer;
         earlyPressTimeReset = earlyPressTime;
         earlyPressTime = 0;
+        timeTodashReset = timeToDash;
         resetMaxJumpTime = _maxJumpTime;
     }
 
@@ -195,6 +202,16 @@ public class PlayerController : MonoBehaviour
             canDoubleJump = true;
         }
         StateHandler();
+
+        if(dash)
+        {
+            timeToDash -= Time.deltaTime;
+            if (timeToDash <= 0)
+            {
+                dash = false;
+                timeToDash = timeTodashReset;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -281,13 +298,13 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(moveDirection * moveSpeed * 10f, ForceMode.Force);
             //slow down player if no inputs
-            if (moveDirection.magnitude == 0f)
+            if (moveDirection.magnitude == 0f && !dash)
             {
                 rb.velocity = new Vector3(rb.velocity.x / 1.05f, rb.velocity.y, rb.velocity.z / 1.05f);
             }
         }
         // in grappin
-        else if (isGrappling )
+        else if (isGrappling && !dash)
         {
             if (rb.velocity.y<-1)
             {
@@ -301,7 +318,7 @@ public class PlayerController : MonoBehaviour
 
             rb.AddForce(moveDirection * moveSpeed * 10f, ForceMode.Force);
             //slow down player if no inputs
-            if (moveDirection.magnitude == 0f)
+            if (moveDirection.magnitude == 0f && !dash)
             {
                 rb.velocity = new Vector3(rb.velocity.x / 1.05f, rb.velocity.y, rb.velocity.z / 1.05f);
             }
@@ -311,7 +328,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             //slow down player if no inputs
-            if (moveDirection.magnitude == 0f)
+            if (moveDirection.magnitude == 0f && !dash)
             {
                 rb.velocity = new Vector3(rb.velocity.x / 1.05f, rb.velocity.y, rb.velocity.z / 1.05f);
             }
@@ -322,44 +339,49 @@ public class PlayerController : MonoBehaviour
         }
 
         //limit velocity
-        if (new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude > speedMax)
+        if (new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude > speedMax && !dash)
         {
             rb.velocity = (new Vector3(rb.velocity.x, 0, rb.velocity.z).normalized * speedMax) + (Vector3.up * rb.velocity.y);
         }
     }
     private IEnumerator SmoothlyLerpMoveSpeed()
     {
-        // smoothly lerp movementSpeed to desired value
-        float time = 0;
-        float difference = Mathf.Abs(desiredMoveSpeed - moveSpeed);
-        float startValue = moveSpeed;
-
-        while (time < difference)
+        if(!dash)
         {
-            moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / difference);
-            time += Time.deltaTime * speedIncreaseMultiplier;
+            // smoothly lerp movementSpeed to desired value
+            float time = 0;
+            float difference = Mathf.Abs(desiredMoveSpeed - moveSpeed);
+            float startValue = moveSpeed;
 
-            yield return null;
+            while (time < difference)
+            {
+                moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / difference);
+                time += Time.deltaTime * speedIncreaseMultiplier;
+
+                yield return null;
+            }
+            moveSpeed = desiredMoveSpeed;
         }
-        moveSpeed = desiredMoveSpeed;
+        
     }
     private void SpeedControl()
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         // limit velocity if needed
-
-        if (flatVel.magnitude > moveSpeed &&!isGrappling)
+        if(!dash)
         {
-             Vector3 limitedVel = flatVel.normalized * moveSpeed;
-             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            if (flatVel.magnitude > moveSpeed && !isGrappling)
+            {
+                Vector3 limitedVel = flatVel.normalized * moveSpeed;
+                rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            }
+            if (flatVel.magnitude > moveSpeed && isGrappling)
+            {
+                Vector3 limitedVel = flatVel.normalized * moveSpeed * 1.5f;
+                rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            }
         }
-        if(flatVel.magnitude > moveSpeed && isGrappling)
-        {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed *1.5f;
-            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
-        }
-
     }
     private void Accelerate()
     {
@@ -498,4 +520,9 @@ public class PlayerController : MonoBehaviour
         }
     }
     #endregion
+    public void Dash()
+    {
+        rb.velocity = orientation.forward * dashSpeed;
+        dash = true;
+    }
 }

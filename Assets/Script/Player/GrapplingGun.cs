@@ -20,6 +20,7 @@ public class GrapplingGun : MonoBehaviour
         { return grapplePoint; }
 
     public LayerMask whatIsGrappleable;
+    public LayerMask laserLayer;
     public Transform gunTip, camera, player;
     private SpringJoint joint;
     public bool isGrappling;
@@ -59,6 +60,10 @@ public class GrapplingGun : MonoBehaviour
         if (isGrappling)
         {
             playerController.GetComponent<Rigidbody>().AddForce((grapplePoint - transform.position) * forcePull);
+            if(Physics.Raycast(camera.position, grapplePoint-gunTip.position, out hit, (grapplePoint - gunTip.position).magnitude, laserLayer))
+            {
+                StopGrapple();
+            }
         }
     }
 

@@ -5015,6 +5015,9 @@ MonoBehaviour:
   whatIsGrappleable:
     serializedVersion: 2
     m_Bits: 768
+  laserLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   gunTip: {fileID: 2540652174883201931}
   camera: {fileID: 6995841947286173476}
   player: {fileID: 6995841946762034136}
@@ -5512,7 +5515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6086521077847302864
 Transform:
   m_ObjectHideFlags: 0
@@ -5815,7 +5818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7149799543837335364
 Transform:
   m_ObjectHideFlags: 0
@@ -10757,6 +10760,8 @@ MonoBehaviour:
   wallrunning: 0
   deltaTime: 0
   timeToPress: 0
+  dashSpeed: 60
+  timeToDash: 0.2
   buttonJump: {fileID: 11400000, guid: 10db7215801b18d4c85ae3736cddb8e2, type: 2}
   vectorMove: {fileID: 11400000, guid: ee42ec2862b19b64da16190453a0584e, type: 2}
   startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
