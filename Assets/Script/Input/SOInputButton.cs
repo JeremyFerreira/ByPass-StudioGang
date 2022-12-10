@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-[CreateAssetMenu(fileName = "InputData", menuName = "Button")]
-public class SOInputButton : MonoBehaviour
+[CreateAssetMenu(fileName = "Button", menuName = "InputData/New Button", order = 6)]
+public class SOInputButton : ScriptableObject
 {
     [SerializeField] bool value;
     public event Action OnPressed;
@@ -26,6 +26,6 @@ public class SOInputButton : MonoBehaviour
         {
             OnReleased?.Invoke();
         }
-        value = ctx.performed;
+        value = ctx.canceled;
     }
 }
