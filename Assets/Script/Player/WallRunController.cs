@@ -63,6 +63,8 @@ public class WallRunController : MonoBehaviour
     [SerializeField] EventSO startRun;
     [SerializeField] EventSO stopRun;
 
+    [SerializeField] AudioComponent audioJump;
+
     private void EnableInput()
     {
         jumpButton.OnPressed += WallJump;
@@ -229,7 +231,6 @@ public class WallRunController : MonoBehaviour
         {
             if (playerController.wallrunning)
             {
-                Debug.Log("wallRunJump");
                 playerController.PlayerJumpDown(false);
                 playerController.SetCanDoubleJump(false);
                 // enter exiting wall state
@@ -250,6 +251,8 @@ public class WallRunController : MonoBehaviour
                 // reset y velocity and add force
                 rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
                 rb.AddForce(forceToApply, ForceMode.Impulse);
+
+                audioJump.PlayAudioCue();
 
             }
         }

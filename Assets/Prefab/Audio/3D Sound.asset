@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f445abab76809994f807b85125e2c34d, type: 3}
-  m_Name: New Audio Configuration SO
+  m_Name: 3D Sound
   m_EditorClassIdentifier: 
   OutputAudioMixerGroup: {fileID: -2919845427630868010, guid: 548a7f001ca6d3d4cb67c8edf84f62a3, type: 2}
   _priorityLevel: 128

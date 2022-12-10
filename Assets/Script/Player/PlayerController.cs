@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     private float moveSpeed;
     [SerializeField] float speedMax;
+    [SerializeField] float verticalSpeedMax;
     public float SpeedMax()
     {
         return speedMax;
@@ -128,6 +129,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] EventSO startRun;
     [SerializeField] EventSO stopRun;
+    [SerializeField] EventSO startLevel;
+
+    [SerializeField] AudioComponent audioJump;
 
     private void EnableInput()
     {
@@ -149,6 +153,7 @@ public class PlayerController : MonoBehaviour
         stateGroundOld = true;
 
         collider = GetComponent<CapsuleCollider>();
+        
     }
 
     private void Start()
@@ -156,7 +161,7 @@ public class PlayerController : MonoBehaviour
         startRun.OnLaunchEvent += EnableInput;
         stopRun.OnLaunchEvent += DisableInput;
 
-        startRun.OnLaunchEvent.Invoke(); //A supprimer
+        startLevel.OnLaunchEvent.Invoke(); //A supprimer
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -324,6 +329,7 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = new Vector3(rb.velocity.x / 1.05f, rb.velocity.y, rb.velocity.z / 1.05f);
             }
+            
 
         }
         // in air
@@ -337,6 +343,10 @@ public class PlayerController : MonoBehaviour
             else
             {
                 rb.AddForce(moveDirection * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            }
+            if (Mathf.Abs(rb.velocity.y) > verticalSpeedMax)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y > 0 ? verticalSpeedMax : -verticalSpeedMax, rb.velocity.z);
             }
         }
 
@@ -449,6 +459,8 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(Vector3.up * _jumpVelocityChange, ForceMode.VelocityChange);
         canJump = false;
         canDoubleJump = true;
+
+        audioJump.PlayAudioCue();
     }
     public void DoubleJump()
     {
@@ -467,6 +479,9 @@ public class PlayerController : MonoBehaviour
             //JumpForce
             rb.AddForce(this.transform.up * _jumpVelocityChange * 1f, ForceMode.VelocityChange);
             canJump = false;
+
+
+            audioJump.PlayAudioCue();
 
         }
     }

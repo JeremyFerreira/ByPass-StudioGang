@@ -13,6 +13,9 @@ public class SlowTime : MonoBehaviour
     [SerializeField] EventSO startRun;
     [SerializeField] EventSO stopRun;
 
+    [SerializeField] AudioComponent audioSlowTimeStart;
+    [SerializeField] AudioComponent audioSlowTimeStop;
+
     private void EnableInput()
     {
         slowTimeInput.OnPressed += StartSlowTime;
@@ -38,10 +41,12 @@ public class SlowTime : MonoBehaviour
     {
         Time.timeScale = 0.5f;
         isSlowTime = true;
+        audioSlowTimeStart.PlayAudioCue();
     }
     public void StopSlowTime()
     {
         Time.timeScale = 1f;
         isSlowTime = false;
+        audioSlowTimeStop.PlayAudioCue();
     }
 }

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 293040683725666117}
   - component: {fileID: 293040683725666114}
   - component: {fileID: 293040683725666118}
+  - component: {fileID: 1457217430796824418}
+  - component: {fileID: 6517193726762436}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -124,7 +126,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b73f87b7e1c59469ef12581872ec8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 250
+  audioVentilateurIdle: {fileID: 1457217430796824418}
+  audioVentilateurIn: {fileID: 6517193726762436}
+  force: 200
+--- !u!114 &1457217430796824418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293040683725666112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a8dbc4867e1674ab88a7d17306cade, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioCue: {fileID: 11400000, guid: 13f7f4fb4c1578540b0efcfd5206e098, type: 2}
+  _playOnStart: 0
+  _audioCueEventChannel: {fileID: 11400000, guid: c55fbeaad229d874d82957c05a5a947f, type: 2}
+  _audioConfiguration: {fileID: 11400000, guid: 2de992d1d6dc4c944861a24638e38e95, type: 2}
+--- !u!114 &6517193726762436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293040683725666112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a8dbc4867e1674ab88a7d17306cade, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioCue: {fileID: 11400000, guid: 5f709cee294f4534facb3311396312af, type: 2}
+  _playOnStart: 0
+  _audioCueEventChannel: {fileID: 11400000, guid: c55fbeaad229d874d82957c05a5a947f, type: 2}
+  _audioConfiguration: {fileID: 11400000, guid: 6351c94c1eeef8547b7ed8df4ccafca5, type: 2}
 --- !u!1 &293040684692299556
 GameObject:
   m_ObjectHideFlags: 0

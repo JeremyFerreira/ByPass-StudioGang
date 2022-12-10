@@ -33,6 +33,9 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] EventSO startRun;
     [SerializeField] EventSO stopRun;
 
+    [SerializeField] AudioComponent audioGrappinStart;
+    [SerializeField] AudioComponent audioGrappinStop;
+    [SerializeField] AudioComponent audioGrappinFail;
     private void EnableInput()
     {
         grapplingInput.OnPressed += StartGrapple;
@@ -93,6 +96,11 @@ public class GrapplingGun : MonoBehaviour
             currentGrapplePosition = gunTip.position;
 
             isGrappling = true;
+            audioGrappinStart.PlayAudioCue();
+        }
+        else
+        {
+            audioGrappinFail.PlayAudioCue();
         }
     }
 
@@ -107,6 +115,7 @@ public class GrapplingGun : MonoBehaviour
         { 
             isGrappling = false;
             playerController.SetCanDoubleJump(true);
+            audioGrappinStop.PlayAudioCue();
         }
 
     }
