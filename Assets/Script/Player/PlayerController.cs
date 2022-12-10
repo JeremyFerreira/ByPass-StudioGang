@@ -156,6 +156,8 @@ public class PlayerController : MonoBehaviour
         startRun.OnLaunchEvent += EnableInput;
         stopRun.OnLaunchEvent += DisableInput;
 
+        startRun.OnLaunchEvent.Invoke(); //A supprimer
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         readyToJump = true;
