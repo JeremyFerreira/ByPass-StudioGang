@@ -2,7 +2,7 @@ using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(AudioComponent))]
 public class CountDown : MonoBehaviour
 {
     [SerializeField] EventSO _eventStartLevel;
@@ -11,8 +11,13 @@ public class CountDown : MonoBehaviour
     [SerializeField] float timeOfCountDown;
     [SerializeField] float[] writeinCountDown;
 
-    int count;
+    AudioComponent _audioComponent;
 
+    int count;
+    private void Awake()
+    {
+        _audioComponent = GetComponent<AudioComponent>();
+    }
     private void OnEnable()
     {
         _eventStartLevel.OnLaunchEvent += StartCountDown;
@@ -31,6 +36,7 @@ public class CountDown : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(timeOfCountDown / writeinCountDown.Length);
         _countDownData.ChangeTimer(writeinCountDown[count]);
+        _audioComponent.PlayAudioCue();
         count++;
         if (count < writeinCountDown.Length)
         {
