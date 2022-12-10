@@ -10664,6 +10664,8 @@ GameObject:
   - component: {fileID: 6995841946542408056}
   - component: {fileID: 6995841946542408059}
   - component: {fileID: 5035226656395529952}
+  - component: {fileID: 6169884257776886136}
+  - component: {fileID: 1942929707161925371}
   m_Layer: 3
   m_Name: PlayerController
   m_TagString: Untagged
@@ -10961,6 +10963,36 @@ MonoBehaviour:
   slowTimeInput: {fileID: 11400000, guid: d2ef8f050695cf247b6b209f6f335d3a, type: 2}
   startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
   stopRun: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
+--- !u!114 &6169884257776886136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6995841946762034135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72d38dda7d88a745939f3175f1ac8ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deathEvent: {fileID: 11400000, guid: 2098071988993db488bf1d193b6ee824, type: 2}
+  _layersDeath:
+    serializedVersion: 2
+    m_Bits: 3072
+--- !u!136 &1942929707161925371
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6995841946762034135}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6995841946886761746
 GameObject:
   m_ObjectHideFlags: 0
@@ -11275,7 +11307,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1015
+    m_Bits: 4087
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
