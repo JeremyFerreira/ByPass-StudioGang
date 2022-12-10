@@ -16,6 +16,9 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] int positionCount;
     
     private Vector3 grapplePoint;
+    public Vector3 GrapplePoint()
+        { return grapplePoint; }
+
     public LayerMask whatIsGrappleable;
     public Transform gunTip, camera, player;
     private SpringJoint joint;
