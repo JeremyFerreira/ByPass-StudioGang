@@ -7,6 +7,7 @@ public class DeathTrigger : MonoBehaviour
 {
     [SerializeField] private EventSO _deathEvent;
     [SerializeField] private EventSO _StartRunEvent;
+    [SerializeField] private EventSO _eventStopInput;
     [SerializeField] private LayerMask _layersDeath;
 
     bool _IsAlive;
@@ -29,7 +30,8 @@ public class DeathTrigger : MonoBehaviour
             if (_IsAlive)
             {
                 _IsAlive = false;
-                _deathEvent.OnLaunchEvent.Invoke();
+                _deathEvent.OnLaunchEvent?.Invoke();
+                _eventStopInput.OnLaunchEvent?.Invoke();
             }
         }
     }

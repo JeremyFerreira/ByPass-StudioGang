@@ -11589,6 +11589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deathEvent: {fileID: 11400000, guid: 2098071988993db488bf1d193b6ee824, type: 2}
   _StartRunEvent: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
+  _eventStopInput: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
   _layersDeath:
     serializedVersion: 2
     m_Bits: 3072
