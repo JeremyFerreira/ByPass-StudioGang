@@ -19,6 +19,7 @@ public class HudManager : MonoBehaviour
     [Header("EVENT")]
     [SerializeField] EventSO _eventReachFinishLine;
     [SerializeField] EventSO _eventStartLevel;
+    [SerializeField] EventSO _eventInMainMenu;
     static bool created = false;
     void Awake()
     {
@@ -36,11 +37,19 @@ public class HudManager : MonoBehaviour
     {
         _eventReachFinishLine.OnLaunchEvent += OpenWinPanel;
         _eventStartLevel.OnLaunchEvent += OpenInGamePanel;
+        _eventInMainMenu.OnLaunchEvent += OpenMainMenu;
     }
     private void OnDisable()
     {
         _eventReachFinishLine.OnLaunchEvent -= OpenWinPanel;
         _eventStartLevel.OnLaunchEvent -= OpenInGamePanel;
+        _eventInMainMenu.OnLaunchEvent -= OpenMainMenu;
+    }
+
+    private void OpenMainMenu()
+    {
+        CloseAllPanel();
+        _mainMenu.Show();
     }
 
     private void OpenInGamePanel()

@@ -23,7 +23,7 @@ public class DataManager : MonoBehaviour
         {
             for (int j = 0; j < AllWorld[i].WorldData.Count; j++)
             {
-                if (AllWorld[i].WorldData[j].name == levelName)
+                if (AllWorld[i].WorldData[j].MapName == levelName)
                 {
                     AllWorld[i].WorldData[j].BestTime = value;
                     return;

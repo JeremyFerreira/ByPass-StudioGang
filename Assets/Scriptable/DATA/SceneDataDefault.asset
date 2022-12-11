@@ -22,5 +22,5 @@ MonoBehaviour:
   - 0
   <SpriteCard>k__BackingField: {fileID: 0}
   <BackGroundLoad>k__BackingField: {fileID: 0}
-  <BestTime>k__BackingField: 0
-  <GhostPlayer>k__BackingField: {fileID: 11400000, guid: 046047311093c0844a88df579c213095, type: 2}
+  <BestTime>k__BackingField: 200000
+  <GhostPlayer>k__BackingField: {fileID: 0}
