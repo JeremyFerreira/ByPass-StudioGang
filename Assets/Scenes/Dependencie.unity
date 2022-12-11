@@ -1246,6 +1246,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8b707bd96fe11341a574446f4c86441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1279336312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1279336314}
+  - component: {fileID: 1279336313}
+  m_Layer: 0
+  m_Name: GameMode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1279336313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279336312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3934e28f46c5e64799ed99903c1710b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _haveAlreadySeeCinematique: 0
+  _gameState: 0
+  _eventStartLevel: {fileID: 11400000, guid: 4758eda0a1896e64f8d2d256c3342cc7, type: 2}
+  _eventLaunchLevel: {fileID: 11400000, guid: dbee5bbf32296cf4d99aa02af8326886, type: 2}
+  _eventStartCinematique: {fileID: 11400000, guid: 2768af1fe1ea9344fa1e5c2d8f297552, type: 2}
+  _eventDeath: {fileID: 11400000, guid: 2098071988993db488bf1d193b6ee824, type: 2}
+  _eventRestart: {fileID: 11400000, guid: a51d14a2ad7fc6a43b313db9a9134386, type: 2}
+--- !u!4 &1279336314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279336312}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1491870575
 GameObject:
   m_ObjectHideFlags: 0

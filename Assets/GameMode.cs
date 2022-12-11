@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMode : MonoBehaviour
 {
@@ -9,7 +12,32 @@ public class GameMode : MonoBehaviour
     [SerializeField] EventSO _eventStartLevel;
     [SerializeField] EventSO _eventLaunchLevel;
     [SerializeField] EventSO _eventStartCinematique;
+    [SerializeField] EventSO _eventDeath;
+    [SerializeField] EventSO _eventRestart;
+    static bool created = false;
+    void Awake()
+    {
+        if (!created)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            created = true;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
+    private void OnEnable()
+    {
+        _eventDeath.OnLaunchEvent += Death;
+        _eventRestart.OnLaunchEvent += Restart;
+    }
+    private void OnDisable()
+    {
+        _eventDeath.OnLaunchEvent -= Death;
+        _eventRestart.OnLaunchEvent -= Restart;
+    }
     public void ChangeLevel()
     {
         if (_haveAlreadySeeCinematique)
@@ -22,6 +50,34 @@ public class GameMode : MonoBehaviour
             _haveAlreadySeeCinematique = true;
         }
     }
+
+    public void Restart()
+    {
+        StartCoroutine(LoadScene());
+    }
+
+    public void Death()
+    {
+        StartCoroutine(DeathTimer());
+    }
+
+    IEnumerator DeathTimer()
+    {
+        yield return new WaitForSeconds(3f);
+        _eventRestart.OnLaunchEvent?.Invoke();
+    }
+
+    IEnumerator LoadScene()
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        while (!operation.isDone)
+        {
+            yield return null;
+        }
+        _eventStartLevel.OnLaunchEvent?.Invoke();
+    }
+
+
 }
 
 public enum GameState
