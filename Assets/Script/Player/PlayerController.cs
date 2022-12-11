@@ -134,7 +134,9 @@ public class PlayerController : MonoBehaviour
 
     public void SetGrappin(bool a) { isGrappling = a; }
 
-    
+    bool hasJustLanded;
+    bool hasJustLandedTemp;
+    float playerYposLastFrame;
 
     [SerializeField] SOInputButton buttonJump;
     [SerializeField] SOInputVector vectorMove;
@@ -150,6 +152,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioComponent audioJump;
     [SerializeField] AudioComponent audioDoubleJump;
     [SerializeField] AudioComponent audioGetDoubleJump;
+    [SerializeField] AudioComponent audioLanded;
     [SerializeField] AudioSource audioSourceWind;
     [SerializeField] AnimationCurve windPitch;
     float timeToUpdatePitch;
@@ -159,6 +162,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ShakeData dashShake;
     [SerializeField] ShakeData jumpShake;
     [SerializeField] ShakeData doubleJumpShake;
+    [SerializeField] ShakeData landedShake;
     //audio
     private void EnableInput()
     {
@@ -216,10 +220,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, col.height * 0.5f + Physics.defaultContactOffset * 2, whatIsGround);
-        behindGround = Physics.Raycast(transform.position - (Vector3.up * 0.3f), moveDirection.normalized, playerHeight, whatIsGround) || Physics.Raycast(transform.position + (Vector3.up * 0.3f), moveDirection.normalized, playerHeight, whatIsGround);
-
+        
+        
         //time To Jump if not on ground;
         if (grounded)
         {
@@ -262,6 +264,26 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // ground check
+        
+
+        grounded = Physics.Raycast(transform.position, Vector3.down, col.height * 0.5f + Physics.defaultContactOffset * 3, whatIsGround);
+        behindGround = Physics.Raycast(transform.position - (Vector3.up * 0.3f), moveDirection.normalized, playerHeight, whatIsGround) || Physics.Raycast(transform.position + (Vector3.up * 0.3f), moveDirection.normalized, playerHeight, whatIsGround);
+
+        hasJustLanded = grounded && playerYposLastFrame > transform.position.y + 0.05f;
+        playerYposLastFrame = transform.position.y;
+        if (hasJustLanded && hasJustLandedTemp)
+        {
+            Debug.Log("landed");
+            CameraShakeManager.instance.Shake(landedShake);
+            audioLanded.PlayAudioCue();
+            hasJustLanded = false;
+        }
+        if(!grounded)
+        {
+            hasJustLandedTemp = true;
+        }
+
         MovePlayer();
         SpeedControl();
         Accelerate();
