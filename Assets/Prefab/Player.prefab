@@ -5108,7 +5108,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   gunTip: {fileID: 2540652174883201931}
-  camera: {fileID: 6995841947286173476}
+  cam: {fileID: 6995841947286173476}
   player: {fileID: 6995841946762034136}
   isGrappling: 0
   playerController: {fileID: 4118161403787072546}
@@ -5120,6 +5120,8 @@ MonoBehaviour:
   audioGrappinStart: {fileID: 4000405176917015344}
   audioGrappinStop: {fileID: 7268349859122323185}
   audioGrappinFail: {fileID: 5019846452202226964}
+  shakeStart: {fileID: 11400000, guid: 767fa475a6f030b4cb6188d591760927, type: 2}
+  shakeStop: {fileID: 11400000, guid: 5e3afbe01f19a394b9aca6b2b01174d3, type: 2}
 --- !u!114 &3258424429040315196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5339,6 +5341,38 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &3284263518852908002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3428684756015947115}
+  m_Layer: 3
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3428684756015947115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3284263518852908002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6995841947286173476}
+  m_Father: {fileID: 6995841946889163462}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3753355246841599942
 GameObject:
   m_ObjectHideFlags: 0
@@ -11681,7 +11715,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6995841947286173476}
+  - {fileID: 3428684756015947115}
   m_Father: {fileID: 6995841945484748707}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11902,7 +11936,7 @@ Transform:
   m_Children:
   - {fileID: 5985658306413415986}
   - {fileID: 5204814931379626727}
-  m_Father: {fileID: 6995841946889163462}
+  m_Father: {fileID: 3428684756015947115}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &6995841947286173475
@@ -11971,6 +12005,7 @@ MonoBehaviour:
   sensibility: 30
   orientation: {fileID: 6995841947327634634}
   camHolder: {fileID: 6995841946889163462}
+  camParent: {fileID: 3428684756015947115}
   lookInput: {fileID: 11400000, guid: 4c596e50aa0ab5d448fbdd866796d577, type: 2}
   IsGamePad: 1
   startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
