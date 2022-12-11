@@ -11434,6 +11434,7 @@ MonoBehaviour:
   startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
   stopRun: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
   startLevel: {fileID: 11400000, guid: 4758eda0a1896e64f8d2d256c3342cc7, type: 2}
+  eventPause: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
   audioJump: {fileID: 9222738234494605411}
   audioDoubleJump: {fileID: 7566626441450858410}
   audioGetDoubleJump: {fileID: 3472339667903125846}
@@ -11702,6 +11703,7 @@ MonoBehaviour:
   slowTimeInput: {fileID: 11400000, guid: d2ef8f050695cf247b6b209f6f335d3a, type: 2}
   startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
   stopRun: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
+  pauseEvent: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
   audioSlowTimeStart: {fileID: 1557081113362687466}
   audioSlowTimeStop: {fileID: 2022598924077733444}
   glitchEffect: {fileID: 6945159035169183843}

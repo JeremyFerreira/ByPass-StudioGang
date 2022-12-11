@@ -24,12 +24,14 @@ public class HudManager : MonoBehaviour
     [SerializeField] EventSO _eventReachFinishLine;
     [SerializeField] EventSO _eventStartLevel;
     [SerializeField] EventSO _eventInMainMenu;
+    [SerializeField] EventSO _eventPause;
 
+    [Header("LevelSelector")]
     [SerializeField] GameObject _parentLevelSelection;
     [SerializeField] EventSystem eventSystem;
-
     [SerializeField] GameObject CardWorldPrefab;
     [SerializeField] TextMeshProUGUI starText;
+
     static bool created = false;
     void Awake()
     {
@@ -48,14 +50,31 @@ public class HudManager : MonoBehaviour
         _eventReachFinishLine.OnLaunchEvent += OpenWinPanel;
         _eventStartLevel.OnLaunchEvent += OpenInGamePanel;
         _eventInMainMenu.OnLaunchEvent += OpenMainMenu;
+        _eventPause.OnLaunchEvent += OpenPauseMenu;
     }
     private void OnDisable()
     {
         _eventReachFinishLine.OnLaunchEvent -= OpenWinPanel;
         _eventStartLevel.OnLaunchEvent -= OpenInGamePanel;
         _eventInMainMenu.OnLaunchEvent -= OpenMainMenu;
+        _eventPause.OnLaunchEvent -= OpenPauseMenu;
     }
-
+    private void OpenPauseMenu()
+    {
+        if (_pausePanel.isActiveAndEnabled)
+        {
+            OpenInGamePanel();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            CloseAllPanel();
+            _pausePanel.Show();
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
+    }
     private void OpenMainMenu()
     {
         CloseAllPanel();

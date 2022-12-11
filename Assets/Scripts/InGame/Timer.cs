@@ -6,6 +6,7 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     [SerializeField] EventSO _startRunEvent;
+    [SerializeField] EventSO _PauseEvent;
     [SerializeField] EventSO _reachFinishLineEvent;
     [SerializeField] TimeSO _timer;
     [SerializeField] bool _timerIsLaunch;
@@ -18,11 +19,26 @@ public class Timer : MonoBehaviour
     {
         _startRunEvent.OnLaunchEvent += LaunchRun;
         _reachFinishLineEvent.OnLaunchEvent += StopTimer;
+        _PauseEvent.OnLaunchEvent += Pause;
     }
     private void OnDisable()
     {
         _startRunEvent.OnLaunchEvent -= LaunchRun;
         _reachFinishLineEvent.OnLaunchEvent -= StopTimer;
+        _PauseEvent.OnLaunchEvent -= Pause;
+    }
+
+    private void Pause()
+    {
+        if (!_timerIsLaunch)
+        {
+            _timerIsLaunch = true;
+        }
+        else
+        {
+            _timerIsLaunch = false;
+        }
+
     }
     private void LaunchRun()
     {

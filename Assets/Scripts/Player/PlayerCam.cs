@@ -61,8 +61,8 @@ public class PlayerCam : MonoBehaviour
         //getMouse Inputs
         float lookX;
         float lookY;
-        lookX = looking.x * sensibility * Time.unscaledDeltaTime;
-        lookY = looking.y * sensibility * Time.unscaledDeltaTime;
+        lookX = looking.x * sensibility * Time.deltaTime;
+        lookY = looking.y * sensibility * Time.deltaTime;
 
 
         yRotation += lookX;

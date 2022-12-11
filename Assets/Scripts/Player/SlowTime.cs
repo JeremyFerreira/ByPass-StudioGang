@@ -16,16 +16,19 @@ public class SlowTime : MonoBehaviour
 
     [SerializeField] EventSO startRun;
     [SerializeField] EventSO stopRun;
+    [SerializeField] EventSO pauseEvent;
 
     [SerializeField] AudioComponent audioSlowTimeStart;
     [SerializeField] AudioComponent audioSlowTimeStop;
     [SerializeField] GlitchEffect glitchEffect;
-    
+
+    bool InPause = false;
 
     private void EnableInput()
     {
         slowTimeInput.OnPressed += StartSlowTime;
         slowTimeInput.OnReleased += StopSlowTime;
+        
     }
     private void DisableInput()
     {
@@ -36,12 +39,14 @@ public class SlowTime : MonoBehaviour
     {
         startRun.OnLaunchEvent += EnableInput;
         stopRun.OnLaunchEvent += DisableInput;
+        pauseEvent.OnLaunchEvent += Pause;
     }
 
     private void OnDisable()
     {
         startRun.OnLaunchEvent -= EnableInput;
         stopRun.OnLaunchEvent -= DisableInput;
+        pauseEvent.OnLaunchEvent -= Pause;
         DisableInput();
     }
     private void Start()
@@ -51,33 +56,35 @@ public class SlowTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!InPause)
+        {
         slider.value = 1-((timeTotal - timeLeft) / timeTotal);
         Debug.Log(1 - ((timeTotal - timeLeft) / timeTotal));
-        if (isSlowTime)
-        {
-            slider.gameObject.SetActive(true);
-            glitchEffect.enabled = true;
-            Time.timeScale = 0.5f;
-            timeLeft -= Time.unscaledDeltaTime;
-            if (timeLeft <= 0)
+            if (isSlowTime)
             {
-                StopSlowTime();
-            }
-        }
-        else
-        {
-            glitchEffect.enabled = false;
-            slider.gameObject.SetActive(false);
-            Time.timeScale = 1f;
-            if(timeLeft < timeTotal)
-            {
-                timeLeft += Time.unscaledDeltaTime * 0.5f;
+                slider.gameObject.SetActive(true);
+                glitchEffect.enabled = true;
+                Time.timeScale = 0.5f;
+                timeLeft -= Time.unscaledDeltaTime;
+                if (timeLeft <= 0)
+                {
+                    StopSlowTime();
+                }
             }
             else
             {
-                timeLeft = timeTotal;
+                glitchEffect.enabled = false;
+                slider.gameObject.SetActive(false);
+                Time.timeScale = 1f;
+                if (timeLeft < timeTotal)
+                {
+                    timeLeft += Time.unscaledDeltaTime * 0.5f;
+                }
+                else
+                {
+                    timeLeft = timeTotal;
+                }
             }
-            
         }
     }
     public void StartSlowTime()
@@ -94,5 +101,10 @@ public class SlowTime : MonoBehaviour
             isSlowTime = false;
             audioSlowTimeStop.PlayAudioCue();
         }
+    }
+
+    public void Pause()
+    {
+        InPause = !InPause;
     }
 }

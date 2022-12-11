@@ -13,6 +13,7 @@ public class GameMode : MonoBehaviour
     [SerializeField] EventSO _eventStartCinematique;
     [SerializeField] EventSO _eventDeath;
     [SerializeField] EventSO _eventRestart;
+    [SerializeField] EventSO _eventPause;
     static bool created = false;
     bool alreadyLoad;
     void Awake()
@@ -28,15 +29,29 @@ public class GameMode : MonoBehaviour
         }
     }
 
+    private void Pause()
+    {
+        if (Time.timeScale == 0)
+        {
+            
+            Time.timeScale = 1;
+        }
+        else
+            Time.timeScale = 0;
+
+    }
+
     private void OnEnable()
     {
         _eventDeath.OnLaunchEvent += Death;
         _eventRestart.OnLaunchEvent += Restart;
+        _eventPause.OnLaunchEvent += Pause;
     }
     private void OnDisable()
     {
         _eventDeath.OnLaunchEvent -= Death;
         _eventRestart.OnLaunchEvent -= Restart;
+        _eventPause.OnLaunchEvent -= Pause;
     }
     public void ChangeLevel()
     {

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startRunEvent: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
+  _PauseEvent: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
   _reachFinishLineEvent: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
   _timer: {fileID: 11400000, guid: dce7fafda4b56e341906c5311c2b0cfb, type: 2}
   _timerIsLaunch: 0

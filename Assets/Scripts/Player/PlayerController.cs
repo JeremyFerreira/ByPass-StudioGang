@@ -146,6 +146,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] EventSO startRun;
     [SerializeField] EventSO stopRun;
     [SerializeField] EventSO startLevel;
+    [SerializeField] EventSO eventPause;
 
     [Header("Audio")]
     [Space(10)]
@@ -168,6 +169,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool canMove = false;
 
     [SerializeField] Animator grappinAnim;
+
+    private bool InPause = false;
     private void CanMove()
     {
         canMove = true;
@@ -190,6 +193,16 @@ public class PlayerController : MonoBehaviour
         startLevel.OnLaunchEvent += EnableInput;
         startRun.OnLaunchEvent += CanMove;
         stopRun.OnLaunchEvent += DisableInput;
+        eventPause.OnLaunchEvent += Pause;
+    }
+    private void Pause()
+    {
+        if (InPause)
+            EnableInput();
+        else
+            DisableInput();
+
+        InPause = !InPause;
     }
     private void OnDisable()
     {
@@ -197,7 +210,8 @@ public class PlayerController : MonoBehaviour
         startLevel.OnLaunchEvent -= EnableInput;
         startRun.OnLaunchEvent -= CanMove;
         stopRun.OnLaunchEvent -= DisableInput;
-        
+        eventPause.OnLaunchEvent -= Pause;
+
     }
     // LOOPS AND FUNCTIONS///////////////////////////////////////////////////////////////////
     private void Awake()

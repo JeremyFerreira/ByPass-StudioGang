@@ -294,6 +294,7 @@ MonoBehaviour:
   _eventStartCinematique: {fileID: 11400000, guid: 2768af1fe1ea9344fa1e5c2d8f297552, type: 2}
   _eventDeath: {fileID: 11400000, guid: 2098071988993db488bf1d193b6ee824, type: 2}
   _eventRestart: {fileID: 11400000, guid: a51d14a2ad7fc6a43b313db9a9134386, type: 2}
+  _eventPause: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
 --- !u!4 &1279336314
 Transform:
   m_ObjectHideFlags: 0
@@ -478,6 +479,7 @@ MonoBehaviour:
   _eventReachFinishLine: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
   _eventStartLevel: {fileID: 11400000, guid: 4758eda0a1896e64f8d2d256c3342cc7, type: 2}
   _eventInMainMenu: {fileID: 11400000, guid: 54973b5f89d2dc0409f2d4ca1c76c945, type: 2}
+  _eventPause: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
   _parentLevelSelection: {fileID: 2349967972464073842}
   eventSystem: {fileID: 5270613211130311336}
   CardWorldPrefab: {fileID: 8240622982679906376, guid: 36134287fbd18f147b6b2411c75b7b28, type: 3}
