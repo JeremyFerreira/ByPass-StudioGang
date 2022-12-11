@@ -67,7 +67,8 @@ public class PlayFabLogin : MonoBehaviour
         UpdatePlayerName();
         UpdateProfilePicture();
         GetStatistics();
-        //GetComponent<PlayfabGhost>().LoadAllFiles();
+
+        GetComponent<PlayfabGhost>().LoadAllFiles();
     }
 
     void GetStatistics()
@@ -132,7 +133,7 @@ public class PlayFabLogin : MonoBehaviour
     /// Recupere la AuthTicket de SteamWorks    
     /// </summary>
     /// <returns></returns>
-    private string GetSteamAuthTicket()
+    public string GetSteamAuthTicket()
     {
         byte[] ticketBlob = new byte[1024];
         uint ticketSize;

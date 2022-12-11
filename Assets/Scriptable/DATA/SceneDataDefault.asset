@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7434ffc26fcc027459738389cfe10a2a, type: 3}
   m_Name: SceneDataDefault
   m_EditorClassIdentifier: 
-  <MapName>k__BackingField: 
+  <MapName>k__BackingField: Pouet
   <IndexScene>k__BackingField: 0
   <TimeStar>k__BackingField:
   - 0
@@ -23,4 +23,4 @@ MonoBehaviour:
   <SpriteCard>k__BackingField: {fileID: 0}
   <BackGroundLoad>k__BackingField: {fileID: 0}
   <BestTime>k__BackingField: 0
-  <GhostPlayer>k__BackingField: {fileID: 0}
+  <GhostPlayer>k__BackingField: {fileID: 11400000, guid: 046047311093c0844a88df579c213095, type: 2}
