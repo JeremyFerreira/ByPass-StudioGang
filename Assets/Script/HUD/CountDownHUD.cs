@@ -8,7 +8,7 @@ public class CountDownHUD : MonoBehaviour
     [SerializeField] TimeSO timeSO;
     [SerializeField] EventSO _OnStartLevelEvent;
     [SerializeField] EventSO _OnStartRunEvent;
-    private void Awake()
+    private void Start()
     {
         textMeshProUGUI = GetComponent<TextMeshProUGUI>();
     }
