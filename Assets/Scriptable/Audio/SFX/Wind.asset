@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9620f3b14364583418baa2b727db6729, type: 3}
-  m_Name: GrappinStop
+  m_Name: Wind
   m_EditorClassIdentifier: 
-  looping: 0
+  looping: 1
   _audioClipGroups:
   - sequenceMode: 0
     audioClips:
-    - {fileID: 8300000, guid: 06228d54569db884eb4159cb986240dd, type: 3}
+    - {fileID: 8300000, guid: 7d7aef899a2e47142b8b27475dd5e480, type: 3}

@@ -778,7 +778,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh288270
+  m_Name: pb_Mesh31656
   serializedVersion: 10
   m_SubMeshes: []
   m_Shapes:
@@ -17144,6 +17144,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 530632600312889022, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
+      propertyPath: m_Volume
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 4118161403787072546, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
       propertyPath: startLevel
       value: 
@@ -17159,6 +17163,22 @@ PrefabInstance:
     - target: {fileID: 4118161403787072546, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
       propertyPath: whatIsGround.m_Bits
       value: 576
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118161403787072546, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
+      propertyPath: windPitch.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118161403787072546, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
+      propertyPath: windPitch.m_Curve.Array.data[1].inSlope
+      value: 3.13833
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118161403787072546, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
+      propertyPath: windPitch.m_Curve.Array.data[1].inWeight
+      value: 0.09318194
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118161403787072546, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
+      propertyPath: windPitch.m_Curve.Array.data[1].outSlope
+      value: 3.13833
       objectReference: {fileID: 0}
     - target: {fileID: 6995841945484748706, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
       propertyPath: m_Name

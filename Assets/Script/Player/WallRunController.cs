@@ -64,7 +64,8 @@ public class WallRunController : MonoBehaviour
     [SerializeField] EventSO stopRun;
 
     [SerializeField] AudioComponent audioJump;
-
+    [SerializeField] AudioComponent audioWalk;
+    float timerFootstep;
     private void EnableInput()
     {
         jumpButton.OnPressed += WallJump;
@@ -146,6 +147,13 @@ public class WallRunController : MonoBehaviour
                 exitWallTimer = exitWallTime;
             }
 
+            timerFootstep -= Time.deltaTime;
+            if (timerFootstep < 0 )
+            {
+                timerFootstep = 0.2f;
+                audioWalk.PlayAudioCue();
+            }
+
         }
 
         // State 2 - Exiting
@@ -182,6 +190,8 @@ public class WallRunController : MonoBehaviour
         // apply camera effects
         if (wallLeft) cam.DoTilt(-tilt);
         if (wallRight) cam.DoTilt(tilt);
+
+        timerFootstep = -1;
 
     }
 

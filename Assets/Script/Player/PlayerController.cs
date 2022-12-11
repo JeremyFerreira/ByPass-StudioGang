@@ -119,6 +119,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashSpeed;
     [SerializeField] float timeToDash;
     float timeTodashReset;
+
     public void SetGrappin(bool a) { isGrappling = a; }
 
     
@@ -131,8 +132,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] EventSO stopRun;
     [SerializeField] EventSO startLevel;
 
+    //audio
     [SerializeField] AudioComponent audioJump;
-
+    [SerializeField] AudioSource audioSourceWind;
+    [SerializeField] AnimationCurve windPitch;
+    float timeToUpdatePitch;
     private void EnableInput()
     {
         buttonJump.OnPressed += GetPlayerJump;
@@ -176,6 +180,9 @@ public class PlayerController : MonoBehaviour
         earlyPressTime = 0;
         timeTodashReset = timeToDash;
         resetMaxJumpTime = _maxJumpTime;
+
+        //audio
+        audioSourceWind.Play();
     }
 
     private void Update()
@@ -219,6 +226,9 @@ public class PlayerController : MonoBehaviour
                 timeToDash = timeTodashReset;
             }
         }
+
+        //audio
+        audioSourceWind.pitch = windPitch.Evaluate(Mathf.Sqrt((new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude / (float)speedMax))*Time.timeScale);
     }
 
     private void FixedUpdate()
@@ -355,6 +365,8 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = (new Vector3(rb.velocity.x, 0, rb.velocity.z).normalized * speedMax) + (Vector3.up * rb.velocity.y);
         }
+
+        
     }
     private IEnumerator SmoothlyLerpMoveSpeed()
     {
