@@ -163,12 +163,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ShakeData jumpShake;
     [SerializeField] ShakeData doubleJumpShake;
     [SerializeField] ShakeData landedShake;
-    //audio
+
+    [SerializeField] bool canMove = false;
+    private void CanMove()
+    {
+        canMove = true;
+    }
     private void EnableInput()
     {
         buttonJump.OnPressed += GetPlayerJump;
         buttonJump.OnReleased += CancelJump;
-
         vectorMove.OnValueChanged += MyInput;
     }
     private void DisableInput()
@@ -177,26 +181,31 @@ public class PlayerController : MonoBehaviour
         buttonJump.OnReleased -= CancelJump;
         vectorMove.OnValueChanged -= MyInput;
     }
+    private void OnEnable()
+    {
+        Instance = this;
+        startLevel.OnLaunchEvent += EnableInput;
+        startRun.OnLaunchEvent += CanMove;
+        stopRun.OnLaunchEvent += DisableInput;
+    }
+    private void OnDisable()
+    {
+        DisableInput();
+        startLevel.OnLaunchEvent -= EnableInput;
+        startRun.OnLaunchEvent -= CanMove;
+        stopRun.OnLaunchEvent -= DisableInput;
+        
+    }
     // LOOPS AND FUNCTIONS///////////////////////////////////////////////////////////////////
     private void Awake()
     {
-        Instance = this;
+        
         stateGroundOld = true;
 
         col = GetComponent<CapsuleCollider>();
         
     }
-    private void OnEnable()
-    {
-        startRun.OnLaunchEvent += EnableInput;
-        stopRun.OnLaunchEvent += DisableInput;
-    }
-    private void OnDisable()
-    {
-        startRun.OnLaunchEvent -= EnableInput;
-        stopRun.OnLaunchEvent -= DisableInput;
-        DisableInput();
-    }
+    
 
     private void Start()
     {
@@ -283,8 +292,11 @@ public class PlayerController : MonoBehaviour
         {
             hasJustLandedTemp = true;
         }
-
-        MovePlayer();
+        if(canMove)
+        {
+            MovePlayer();
+        }
+        
         SpeedControl();
         Accelerate();
         LongJump();
@@ -482,6 +494,7 @@ public class PlayerController : MonoBehaviour
     #region Jump
     public void GetPlayerJump()
     {
+        
         // when to jump
         if (readyToJump && (grounded || canJump) && !wallrunning)
         {
@@ -512,19 +525,23 @@ public class PlayerController : MonoBehaviour
     }
     public void Jump()
     {
-        isJumping = true;
-        _maxJumpTime = resetMaxJumpTime;
+        if(canMove)
+        {
+            isJumping = true;
+            _maxJumpTime = resetMaxJumpTime;
 
-        // reset y velocity
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            // reset y velocity
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        //JumpForce
-        rb.AddForce(Vector3.up * _jumpVelocityChange, ForceMode.VelocityChange);
-        canJump = false;
-        canDoubleJump = true;
+            //JumpForce
+            rb.AddForce(Vector3.up * _jumpVelocityChange, ForceMode.VelocityChange);
+            canJump = false;
+            canDoubleJump = true;
 
-        audioJump.PlayAudioCue();
-        CameraShakeManager.instance.Shake(jumpShake);
+            audioJump.PlayAudioCue();
+            CameraShakeManager.instance.Shake(jumpShake);
+        }
+        
     }
     public void DoubleJump()
     {
