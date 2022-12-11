@@ -4252,6 +4252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
+  - component: {fileID: 705507996}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -4336,6 +4337,26 @@ Transform:
   m_Father: {fileID: 2094178271}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &705507996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705507993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &707938075
 GameObject:
   m_ObjectHideFlags: 0
@@ -12259,6 +12280,22 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 103810363}
+    - target: {fileID: 6945159035169183843, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
+      propertyPath: intensity
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6945159035169183843, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
+      propertyPath: flipIntensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6945159035169183843, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
+      propertyPath: colorIntensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6945159035169183843, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
+      propertyPath: displacementMap
+      value: 
+      objectReference: {fileID: 2800000, guid: fe3efa1cfd72025499e739d99f9f8224, type: 3}
     - target: {fileID: 6995841945484748706, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
       propertyPath: m_Name
       value: Player

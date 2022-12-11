@@ -11681,11 +11681,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeTotal: 3
   timeLeft: 0
+  slider: {fileID: 0}
   slowTimeInput: {fileID: 11400000, guid: d2ef8f050695cf247b6b209f6f335d3a, type: 2}
   startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
   stopRun: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
   audioSlowTimeStart: {fileID: 1557081113362687466}
   audioSlowTimeStop: {fileID: 2022598924077733444}
+  glitchEffect: {fileID: 6945159035169183843}
 --- !u!114 &6169884257776886136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11992,6 +11994,7 @@ GameObject:
   - component: {fileID: 6079812030385122720}
   - component: {fileID: 5681200646732010318}
   - component: {fileID: 2046172060508614243}
+  - component: {fileID: 6945159035169183843}
   m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -12181,6 +12184,23 @@ MonoBehaviour:
   _limitMagnitude: 0
   _positionalMagnitudeLimit: 10
   _rotationalMagnitudeLimit: 3
+--- !u!114 &6945159035169183843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6995841947286173473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b610a2a1684dc844bf2099e8dc0d882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displacementMap: {fileID: 2800000, guid: 87e0932ca53bb0b47bbb53dca522eba7, type: 3}
+  Shader: {fileID: 4800000, guid: 889f01ee0272c5b4998dc88c898250b7, type: 3}
+  intensity: 0.1
+  flipIntensity: 0.1
+  colorIntensity: 1
 --- !u!1 &6995841947327634633
 GameObject:
   m_ObjectHideFlags: 0
