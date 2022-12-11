@@ -1,18 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class GhostSO : MonoBehaviour
+[CreateAssetMenu(fileName = "GhostSO", menuName = "GhostSO", order = 1)]
+public class GhostSO : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [field: SerializeField]public GhostClass Ghost { get; set; }
 }

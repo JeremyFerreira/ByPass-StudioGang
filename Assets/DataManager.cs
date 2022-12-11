@@ -5,7 +5,7 @@ using UnityEngine;
 public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
-    [SerializeField] List<World> AllWorld;
+    [field: SerializeField] public List<World> AllWorld { get; set; }
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -37,4 +37,15 @@ public class DataManager : MonoBehaviour
 public class World
 {
     public List<SceneSO> WorldData;
+}
+
+[System.Serializable]
+public class GhostSave
+{
+    public List<GhostClass> FantomeData;
+
+    public GhostSave()
+    {
+        FantomeData = new List<GhostClass>();
+    }
 }
