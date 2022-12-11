@@ -5108,7 +5108,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   gunTip: {fileID: 2540652174883201931}
-  camera: {fileID: 6995841947286173476}
+  cam: {fileID: 6995841947286173476}
   player: {fileID: 6995841946762034136}
   isGrappling: 0
   playerController: {fileID: 4118161403787072546}
