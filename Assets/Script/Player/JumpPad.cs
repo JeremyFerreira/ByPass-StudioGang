@@ -1,3 +1,4 @@
+using FirstGearGames.SmoothCameraShaker;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class JumpPad : MonoBehaviour
     [SerializeField] LayerMask playerLayer;
     [SerializeField] AudioComponent audioJump;
     float timeToEnter;
+    [SerializeField] ShakeData shake;
 
     private void Update()
     {
@@ -35,6 +37,7 @@ public class JumpPad : MonoBehaviour
 
 
             audioJump.PlayAudioCue();
+            CameraShakeManager.instance.Shake(shake);
             timeToEnter = 0.5f;
         }
     }
