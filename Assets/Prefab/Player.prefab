@@ -5116,7 +5116,7 @@ MonoBehaviour:
   slowTime: {fileID: 5035226656395529952}
   grapplingInput: {fileID: 11400000, guid: 14eef5570f65a7d4fb996b7807674d8e, type: 2}
   startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
-  stopRun: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
+  stopRun: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
   audioGrappinStart: {fileID: 4000405176917015344}
   audioGrappinStop: {fileID: 7268349859122323185}
   audioGrappinFail: {fileID: 5019846452202226964}
@@ -11326,7 +11326,7 @@ MonoBehaviour:
   buttonJump: {fileID: 11400000, guid: 10db7215801b18d4c85ae3736cddb8e2, type: 2}
   vectorMove: {fileID: 11400000, guid: ee42ec2862b19b64da16190453a0584e, type: 2}
   startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
-  stopRun: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
+  stopRun: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
   startLevel: {fileID: 11400000, guid: 4758eda0a1896e64f8d2d256c3342cc7, type: 2}
   audioJump: {fileID: 9222738234494605411}
   audioDoubleJump: {fileID: 7566626441450858410}
@@ -11554,7 +11554,7 @@ MonoBehaviour:
   cam: {fileID: 6773324867391272188}
   jumpButton: {fileID: 11400000, guid: 10db7215801b18d4c85ae3736cddb8e2, type: 2}
   startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
-  stopRun: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
+  stopRun: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
   audioJump: {fileID: 9222738234494605411}
   audioWalk: {fileID: 7221203317354689766}
   shakeJump: {fileID: 11400000, guid: 960582a992eb96848a8bb39ed7a4f72c, type: 2}
@@ -11572,7 +11572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slowTimeInput: {fileID: 11400000, guid: d2ef8f050695cf247b6b209f6f335d3a, type: 2}
   startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
-  stopRun: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
+  stopRun: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
   audioSlowTimeStart: {fileID: 1557081113362687466}
   audioSlowTimeStop: {fileID: 2022598924077733444}
 --- !u!114 &6169884257776886136
@@ -11973,7 +11973,7 @@ MonoBehaviour:
   lookInput: {fileID: 11400000, guid: 4c596e50aa0ab5d448fbdd866796d577, type: 2}
   IsGamePad: 1
   startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
-  stopRun: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
+  stopRun: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
 --- !u!114 &6079812030385122720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12063,7 +12063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab8353b5ebd32545867da143199a814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shakeTechnique: 0
+  _shakeTechnique: 1
   _makeDefaultOnEnable: 1
   _limitMagnitude: 0
   _positionalMagnitudeLimit: 10
