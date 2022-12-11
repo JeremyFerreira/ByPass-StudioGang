@@ -1,3 +1,4 @@
+using DG.Tweening;
 using FirstGearGames.SmoothCameraShaker;
 using System.Collections;
 using System.Collections.Generic;
@@ -165,6 +166,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ShakeData landedShake;
 
     [SerializeField] bool canMove = false;
+
+    [SerializeField] Animator grappinAnim;
     private void CanMove()
     {
         canMove = true;
@@ -563,6 +566,11 @@ public class PlayerController : MonoBehaviour
 
             audioDoubleJump.PlayAudioCue();
             CameraShakeManager.instance.Shake(doubleJumpShake);
+            if(!isGrappling)
+            {
+                grappinAnim.CrossFade("DoubleJump", 0, 0);
+            }
+            
         }
     }
     private void ResetJump()
