@@ -1,3 +1,4 @@
+using FirstGearGames.SmoothCameraShaker;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -59,7 +60,12 @@ public class PlayerController : MonoBehaviour
     }
     public void SetCanDoubleJump(bool a)
     {
+        if (a && !canDoubleJump)
+        {
+            audioGetDoubleJump.PlayAudioCue();
+        }
         canDoubleJump = a;
+        
     }
 
     [Header("Ground Check")]
@@ -144,9 +150,17 @@ public class PlayerController : MonoBehaviour
     //audio
     [SerializeField] AudioComponent audioJump;
     [SerializeField] AudioComponent audioDoubleJump;
+    [SerializeField] AudioComponent audioGetDoubleJump;
     [SerializeField] AudioSource audioSourceWind;
     [SerializeField] AnimationCurve windPitch;
     float timeToUpdatePitch;
+
+    [Header("CameraShake")]
+    [Space(10)]
+    [SerializeField] ShakeData dashShake;
+    [SerializeField] ShakeData jumpShake;
+    [SerializeField] ShakeData doubleJumpShake;
+    //audio
     private void EnableInput()
     {
         buttonJump.OnPressed += GetPlayerJump;
@@ -174,8 +188,6 @@ public class PlayerController : MonoBehaviour
     {
         startRun.OnLaunchEvent += EnableInput;
         stopRun.OnLaunchEvent += DisableInput;
-
-        startLevel.OnLaunchEvent.Invoke(); //A supprimer
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -483,6 +495,7 @@ public class PlayerController : MonoBehaviour
         canDoubleJump = true;
 
         audioJump.PlayAudioCue();
+        //CameraShakeManager.instance.Shake(jumpShake);
     }
     public void DoubleJump()
     {
@@ -504,7 +517,7 @@ public class PlayerController : MonoBehaviour
 
 
             audioDoubleJump.PlayAudioCue();
-
+            CameraShakeManager.instance.Shake(doubleJumpShake);
         }
     }
     private void ResetJump()
@@ -563,5 +576,6 @@ public class PlayerController : MonoBehaviour
     {
         rb.velocity = orientation.forward * dashSpeed;
         dash = true;
+        CameraShakeManager.instance.Shake(dashShake);
     }
 }
