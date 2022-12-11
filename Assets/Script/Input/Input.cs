@@ -71,6 +71,15 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RestartLevel"",
+                    ""type"": ""Button"",
+                    ""id"": ""58107064-95f4-4f1e-9d48-8184092a7668"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -238,6 +247,28 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""action"": ""SlowTime"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""30165535-77fc-4d1e-9e10-4338ac7feac7"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RestartLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8a14625b-1262-41c7-b614-6669145c1b33"",
+                    ""path"": ""<Keyboard>/delete"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RestartLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -251,6 +282,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         m_InGame_Jump = m_InGame.FindAction("Jump", throwIfNotFound: true);
         m_InGame_Grappling = m_InGame.FindAction("Grappling", throwIfNotFound: true);
         m_InGame_SlowTime = m_InGame.FindAction("SlowTime", throwIfNotFound: true);
+        m_InGame_RestartLevel = m_InGame.FindAction("RestartLevel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -315,6 +347,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
     private readonly InputAction m_InGame_Jump;
     private readonly InputAction m_InGame_Grappling;
     private readonly InputAction m_InGame_SlowTime;
+    private readonly InputAction m_InGame_RestartLevel;
     public struct InGameActions
     {
         private @Input m_Wrapper;
@@ -324,6 +357,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_InGame_Jump;
         public InputAction @Grappling => m_Wrapper.m_InGame_Grappling;
         public InputAction @SlowTime => m_Wrapper.m_InGame_SlowTime;
+        public InputAction @RestartLevel => m_Wrapper.m_InGame_RestartLevel;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -348,6 +382,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @SlowTime.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnSlowTime;
                 @SlowTime.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnSlowTime;
                 @SlowTime.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnSlowTime;
+                @RestartLevel.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnRestartLevel;
+                @RestartLevel.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnRestartLevel;
+                @RestartLevel.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnRestartLevel;
             }
             m_Wrapper.m_InGameActionsCallbackInterface = instance;
             if (instance != null)
@@ -367,6 +404,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @SlowTime.started += instance.OnSlowTime;
                 @SlowTime.performed += instance.OnSlowTime;
                 @SlowTime.canceled += instance.OnSlowTime;
+                @RestartLevel.started += instance.OnRestartLevel;
+                @RestartLevel.performed += instance.OnRestartLevel;
+                @RestartLevel.canceled += instance.OnRestartLevel;
             }
         }
     }
@@ -378,5 +418,6 @@ public partial class @Input : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnGrappling(InputAction.CallbackContext context);
         void OnSlowTime(InputAction.CallbackContext context);
+        void OnRestartLevel(InputAction.CallbackContext context);
     }
 }

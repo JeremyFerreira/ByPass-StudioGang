@@ -1,3 +1,4 @@
+using FirstGearGames.SmoothCameraShaker;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -66,6 +67,8 @@ public class WallRunController : MonoBehaviour
     [SerializeField] AudioComponent audioJump;
     [SerializeField] AudioComponent audioWalk;
     float timerFootstep;
+
+    [SerializeField] ShakeData shakeJump;
     private void EnableInput()
     {
         jumpButton.OnPressed += WallJump;
@@ -263,7 +266,7 @@ public class WallRunController : MonoBehaviour
                 rb.AddForce(forceToApply, ForceMode.Impulse);
 
                 audioJump.PlayAudioCue();
-
+                CameraShakeManager.instance.Shake(shakeJump);
             }
         }
     }

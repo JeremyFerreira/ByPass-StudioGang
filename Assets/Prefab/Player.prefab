@@ -5255,7 +5255,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7d7aef899a2e47142b8b27475dd5e480, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.163
+  m_Volume: 0.081
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -11223,6 +11223,7 @@ GameObject:
   - component: {fileID: 5035226656395529952}
   - component: {fileID: 6169884257776886136}
   - component: {fileID: 1942929707161925371}
+  - component: {fileID: 8653612070034738857}
   m_Layer: 3
   m_Name: PlayerController
   m_TagString: Untagged
@@ -11355,9 +11356,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  dashShake: {fileID: 11400000, guid: 960582a992eb96848a8bb39ed7a4f72c, type: 2}
+  dashShake: {fileID: 11400000, guid: 56239f7de6d06a945801676aaf9b3dc4, type: 2}
   jumpShake: {fileID: 11400000, guid: 960582a992eb96848a8bb39ed7a4f72c, type: 2}
-  doubleJumpShake: {fileID: 11400000, guid: 960582a992eb96848a8bb39ed7a4f72c, type: 2}
+  doubleJumpShake: {fileID: 11400000, guid: f7047426ffa90084e8d0154ff8d5c906, type: 2}
 --- !u!114 &6995841946542408056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11499,6 +11500,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f4cc6f05-3446-4943-aa78-3166be56b54a
     m_ActionName: InGame/SlowTime[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: e9a9b43c94df8504ba4449957b7dbd6d, type: 2}
+        m_TargetAssemblyTypeName: SOInputButton, Assembly-CSharp
+        m_MethodName: OnButtonPressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 58107064-95f4-4f1e-9d48-8184092a7668
+    m_ActionName: InGame/RestartLevel[/XInputControllerWindows/buttonEast,/Keyboard/delete]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: InGame
@@ -11540,6 +11557,7 @@ MonoBehaviour:
   stopRun: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
   audioJump: {fileID: 9222738234494605411}
   audioWalk: {fileID: 7221203317354689766}
+  shakeJump: {fileID: 11400000, guid: 960582a992eb96848a8bb39ed7a4f72c, type: 2}
 --- !u!114 &5035226656395529952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11587,6 +11605,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8653612070034738857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6995841946762034135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda26ad69f171994cb85bfb24df0a9e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sOInputButton: {fileID: 11400000, guid: e9a9b43c94df8504ba4449957b7dbd6d, type: 2}
+  restartEvent: {fileID: 11400000, guid: a51d14a2ad7fc6a43b313db9a9134386, type: 2}
 --- !u!1 &6995841946886761746
 GameObject:
   m_ObjectHideFlags: 0
@@ -11846,7 +11878,7 @@ GameObject:
   - component: {fileID: 6773324867391272188}
   - component: {fileID: 6079812030385122720}
   - component: {fileID: 5681200646732010318}
-  - component: {fileID: 8682088096382785162}
+  - component: {fileID: 2046172060508614243}
   m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -12018,7 +12050,7 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   priority: 0
---- !u!114 &8682088096382785162
+--- !u!114 &2046172060508614243
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12027,9 +12059,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6995841947286173473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ada9c62fbc6a3314aba805f35565b3ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ab8353b5ebd32545867da143199a814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shakeTechnique: 0
+  _makeDefaultOnEnable: 1
+  _limitMagnitude: 0
+  _positionalMagnitudeLimit: 10
+  _rotationalMagnitudeLimit: 3
 --- !u!1 &6995841947327634633
 GameObject:
   m_ObjectHideFlags: 0

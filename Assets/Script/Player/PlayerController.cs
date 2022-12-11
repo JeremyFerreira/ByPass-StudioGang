@@ -495,7 +495,7 @@ public class PlayerController : MonoBehaviour
         canDoubleJump = true;
 
         audioJump.PlayAudioCue();
-        //CameraShakeManager.instance.Shake(jumpShake);
+        CameraShakeManager.instance.Shake(jumpShake);
     }
     public void DoubleJump()
     {
