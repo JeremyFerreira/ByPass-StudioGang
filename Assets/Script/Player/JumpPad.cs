@@ -7,11 +7,17 @@ public class JumpPad : MonoBehaviour
     [SerializeField] float force;
 
     [SerializeField] LayerMask playerLayer;
+    [SerializeField] AudioComponent audioJump;
+    float timeToEnter;
 
+    private void Update()
+    {
+        timeToEnter-=Time.deltaTime;
+    }
     void OnTriggerEnter(Collider other)
     {
 
-        if (other.GetComponent<Rigidbody>() != null && other.gameObject.layer == 3)
+        if (other.GetComponent<Rigidbody>() != null && other.gameObject.layer == 3 && timeToEnter<0)
         {
             Rigidbody rb = other.GetComponent<Rigidbody>();
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
@@ -26,6 +32,10 @@ public class JumpPad : MonoBehaviour
             {
                 rb.AddForce(force * transform.up, ForceMode.Impulse);
             }
+
+
+            audioJump.PlayAudioCue();
+            timeToEnter = 0.5f;
         }
     }
 }

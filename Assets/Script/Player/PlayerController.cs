@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour
     //VARIABLES ////////////////////////////////////////////////////////////////////////////////
 
     public static PlayerController Instance;
-
+    [Space(10)]
     [Header("Movement")]
+    [Space(10)]
     private float moveSpeed;
     [SerializeField] float speedMax;
     [SerializeField] float verticalSpeedMax;
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
 
     [Header("Jumping")]
+    [Space(10)]
     [SerializeField] private float _jumpVelocityChange;
     [SerializeField] private float _jumpAcceleration;
     [SerializeField] private float _maxJumpTime;
@@ -61,6 +63,7 @@ public class PlayerController : MonoBehaviour
     }
 
     [Header("Ground Check")]
+    [Space(10)]
     [SerializeField] float playerHeight;
     [SerializeField] LayerMask whatIsGround;
     bool grounded;
@@ -71,6 +74,10 @@ public class PlayerController : MonoBehaviour
     public bool canJump;
 
     [SerializeField] Transform orientation;
+
+    [Header("Input")]
+    [Space(10)]
+    
     float horizontalInput;
     float verticalInput;
     public float GetHorizontalInput()
@@ -132,8 +139,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] EventSO stopRun;
     [SerializeField] EventSO startLevel;
 
+    [Header("Audio")]
+    [Space(10)]
     //audio
     [SerializeField] AudioComponent audioJump;
+    [SerializeField] AudioComponent audioDoubleJump;
     [SerializeField] AudioSource audioSourceWind;
     [SerializeField] AnimationCurve windPitch;
     float timeToUpdatePitch;
@@ -493,7 +503,7 @@ public class PlayerController : MonoBehaviour
             canJump = false;
 
 
-            audioJump.PlayAudioCue();
+            audioDoubleJump.PlayAudioCue();
 
         }
     }

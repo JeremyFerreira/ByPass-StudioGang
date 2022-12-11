@@ -33,5 +33,9 @@ public class Ventilateur : MonoBehaviour
         {
             audioVentilateurIn.PlayAudioCue();
         }
+        if(other.TryGetComponent<PlayerController>(out PlayerController player))
+        {
+            player.SetCanDoubleJump(true);
+        }
     }
 }
