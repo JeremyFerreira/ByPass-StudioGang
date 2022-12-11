@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: SceneDataDefault
   m_EditorClassIdentifier: 
   <MapName>k__BackingField: Pouet
-  <IndexScene>k__BackingField: 0
+  <IndexScene>k__BackingField: 2
   <TimeStar>k__BackingField:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 10
+  - 20
+  - 30
+  - 40
+  - 50
   <SpriteCard>k__BackingField: {fileID: 0}
   <BackGroundLoad>k__BackingField: {fileID: 0}
   <BestTime>k__BackingField: 200000

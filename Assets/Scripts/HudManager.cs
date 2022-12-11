@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Doozy.Runtime.UIManager.Containers;
 using Doozy.Runtime.UIManager.Components;
+using Unity.VisualScripting;
+using UnityEngine.EventSystems;
+using TMPro;
+
 public class HudManager : MonoBehaviour
 {
     [Header("PANEL")]
@@ -20,6 +24,12 @@ public class HudManager : MonoBehaviour
     [SerializeField] EventSO _eventReachFinishLine;
     [SerializeField] EventSO _eventStartLevel;
     [SerializeField] EventSO _eventInMainMenu;
+
+    [SerializeField] GameObject _parentLevelSelection;
+    [SerializeField] EventSystem eventSystem;
+
+    [SerializeField] GameObject CardWorldPrefab;
+    [SerializeField] TextMeshProUGUI starText;
     static bool created = false;
     void Awake()
     {
@@ -50,6 +60,45 @@ public class HudManager : MonoBehaviour
     {
         CloseAllPanel();
         _mainMenu.Show();
+    }
+
+    public void OpenLevelSelector(int worldIndex)
+    {
+        CloseAllPanel();
+        _levelSelectionPanel.Show();
+        int totalStar = 0;
+        int starUnlock = 0;
+
+
+        foreach (var item in _parentLevelSelection.GetComponentsInChildren<CardWorld>())
+        {
+            Destroy(item.gameObject);
+        }
+
+        for (int i = 0; i < DataManager.Instance.AllWorld[worldIndex].WorldData.Count; i++)
+        {
+            GameObject cardObj = Instantiate(CardWorldPrefab, _parentLevelSelection.transform);
+            int starLevel = 0;
+            SceneSO mapData = DataManager.Instance.AllWorld[worldIndex].WorldData[i];
+            for (int j = 0; j < mapData.TimeStar.Length; j++)
+            {
+                totalStar++;
+                if (mapData.BestTime <= mapData.TimeStar[j] && mapData.BestTime != 0)
+                {
+                    starLevel++;
+                    starUnlock++;
+                }
+            }
+
+            if (i == 0)
+            {
+                eventSystem.SetSelectedGameObject(cardObj.GetComponent<UIButton>().gameObject);
+            }
+
+            cardObj.GetComponent<CardWorld>().ChangeInformation(mapData, mapData.BestTime, totalStar, true, i);
+        }
+
+        starText.text = "STAR : " + starUnlock.ToString() + " / " + totalStar.ToString();
     }
 
     private void OpenInGamePanel()
