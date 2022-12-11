@@ -26,10 +26,17 @@ public class SlowTime : MonoBehaviour
         slowTimeInput.OnPressed -= StartSlowTime;
         slowTimeInput.OnReleased -= StopSlowTime;
     }
-    private void Start()
+    private void OnEnable()
     {
         startRun.OnLaunchEvent += EnableInput;
         stopRun.OnLaunchEvent += DisableInput;
+    }
+
+    private void OnDisable()
+    {
+        startRun.OnLaunchEvent -= EnableInput;
+        stopRun.OnLaunchEvent -= DisableInput;
+        DisableInput();
     }
 
     // Update is called once per frame

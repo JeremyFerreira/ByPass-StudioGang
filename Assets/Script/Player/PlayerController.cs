@@ -183,12 +183,20 @@ public class PlayerController : MonoBehaviour
         collider = GetComponent<CapsuleCollider>();
         
     }
-
-    private void Start()
+    private void OnEnable()
     {
         startRun.OnLaunchEvent += EnableInput;
         stopRun.OnLaunchEvent += DisableInput;
+    }
+    private void OnDisable()
+    {
+        startRun.OnLaunchEvent -= EnableInput;
+        stopRun.OnLaunchEvent -= DisableInput;
+        DisableInput();
+    }
 
+    private void Start()
+    {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         readyToJump = true;

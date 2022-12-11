@@ -46,11 +46,20 @@ public class GrapplingGun : MonoBehaviour
         grapplingInput.OnPressed -= StartGrapple;
         grapplingInput.OnReleased -= StopGrapple;
     }
-    private void Start()
+
+    private void OnEnable()
     {
         startRun.OnLaunchEvent += EnableInput;
         stopRun.OnLaunchEvent += DisableInput;
+
     }
+    private void OnDisable()
+    {
+        startRun.OnLaunchEvent -= EnableInput;
+        stopRun.OnLaunchEvent -= DisableInput;
+        DisableInput();
+    }
+
     void Update()
     {
         playerController.SetGrappin(isGrappling);

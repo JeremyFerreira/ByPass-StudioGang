@@ -9,8 +9,7 @@ public class GameMode : MonoBehaviour
 {
     [SerializeField] bool _haveAlreadySeeCinematique;
     [SerializeField] GameState _gameState;
-    [SerializeField] EventSO _eventStartLevel;
-    [SerializeField] EventSO _eventLaunchLevel;
+    [SerializeField] EventSO _eventStartLevel;  
     [SerializeField] EventSO _eventStartCinematique;
     [SerializeField] EventSO _eventDeath;
     [SerializeField] EventSO _eventRestart;
