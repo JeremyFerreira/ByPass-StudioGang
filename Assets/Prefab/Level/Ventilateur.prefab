@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1457217430796824418}
   - component: {fileID: 6517193726762436}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
   audioVentilateurIdle: {fileID: 1457217430796824418}
   audioVentilateurIn: {fileID: 6517193726762436}
   force: 200
+  shake: {fileID: 11400000, guid: d737f37d2e055e64f989a058d4ea4ac5, type: 2}
 --- !u!114 &1457217430796824418
 MonoBehaviour:
   m_ObjectHideFlags: 0

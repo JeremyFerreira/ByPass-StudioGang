@@ -129,6 +129,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   audioJump: {fileID: 138551268630747861}
+  shake: {fileID: 11400000, guid: bc7acd6f3b516ab4fa832598fcadb4ba, type: 2}
 --- !u!1 &596904817862380870
 GameObject:
   m_ObjectHideFlags: 0
