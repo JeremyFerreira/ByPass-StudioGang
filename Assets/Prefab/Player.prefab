@@ -4960,6 +4960,7 @@ GameObject:
   - component: {fileID: 8106453941044542011}
   - component: {fileID: 5904423213335899713}
   - component: {fileID: 3258424429040315196}
+  - component: {fileID: 5728895107524788499}
   m_Layer: 0
   m_Name: Grappin
   m_TagString: Untagged
@@ -5123,6 +5124,7 @@ MonoBehaviour:
   audioGrappinFail: {fileID: 5019846452202226964}
   shakeStart: {fileID: 11400000, guid: 767fa475a6f030b4cb6188d591760927, type: 2}
   shakeStop: {fileID: 11400000, guid: 5e3afbe01f19a394b9aca6b2b01174d3, type: 2}
+  grappinAnim: {fileID: 5728895107524788499}
 --- !u!114 &3258424429040315196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5166,6 +5168,26 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &5728895107524788499
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2155862536465986549}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4537ab4f49a73d14dbb6f5bfe32bede3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2431672380616669322
 GameObject:
   m_ObjectHideFlags: 0
@@ -11444,6 +11466,8 @@ MonoBehaviour:
   jumpShake: {fileID: 11400000, guid: 960582a992eb96848a8bb39ed7a4f72c, type: 2}
   doubleJumpShake: {fileID: 11400000, guid: f7047426ffa90084e8d0154ff8d5c906, type: 2}
   landedShake: {fileID: 11400000, guid: 9110330da5ba6c64a9a67bd1a1bf7ee8, type: 2}
+  canMove: 0
+  grappinAnim: {fileID: 5728895107524788499}
 --- !u!114 &6995841946542408056
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -39,6 +39,7 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] AudioComponent audioGrappinFail;
     [SerializeField] ShakeData shakeStart;
     [SerializeField] ShakeData shakeStop;
+    [SerializeField] Animator grappinAnim;
     private void EnableInput()
     {
         grapplingInput.OnPressed += StartGrapple;
@@ -110,6 +111,7 @@ public class GrapplingGun : MonoBehaviour
             isGrappling = true;
             audioGrappinStart.PlayAudioCue();
             CameraShakeManager.instance.Shake(shakeStart);
+            grappinAnim.CrossFade("GrappleStart", 0, 0);
         }
         else
         {
@@ -130,6 +132,7 @@ public class GrapplingGun : MonoBehaviour
             playerController.SetCanDoubleJump(true);
             audioGrappinStop.PlayAudioCue();
             CameraShakeManager.instance.Shake(shakeStop);
+            grappinAnim.CrossFade("GrappleStop", 0, 0);
         }
 
     }
