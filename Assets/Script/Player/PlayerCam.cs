@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+using FirstGearGames.SmoothCameraShaker;
+
 public class PlayerCam : MonoBehaviour
 {
     public static PlayerCam Instance;
@@ -10,6 +12,7 @@ public class PlayerCam : MonoBehaviour
 
     [SerializeField] Transform orientation;
     [SerializeField] Transform camHolder;
+    [SerializeField] Transform camParent;
 
     [SerializeField] SOInputVector lookInput;
     Vector2 looking;
@@ -75,6 +78,6 @@ public class PlayerCam : MonoBehaviour
 
     public void DoTilt(float zTilt)
     {
-        transform.DOLocalRotate(new Vector3(0, 0, zTilt), 0.5f);
+        camParent.transform.DOLocalRotate(new Vector3(0, 0, zTilt), 0.5f);
     }
 }

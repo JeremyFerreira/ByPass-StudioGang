@@ -384,6 +384,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5998986581759422041, guid: f0ff9c7f555c10243a2c3a1d0227bac0, type: 3}
   m_PrefabInstance: {fileID: 5998986581857188188}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &103810363 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6995841947286173476, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
+  m_PrefabInstance: {fileID: 6995841946361911888}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &107272130
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +783,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31656
+  m_Name: pb_Mesh297838
   serializedVersion: 10
   m_SubMeshes: []
   m_Shapes:
@@ -11935,6 +11940,10 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 2046172060508614243, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
+      propertyPath: _shakeTechnique
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4118161403787072546, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
       propertyPath: startLevel
       value: 
@@ -11967,6 +11976,10 @@ PrefabInstance:
       propertyPath: windPitch.m_Curve.Array.data[1].outSlope
       value: 3.3516955
       objectReference: {fileID: 0}
+    - target: {fileID: 5904423213335899713, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 103810363}
     - target: {fileID: 6995841945484748706, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
       propertyPath: m_Name
       value: Player

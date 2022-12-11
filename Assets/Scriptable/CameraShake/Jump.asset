@@ -73,8 +73,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _positionalInfluence: {x: 0.1, y: 0.1, z: 0.1}
+  _positionalInfluence: {x: 0, y: 0, z: 0}
   _positionalInverts: 0
-  _rotationalInfluence: {x: 2, y: 2, z: 2}
+  _rotationalInfluence: {x: 1, y: 1, z: 1}
   _rotationalInverts: 7
   _randomSeed: 0

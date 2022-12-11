@@ -1,3 +1,4 @@
+using FirstGearGames.SmoothCameraShaker;
 using UnityEngine;
 
 public class GrapplingGun : MonoBehaviour
@@ -36,6 +37,8 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] AudioComponent audioGrappinStart;
     [SerializeField] AudioComponent audioGrappinStop;
     [SerializeField] AudioComponent audioGrappinFail;
+    [SerializeField] ShakeData shakeStart;
+    [SerializeField] ShakeData shakeStop;
     private void EnableInput()
     {
         grapplingInput.OnPressed += StartGrapple;
@@ -106,6 +109,7 @@ public class GrapplingGun : MonoBehaviour
 
             isGrappling = true;
             audioGrappinStart.PlayAudioCue();
+            CameraShakeManager.instance.Shake(shakeStart);
         }
         else
         {
@@ -125,6 +129,7 @@ public class GrapplingGun : MonoBehaviour
             isGrappling = false;
             playerController.SetCanDoubleJump(true);
             audioGrappinStop.PlayAudioCue();
+            CameraShakeManager.instance.Shake(shakeStop);
         }
 
     }
