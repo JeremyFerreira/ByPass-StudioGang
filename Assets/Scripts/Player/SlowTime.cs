@@ -19,6 +19,7 @@ public class SlowTime : MonoBehaviour
 
     [SerializeField] AudioComponent audioSlowTimeStart;
     [SerializeField] AudioComponent audioSlowTimeStop;
+    [SerializeField] GlitchEffect glitchEffect;
     
 
     private void EnableInput()
@@ -55,6 +56,7 @@ public class SlowTime : MonoBehaviour
         if (isSlowTime)
         {
             slider.gameObject.SetActive(true);
+            glitchEffect.enabled = true;
             Time.timeScale = 0.5f;
             timeLeft -= Time.unscaledDeltaTime;
             if (timeLeft <= 0)
@@ -64,6 +66,7 @@ public class SlowTime : MonoBehaviour
         }
         else
         {
+            glitchEffect.enabled = false;
             slider.gameObject.SetActive(false);
             Time.timeScale = 1f;
             if(timeLeft < timeTotal)
