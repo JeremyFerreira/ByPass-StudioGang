@@ -14,6 +14,7 @@ public class GameMode : MonoBehaviour
     [SerializeField] EventSO _eventDeath;
     [SerializeField] EventSO _eventRestart;
     static bool created = false;
+    bool alreadyLoad;
     void Awake()
     {
         if (!created)
@@ -68,12 +69,17 @@ public class GameMode : MonoBehaviour
 
     IEnumerator LoadScene()
     {
+        if (!alreadyLoad)
+        {
+            alreadyLoad = true;
         AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         while (!operation.isDone)
         {
             yield return null;
         }
         _eventStartLevel.OnLaunchEvent?.Invoke();
+            alreadyLoad = false;
+        }    
     }
 
 
