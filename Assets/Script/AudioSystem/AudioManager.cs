@@ -26,16 +26,26 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private float _musicVolume = 1f;
     [Range(0f, 1f)]
     [SerializeField] private float _sfxVolume = 1f;
+    static bool created = false;
 
     private void Awake()
     {
         //TODO: Get the initial volume levels from the settings
+        if (!created)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            created = true;
+            _SFXEventChannel.OnAudioCueRequested += PlayAudioCue;
+            _musicEventChannel.OnAudioCueRequested += PlayAudioCue; //TODO: Treat music requests differently?
 
-        _SFXEventChannel.OnAudioCueRequested += PlayAudioCue;
-        _musicEventChannel.OnAudioCueRequested += PlayAudioCue; //TODO: Treat music requests differently?
+            _pool.Prewarm(_initialSize);
+            _pool.SetParent(this.transform);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
 
-        _pool.Prewarm(_initialSize);
-        _pool.SetParent(this.transform);
     }
 
     /// <summary>
