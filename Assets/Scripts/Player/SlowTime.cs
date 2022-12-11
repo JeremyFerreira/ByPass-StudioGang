@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.UI;
 
 public class SlowTime : MonoBehaviour
 {
     bool isSlowTime;
     public bool IsSlowTime()
         { return isSlowTime; }
+    [SerializeField] float timeTotal = 3;
+    [SerializeField] float timeLeft;
+    [SerializeField] Slider slider;
     [SerializeField] SOInputButton slowTimeInput;
 
     [SerializeField] EventSO startRun;
@@ -15,6 +19,7 @@ public class SlowTime : MonoBehaviour
 
     [SerializeField] AudioComponent audioSlowTimeStart;
     [SerializeField] AudioComponent audioSlowTimeStop;
+    
 
     private void EnableInput()
     {
@@ -38,22 +43,53 @@ public class SlowTime : MonoBehaviour
         stopRun.OnLaunchEvent -= DisableInput;
         DisableInput();
     }
-
+    private void Start()
+    {
+        timeLeft = timeTotal;
+    }
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(IsSlowTime());
+        slider.value = 1-((timeTotal - timeLeft) / timeTotal);
+        Debug.Log(1 - ((timeTotal - timeLeft) / timeTotal));
+        if (isSlowTime)
+        {
+            slider.gameObject.SetActive(true);
+            Time.timeScale = 0.5f;
+            timeLeft -= Time.unscaledDeltaTime;
+            if (timeLeft <= 0)
+            {
+                StopSlowTime();
+            }
+        }
+        else
+        {
+            slider.gameObject.SetActive(false);
+            Time.timeScale = 1f;
+            if(timeLeft < timeTotal)
+            {
+                timeLeft += Time.unscaledDeltaTime * 0.5f;
+            }
+            else
+            {
+                timeLeft = timeTotal;
+            }
+            
+        }
     }
     public void StartSlowTime()
     {
-        Time.timeScale = 0.5f;
+        
         isSlowTime = true;
         audioSlowTimeStart.PlayAudioCue();
+        
     }
     public void StopSlowTime()
     {
-        Time.timeScale = 1f;
-        isSlowTime = false;
-        audioSlowTimeStop.PlayAudioCue();
+        if(isSlowTime)
+        {
+            isSlowTime = false;
+            audioSlowTimeStop.PlayAudioCue();
+        }
     }
 }
