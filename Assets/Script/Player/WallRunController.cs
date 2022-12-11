@@ -15,7 +15,6 @@ public class WallRunController : MonoBehaviour
     public float wallClimbSpeed;
     public float maxWallRunTime;
     private float wallRunTimer;
-    private float timerFoostep;
 
     [Header("CameraEffects")]
     [SerializeField] float tilt;
@@ -90,7 +89,6 @@ public class WallRunController : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         playerController = GetComponent<PlayerController>();
-        timerFoostep = 0f;
         
     }
 

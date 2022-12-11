@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool isJumping;
     bool readyToJump;
     bool canDoubleJump;
-    bool hasDoubleJumped;
 
     public bool CanDoubleJump()
     {
@@ -127,7 +126,7 @@ public class PlayerController : MonoBehaviour
 
     bool stateGroundOld;
     bool isGrappling;
-    CapsuleCollider collider;
+    CapsuleCollider col;
     private bool dash;
     [SerializeField] float dashSpeed;
     [SerializeField] float timeToDash;
@@ -180,7 +179,7 @@ public class PlayerController : MonoBehaviour
         Instance = this;
         stateGroundOld = true;
 
-        collider = GetComponent<CapsuleCollider>();
+        col = GetComponent<CapsuleCollider>();
         
     }
     private void OnEnable()
@@ -218,7 +217,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, collider.height * 0.5f + Physics.defaultContactOffset * 2, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, col.height * 0.5f + Physics.defaultContactOffset * 2, whatIsGround);
         behindGround = Physics.Raycast(transform.position - (Vector3.up * 0.3f), moveDirection.normalized, playerHeight, whatIsGround) || Physics.Raycast(transform.position + (Vector3.up * 0.3f), moveDirection.normalized, playerHeight, whatIsGround);
 
         //time To Jump if not on ground;
@@ -516,7 +515,6 @@ public class PlayerController : MonoBehaviour
             isJumping = true;
             _maxJumpTime = resetMaxJumpTime;
 
-            hasDoubleJumped = true;
             // reset y velocity
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             //JumpForce
