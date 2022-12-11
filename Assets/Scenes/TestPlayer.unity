@@ -12282,7 +12282,7 @@ PrefabInstance:
       objectReference: {fileID: 103810363}
     - target: {fileID: 6945159035169183843, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
       propertyPath: intensity
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6945159035169183843, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
       propertyPath: flipIntensity
@@ -12290,7 +12290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6945159035169183843, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
       propertyPath: colorIntensity
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6945159035169183843, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
       propertyPath: displacementMap

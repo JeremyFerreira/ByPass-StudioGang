@@ -11329,6 +11329,7 @@ GameObject:
   - component: {fileID: 6169884257776886136}
   - component: {fileID: 1942929707161925371}
   - component: {fileID: 8653612070034738857}
+  - component: {fileID: 8884711124565422865}
   m_Layer: 3
   m_Name: PlayerController
   m_TagString: Untagged
@@ -11625,6 +11626,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 58107064-95f4-4f1e-9d48-8184092a7668
     m_ActionName: InGame/RestartLevel[/XInputControllerWindows/buttonEast,/Keyboard/delete]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: def4cbb75897af84c97292eca7617f8d, type: 2}
+        m_TargetAssemblyTypeName: SOInputButton, Assembly-CSharp
+        m_MethodName: OnButtonPressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9f1d6d3d-dd71-43f2-b738-974ea5a1ca1e
+    m_ActionName: InGame/Pause[/XInputControllerWindows/start,/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: InGame
@@ -11734,6 +11751,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sOInputButton: {fileID: 11400000, guid: e9a9b43c94df8504ba4449957b7dbd6d, type: 2}
   restartEvent: {fileID: 11400000, guid: a51d14a2ad7fc6a43b313db9a9134386, type: 2}
+--- !u!114 &8884711124565422865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6995841946762034135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e689b760dec9f4c9ce3de36eca01a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sOInputButton: {fileID: 11400000, guid: def4cbb75897af84c97292eca7617f8d, type: 2}
+  pauseEvent: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
 --- !u!1 &6995841946886761746
 GameObject:
   m_ObjectHideFlags: 0

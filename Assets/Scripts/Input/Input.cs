@@ -80,6 +80,15 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""9f1d6d3d-dd71-43f2-b738-974ea5a1ca1e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -269,6 +278,28 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""action"": ""RestartLevel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ede44426-512c-428d-a0ab-6fe2bf50fe49"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a04769fa-76a0-42bb-b99b-65bb2b31fe05"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -283,6 +314,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         m_InGame_Grappling = m_InGame.FindAction("Grappling", throwIfNotFound: true);
         m_InGame_SlowTime = m_InGame.FindAction("SlowTime", throwIfNotFound: true);
         m_InGame_RestartLevel = m_InGame.FindAction("RestartLevel", throwIfNotFound: true);
+        m_InGame_Pause = m_InGame.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -348,6 +380,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
     private readonly InputAction m_InGame_Grappling;
     private readonly InputAction m_InGame_SlowTime;
     private readonly InputAction m_InGame_RestartLevel;
+    private readonly InputAction m_InGame_Pause;
     public struct InGameActions
     {
         private @Input m_Wrapper;
@@ -358,6 +391,7 @@ public partial class @Input : IInputActionCollection2, IDisposable
         public InputAction @Grappling => m_Wrapper.m_InGame_Grappling;
         public InputAction @SlowTime => m_Wrapper.m_InGame_SlowTime;
         public InputAction @RestartLevel => m_Wrapper.m_InGame_RestartLevel;
+        public InputAction @Pause => m_Wrapper.m_InGame_Pause;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -385,6 +419,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @RestartLevel.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnRestartLevel;
                 @RestartLevel.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnRestartLevel;
                 @RestartLevel.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnRestartLevel;
+                @Pause.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_InGameActionsCallbackInterface = instance;
             if (instance != null)
@@ -407,6 +444,9 @@ public partial class @Input : IInputActionCollection2, IDisposable
                 @RestartLevel.started += instance.OnRestartLevel;
                 @RestartLevel.performed += instance.OnRestartLevel;
                 @RestartLevel.canceled += instance.OnRestartLevel;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -419,5 +459,6 @@ public partial class @Input : IInputActionCollection2, IDisposable
         void OnGrappling(InputAction.CallbackContext context);
         void OnSlowTime(InputAction.CallbackContext context);
         void OnRestartLevel(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
