@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
+    [SerializeField] EventSO _startLevelEvent;
     [SerializeField] EventSO _startRunEvent;
     [SerializeField] EventSO _PauseEvent;
     [SerializeField] EventSO _reachFinishLineEvent;
@@ -17,15 +18,23 @@ public class Timer : MonoBehaviour
     }
     private void OnEnable()
     {
+
         _startRunEvent.OnLaunchEvent += LaunchRun;
         _reachFinishLineEvent.OnLaunchEvent += StopTimer;
         _PauseEvent.OnLaunchEvent += Pause;
+        _startLevelEvent.OnLaunchEvent += ResetTimer;
     }
     private void OnDisable()
     {
         _startRunEvent.OnLaunchEvent -= LaunchRun;
         _reachFinishLineEvent.OnLaunchEvent -= StopTimer;
         _PauseEvent.OnLaunchEvent -= Pause;
+        _startLevelEvent.OnLaunchEvent -= ResetTimer;
+    }
+
+    private void ResetTimer()
+    {
+        _timer.ChangeTimer(0);
     }
 
     private void Pause()

@@ -43,27 +43,22 @@ public class GameMode : MonoBehaviour
 
     private void OnEnable()
     {
+        _eventStartLevel.OnLaunchEvent += StartLevel;
         _eventDeath.OnLaunchEvent += Death;
         _eventRestart.OnLaunchEvent += Restart;
         _eventPause.OnLaunchEvent += Pause;
     }
     private void OnDisable()
     {
+        _eventStartLevel.OnLaunchEvent -= StartLevel;
         _eventDeath.OnLaunchEvent -= Death;
         _eventRestart.OnLaunchEvent -= Restart;
         _eventPause.OnLaunchEvent -= Pause;
     }
-    public void ChangeLevel()
+
+    public void StartLevel()
     {
-        if (_haveAlreadySeeCinematique)
-        {
-            _eventStartLevel.OnLaunchEvent?.Invoke();
-        }
-        else
-        {
-            _eventStartCinematique.OnLaunchEvent?.Invoke();
-            _haveAlreadySeeCinematique = true;
-        }
+        Time.timeScale = 1;
     }
 
     public void Restart()
@@ -92,7 +87,9 @@ public class GameMode : MonoBehaviour
         {
             yield return null;
         }
-        _eventStartLevel.OnLaunchEvent?.Invoke();
+            Debug.Log(SceneManager.GetActiveScene().name);
+            Time.timeScale = 1;
+            _eventStartLevel.OnLaunchEvent?.Invoke();
             alreadyLoad = false;
         }    
     }

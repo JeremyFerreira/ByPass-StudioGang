@@ -33045,7 +33045,7 @@ MonoBehaviour:
   DisableGameObjectWhenHidden: 1
   DisableCanvasWhenHidden: 1
   DisableGraphicRaycasterWhenHidden: 1
-  ClearSelectedOnShow: 0
+  ClearSelectedOnShow: 1
   ClearSelectedOnHide: 0
   AutoSelectAfterShow: 1
   AutoSelectTarget: {fileID: 2349967974114707594}
@@ -79210,8 +79210,9 @@ GameObject:
   - component: {fileID: 2349967973140799248}
   - component: {fileID: 2349967973140799251}
   - component: {fileID: 2349967973140799250}
+  - component: {fileID: 2349967973140799264}
   m_Layer: 5
-  m_Name: Flex Button (Large) (2)
+  m_Name: RestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79281,7 +79282,19 @@ MonoBehaviour:
       Runners: []
       Event:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 5270613211130311336}
+            m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventSystem, UnityEngine.UI
+            m_MethodName: SetSelectedGameObject
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 2349967973140799252}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
   PressedState:
     StateType: 2
     StateEvent:
@@ -79307,7 +79320,38 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
   Behaviours:
-    Behaviours: []
+    Behaviours:
+    - EventName: PointerClick
+      Runners: []
+      Event:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 2349967973140799264}
+            m_TargetAssemblyTypeName: RestartHUD, Assembly-CSharp
+            m_MethodName: OnClick
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      BehaviourName: 4
+      Receiver:
+        ConnectionMode: 1
+        SignalProviderId:
+          Type: 0
+          Category: Pointer
+          Name: Click
+        ProviderReference: {fileID: 0}
+        StreamId:
+          Category: None
+          Name: None
+          Custom: 0
+      Cooldown: 0
+      Selectable: {fileID: 2349967973140799253}
     SignalSource: {fileID: 2349967973140799252}
     Selectable: {fileID: 2349967973140799253}
   Id:
@@ -79427,6 +79471,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!114 &2349967973140799264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2349967973140799252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b29d545728e3efc4db82eab618ca77ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restartEvent: {fileID: 11400000, guid: a51d14a2ad7fc6a43b313db9a9134386, type: 2}
 --- !u!223 &2349967973141650950
 Canvas:
   m_ObjectHideFlags: 0
@@ -153531,8 +153588,9 @@ GameObject:
   - component: {fileID: 2349967974114707593}
   - component: {fileID: 2349967974114707592}
   - component: {fileID: 2349967974114707595}
+  - component: {fileID: 2349967974114707640}
   m_Layer: 5
-  m_Name: Flex Button (Large)
+  m_Name: ResumeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155008,7 +155066,19 @@ MonoBehaviour:
       Runners: []
       Event:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 5270613211130311336}
+            m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventSystem, UnityEngine.UI
+            m_MethodName: SetSelectedGameObject
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 2349967974114707594}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
   PressedState:
     StateType: 2
     StateEvent:
@@ -155034,7 +155104,38 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
   Behaviours:
-    Behaviours: []
+    Behaviours:
+    - EventName: PointerClick
+      Runners: []
+      Event:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 2349967974114707640}
+            m_TargetAssemblyTypeName: ResumeHUD, Assembly-CSharp
+            m_MethodName: OnClick
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      BehaviourName: 4
+      Receiver:
+        ConnectionMode: 1
+        SignalProviderId:
+          Type: 0
+          Category: Pointer
+          Name: Click
+        ProviderReference: {fileID: 0}
+        StreamId:
+          Category: None
+          Name: None
+          Custom: 0
+      Cooldown: 0
+      Selectable: {fileID: 2349967974114707635}
     SignalSource: {fileID: 2349967974114707594}
     Selectable: {fileID: 2349967974114707635}
   Id:
@@ -155126,6 +155227,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2349967974114707640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2349967974114707594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548d7abd3c3695145aebfd6cd3648db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EventPause: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
 --- !u!114 &2349967974115446674
 MonoBehaviour:
   m_ObjectHideFlags: 0
