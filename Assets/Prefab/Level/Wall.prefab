@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2233322661424446613}
   - component: {fileID: 8482378610265619025}
   - component: {fileID: 7461223520037331762}
+  - component: {fileID: 5453473169997329905}
   m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
@@ -97,6 +98,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5453473169997329905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295363521901329369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d23788cf131400e45ac528e6ba282105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startSlowTime: {fileID: 11400000, guid: dd91b37eb9565bf4ba90ebfda6d17089, type: 2}
+  endSlowTime: {fileID: 11400000, guid: 5670750e062e9da409830b9f758b76b8, type: 2}
+  matSlowTime: {fileID: 2100000, guid: 478229b69c015f1408704b6f584ecf7c, type: 2}
+  matRealTime: {fileID: 2100000, guid: 62f1d4cf75f903a42a1d26669379e9fb, type: 2}
+  meshRenderer: {fileID: 8482378610265619025}
+  col: {fileID: 7461223520037331762}
 --- !u!1 &6663293453855520921
 GameObject:
   m_ObjectHideFlags: 0

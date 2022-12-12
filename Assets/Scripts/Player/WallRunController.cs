@@ -69,6 +69,7 @@ public class WallRunController : MonoBehaviour
     SlowTime slowTime;
 
     [SerializeField] ShakeData shakeJump;
+    GameObject wall;
     private void EnableInput()
     {
         jumpButton.OnPressed += WallJump;
@@ -140,6 +141,14 @@ public class WallRunController : MonoBehaviour
     {
         wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, whatIsWall);
         wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, whatIsWall);
+        if(wallRight)
+        {
+            wall = rightWallhit.collider.gameObject;
+        }
+        else if(wallLeft)
+        {
+            wall = leftWallhit.collider.gameObject;
+        }
     }
 
     private bool AboveGround()
@@ -203,6 +212,7 @@ public class WallRunController : MonoBehaviour
 
     private void StartWallRun()
     {
+        
         Debug.Log("wallRunStart");
         //Rumbler.instance.RumblePulse(0.5f, 1.5f, 0.1f, 1f);
         playerController.wallrunning = true;
@@ -214,6 +224,7 @@ public class WallRunController : MonoBehaviour
         if (wallLeft) cam.DoTilt(-tilt);
         if (wallRight) cam.DoTilt(tilt);
 
+        wall.GetComponent<SlowTimeMaterial>().isUsing = true;
         timerFootstep = -1;
 
     }
@@ -256,6 +267,14 @@ public class WallRunController : MonoBehaviour
 
         timerDouble = 0.3f;
         stopWallRun = true;
+        SlowTimeMaterial slowTimeMaterial = wall.GetComponent<SlowTimeMaterial>();
+        slowTimeMaterial.isUsing = false;
+        if(!slowTimeMaterial.slowTime)
+        {
+            slowTimeMaterial.MatRealime();
+        }
+        
+
     }
 
     public void WallJump()

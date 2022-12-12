@@ -44,6 +44,8 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] EventSO eventPause;
 
     private bool InPause = false;
+
+    GameObject grappinObject;
     private void EnableInput()
     {
         grapplingInput.OnPressed += StartGrapple;
@@ -127,6 +129,9 @@ public class GrapplingGun : MonoBehaviour
             audioGrappinStart.PlayAudioCue();
             CameraShakeManager.instance.Shake(shakeStart);
             grappinAnim.CrossFade("GrappleStart", 0, 0);
+            grappinObject = hit.collider.gameObject;
+            grappinObject.GetComponent<SlowTimeMaterial>().isUsing = true;
+
         }
         else
         {
@@ -148,7 +153,15 @@ public class GrapplingGun : MonoBehaviour
             audioGrappinStop.PlayAudioCue();
             CameraShakeManager.instance.Shake(shakeStop);
             grappinAnim.CrossFade("GrappleStop", 0, 0);
+
+            SlowTimeMaterial slowTimeMaterial = grappinObject.GetComponent<SlowTimeMaterial>();
+            slowTimeMaterial.isUsing = false;
+            if (!slowTimeMaterial.slowTime)
+            {
+                slowTimeMaterial.MatRealime();
+            }
         }
+
 
     }
 
