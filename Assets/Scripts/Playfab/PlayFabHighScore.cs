@@ -14,6 +14,12 @@ public class PlayFabHighScore : MonoBehaviour
     [SerializeField] EventSO _eventChangePos;
     [SerializeField] EventSO _eventOnReachLine;
 
+    [SerializeField] EventSO eventGetLeaderboardAroundPlayer;
+    [SerializeField] EventSO leaderBoardTop;
+    [SerializeField] EventSO leaderBoardFriend;
+
+    [SerializeField] LederboardSO leaderboardSO;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -30,12 +36,20 @@ public class PlayFabHighScore : MonoBehaviour
     {
         NewHighScoreEvent.OnLauchEventSceneSO += NewHighScore;
         _eventOnReachLine.OnLaunchEvent += GetPosPlayer;
+
+        eventGetLeaderboardAroundPlayer.OnLauchEventSceneSO += GetLeaderBoardAroundPlayer;
+        leaderBoardTop.OnLauchEventSceneSO += GetTopLeaderBord;
+        leaderBoardFriend.OnLauchEventSceneSO += GetFriendLeaderBoard;
     }
 
     private void OnDisable()
     {
         NewHighScoreEvent.OnLauchEventSceneSO -= NewHighScore;
         _eventOnReachLine.OnLaunchEvent -= GetPosPlayer;
+
+        eventGetLeaderboardAroundPlayer.OnLauchEventSceneSO -= GetLeaderBoardAroundPlayer;
+        leaderBoardTop.OnLauchEventSceneSO -= GetTopLeaderBord;
+        leaderBoardFriend.OnLauchEventSceneSO -= GetFriendLeaderBoard;
     }
 
     void NewHighScore(SceneSO data)
@@ -78,11 +92,11 @@ public class PlayFabHighScore : MonoBehaviour
         //HudMainMenu.Instance.ChangePosPlayerText(int.Parse(result.FunctionResult.ToString()));
     }
 
-    public void GetTopLeaderBord(string mapName)
+    public void GetTopLeaderBord(SceneSO mapName)
     {
         var request = new GetLeaderboardRequest
         {
-            StatisticName = mapName,
+            StatisticName = mapName.MapName,
             StartPosition = 0,
             MaxResultsCount = 50,
             ProfileConstraints = new PlayerProfileViewConstraints
@@ -94,11 +108,11 @@ public class PlayFabHighScore : MonoBehaviour
         PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardTopGet, OnError);
     }
 
-    public void GetLeaderBoardAroundPlayer(string mapName)
+    public void GetLeaderBoardAroundPlayer(SceneSO mapName)
     {
         var request = new GetLeaderboardAroundPlayerRequest
         {
-            StatisticName = mapName,
+            StatisticName = mapName.MapName,
             MaxResultsCount = 50,
             ProfileConstraints = new PlayerProfileViewConstraints
             {
@@ -109,11 +123,11 @@ public class PlayFabHighScore : MonoBehaviour
         PlayFabClientAPI.GetLeaderboardAroundPlayer(request, OnLeaderboardAroundPlayerGet, OnError);
     }
 
-    public void GetFriendLeaderBoard(string mapName)
+    public void GetFriendLeaderBoard(SceneSO mapName)
     {
         var request = new GetFriendLeaderboardRequest
         {
-            StatisticName = mapName,
+            StatisticName = mapName.MapName,
             MaxResultsCount = 100,
             IncludeSteamFriends = true,
             ProfileConstraints = new PlayerProfileViewConstraints
@@ -127,36 +141,35 @@ public class PlayFabHighScore : MonoBehaviour
 
     void OnLeaderboardFriend(GetLeaderboardResult result)
     {
-        /*HudMainMenu.Instance.State = StateMenu.Leaderboard;
-        HudMainMenu.Instance.ResetLeaderBoard();
+        List<LeaderboardValue> value = new List<LeaderboardValue>();
         foreach (var item in result.Leaderboard)
         {
-            HudMainMenu.Instance.NewItemLeaderBoard(item.Position, item.Profile.DisplayName, item.StatValue, item.Profile.AvatarUrl, item.PlayFabId);
-        }*/
+            value.Add(new LeaderboardValue(item.Profile.DisplayName, item.Position, item.StatValue, item.Profile.AvatarUrl, item.PlayFabId));
+        }
+        leaderboardSO.AddValueOnLeaderBoard(value);
     }
 
     void OnLeaderboardAroundPlayerGet(GetLeaderboardAroundPlayerResult result)
     {
-        /*
-        HudMainMenu.Instance.State = StateMenu.Leaderboard;
-        HudMainMenu.Instance.ResetLeaderBoard();
+        List<LeaderboardValue> value = new List<LeaderboardValue>();
         foreach (var item in result.Leaderboard)
         {
-            HudMainMenu.Instance.NewItemLeaderBoard(item.Position, item.Profile.DisplayName, item.StatValue, item.Profile.AvatarUrl, item.PlayFabId);
-        }*/
+            value.Add(new LeaderboardValue(item.Profile.DisplayName, item.Position, item.StatValue, item.Profile.AvatarUrl, item.PlayFabId));
+        }
+        leaderboardSO.AddValueOnLeaderBoard(value);
     }
 
     void OnLeaderboardTopGet(GetLeaderboardResult result)
     {
-        /*
-        HudMainMenu.Instance.State = StateMenu.Leaderboard;
-        HudMainMenu.Instance.ResetLeaderBoard();
+        List<LeaderboardValue> value = new List<LeaderboardValue>();
         foreach (var item in result.Leaderboard)
         {
-            
-            HudMainMenu.Instance.NewItemLeaderBoard(item.Position, item.Profile.DisplayName, item.StatValue, item.Profile.AvatarUrl, item.PlayFabId);
-        }*/
+            value.Add(new LeaderboardValue(item.Profile.DisplayName, item.Position, item.StatValue, item.Profile.AvatarUrl, item.PlayFabId));
+        }
+        leaderboardSO.AddValueOnLeaderBoard(value);
     }
+
+
 
     void OnError(PlayFabError error)
     {

@@ -26,6 +26,10 @@ public class HudManager : MonoBehaviour
     [SerializeField] EventSO _eventInMainMenu;
     [SerializeField] EventSO _eventPause;
 
+    [SerializeField] EventSO _eventAround;
+    [SerializeField] EventSO _eventFriend;
+    [SerializeField] EventSO _eventTop;
+
     [Header("LevelSelector")]
     [SerializeField] GameObject _parentLevelSelection;
     [SerializeField] EventSystem eventSystem;
@@ -53,6 +57,10 @@ public class HudManager : MonoBehaviour
         _eventStartLevel.OnLaunchEvent += OpenInGamePanel;
         _eventInMainMenu.OnLaunchEvent += OpenMainMenu;
         _eventPause.OnLaunchEvent += OpenPauseMenu;
+
+        _eventAround.OnLauchEventSceneSO += OpenLeaderBoard;
+        _eventFriend.OnLauchEventSceneSO += OpenLeaderBoard;
+        _eventTop.OnLauchEventSceneSO += OpenLeaderBoard;
     }
     private void OnDisable()
     {
@@ -60,6 +68,16 @@ public class HudManager : MonoBehaviour
         _eventStartLevel.OnLaunchEvent -= OpenInGamePanel;
         _eventInMainMenu.OnLaunchEvent -= OpenMainMenu;
         _eventPause.OnLaunchEvent -= OpenPauseMenu;
+
+        _eventAround.OnLauchEventSceneSO -= OpenLeaderBoard;
+        _eventFriend.OnLauchEventSceneSO -= OpenLeaderBoard;
+        _eventTop.OnLauchEventSceneSO -= OpenLeaderBoard;
+    }
+
+    public void OpenLeaderBoard(SceneSO so)
+    {
+        CloseAllPanel();
+        _HighScorePanel.Show();
     }
     private void OpenPauseMenu()
     {
