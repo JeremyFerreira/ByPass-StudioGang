@@ -9,8 +9,11 @@ using UnityEngine.InputSystem;
 public class SOInputButton : ScriptableObject
 {
     [SerializeField] bool value;
+    public void SetValue(bool a)
+        { value = a; }
     public event Action OnPressed;
     public event Action OnReleased;
+
 
     public void OnButtonPressed(InputAction.CallbackContext ctx)
     {
