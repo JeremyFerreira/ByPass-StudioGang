@@ -34,6 +34,7 @@ public class HudManager : MonoBehaviour
 
     static bool created = false;
     bool _pause = false;
+    bool _win = false;
     void Awake()
     {
         if (!created)
@@ -62,11 +63,12 @@ public class HudManager : MonoBehaviour
     }
     private void OpenPauseMenu()
     {
+        if(!_win)
+        {
+
         if (_pause)
         {
             OpenInGamePanel();
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
             _pause = false;
         }
         else
@@ -77,11 +79,14 @@ public class HudManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
         }
+        }
     }
     private void OpenMainMenu()
     {
         CloseAllPanel();
         _mainMenu.Show();
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 
     public void OpenLevelSelector(int worldIndex)
@@ -128,12 +133,17 @@ public class HudManager : MonoBehaviour
         CloseAllPanel();
         _InGamePanel.Show();
         _pause = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void OpenWinPanel()
     {
+        _win = true;
         CloseAllPanel();
         _winPanel.Show();
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 
     public void CloseAllPanel()

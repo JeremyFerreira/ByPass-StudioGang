@@ -84,7 +84,7 @@ public class PlayFabLogin : MonoBehaviour
     {
         foreach (var eachStat in result.Statistics)
         {
-            DataManager.Instance.ModifyBestTime(eachStat.StatisticName, +((float)eachStat.Value / 1000));
+            DataManager.Instance.ModifyBestTime(eachStat.StatisticName, (float)eachStat.Value / 1000);
         }
     }
     /// <summary>

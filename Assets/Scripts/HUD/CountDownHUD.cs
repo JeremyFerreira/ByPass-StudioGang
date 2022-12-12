@@ -20,7 +20,6 @@ public class CountDownHUD : MonoBehaviour
     }
     private void OnStartLevel()
     {
-        Debug.Log("hey oui");
         textMeshProUGUI.enabled = true;
     }
     private void OnRunEvent()

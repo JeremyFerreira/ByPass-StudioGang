@@ -4,13 +4,16 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayFabHighScore : MonoBehaviour
 {
     public static PlayFabHighScore Instance;
 
     [SerializeField] EventSO NewHighScoreEvent;
- 
+    [SerializeField] EventSO _eventChangePos;
+    [SerializeField] EventSO _eventOnReachLine;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -26,11 +29,13 @@ public class PlayFabHighScore : MonoBehaviour
     private void OnEnable()
     {
         NewHighScoreEvent.OnLauchEventSceneSO += NewHighScore;
+        _eventOnReachLine.OnLaunchEvent += GetPosPlayer;
     }
 
     private void OnDisable()
     {
         NewHighScoreEvent.OnLauchEventSceneSO -= NewHighScore;
+        _eventOnReachLine.OnLaunchEvent -= GetPosPlayer;
     }
 
     void NewHighScore(SceneSO data)
@@ -45,11 +50,30 @@ public class PlayFabHighScore : MonoBehaviour
             FunctionName = "UpdateLeaderboard",
             FunctionParameter = new { Leaderboardname = levelName, Playerscore = (int)-timer },
             GeneratePlayStreamEvent = true,
+        }, OnCloudResultUpdateLeaderBoard, OnError);
+    }
+
+    void OnCloudResultUpdateLeaderBoard(ExecuteCloudScriptResult result)
+    {
+        _eventChangePos.OnLauchEventInt?.Invoke(int.Parse(result.FunctionResult.ToString()) + 1);
+        Debug.Log(result.FunctionResult.ToString());
+        //HudMainMenu.Instance.ChangePosPlayerText(int.Parse(result.FunctionResult.ToString()));
+    }
+
+    public void GetPosPlayer()
+    {
+        SceneSO data = DataManager.Instance.GetSceneData(SceneManager.GetActiveScene().buildIndex);
+        PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest()
+        {
+            FunctionName = "GetLeaderboardPosition",
+            FunctionParameter = new { Leaderboardname = data.MapName},
+            GeneratePlayStreamEvent = true,
         }, OnCloudResult, OnError);
     }
 
     void OnCloudResult(ExecuteCloudScriptResult result)
     {
+        _eventChangePos.OnLauchEventInt?.Invoke(int.Parse(result.FunctionResult.ToString()) + 1);
         Debug.Log(result.FunctionResult.ToString());
         //HudMainMenu.Instance.ChangePosPlayerText(int.Parse(result.FunctionResult.ToString()));
     }

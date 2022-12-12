@@ -6,9 +6,16 @@ using UnityEngine.SceneManagement;
 public class FinishLine : MonoBehaviour
 {
     [SerializeField] EventSO _reachFinishLine;
+    [SerializeField] EventSO _desactiveInput;
+    bool _alreadyTrigger = false;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 3) // Layer Player
-            _reachFinishLine.OnLaunchEvent?.Invoke();
-    }
+            if (!_alreadyTrigger)
+            {
+                _alreadyTrigger = true;
+                _reachFinishLine.OnLaunchEvent?.Invoke();
+                _desactiveInput.OnLaunchEvent?.Invoke();
+            }
+    }   
 }
