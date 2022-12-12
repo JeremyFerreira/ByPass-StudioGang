@@ -58,43 +58,18 @@ public class SlowTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!InPause)
-        {
-            slowTimeSliderData.ChangeValue(1 - (timeTotal - timeLeft) / timeTotal);
-            if (isSlowTime)
-            {
-                slowTimeSliderData.ChangeBoolValue(true);
-                glitchEffect.enabled = true;
-                Time.timeScale = 0.5f;
-                timeLeft -= Time.unscaledDeltaTime;
-                if (timeLeft <= 0)
-                {
-                    StopSlowTime();
-                }
-            }
-            else
-            {
-                glitchEffect.enabled = false;
-                slowTimeSliderData.ChangeBoolValue(false);
-                Time.timeScale = 1f;
-                if (timeLeft < timeTotal)
-                {
-                    timeLeft += Time.unscaledDeltaTime * 0.5f;
-                }
-                else
-                {
-                    timeLeft = timeTotal;
-                }
-            }
-        }
+        
     }
     public void StartSlowTime()
     {
-        
-        isSlowTime = true;
-        audioSlowTimeStart.PlayAudioCue();
-        slowTimeStartEvent.OnLaunchEvent.Invoke();
-        
+        if (!InPause)
+        {
+            isSlowTime = true;
+            audioSlowTimeStart.PlayAudioCue();
+            slowTimeStartEvent.OnLaunchEvent.Invoke();
+            glitchEffect.enabled = true;
+            Time.timeScale = 0.5f;
+        }
     }
     public void StopSlowTime()
     {
@@ -103,6 +78,8 @@ public class SlowTime : MonoBehaviour
             isSlowTime = false;
             audioSlowTimeStop.PlayAudioCue();
             slowTimeStopEvent.OnLaunchEvent.Invoke();
+            glitchEffect.enabled = false;
+            Time.timeScale = 1;
         }
     }
 

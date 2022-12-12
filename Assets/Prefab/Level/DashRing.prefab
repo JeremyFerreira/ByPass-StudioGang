@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 101545734365894481}
   - component: {fileID: 101545734365894495}
   - component: {fileID: 8094589060187659790}
-  - component: {fileID: 8652703618363350342}
+  - component: {fileID: 6921813172648102730}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -419,7 +419,7 @@ MonoBehaviour:
   startSlowTime: {fileID: 11400000, guid: dd91b37eb9565bf4ba90ebfda6d17089, type: 2}
   endSlowTime: {fileID: 11400000, guid: 5670750e062e9da409830b9f758b76b8, type: 2}
   meshRenderer: {fileID: 101545734365894480}
---- !u!114 &8652703618363350342
+--- !u!114 &6921813172648102730
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -428,12 +428,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 101545734365894494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aae9aabc211ee714ebbaa94dbe946540, type: 3}
+  m_Script: {fileID: 11500000, guid: cf64ede33ed25324aa64890ef61575f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startSlowTime: {fileID: 11400000, guid: dd91b37eb9565bf4ba90ebfda6d17089, type: 2}
   endSlowTime: {fileID: 11400000, guid: 5670750e062e9da409830b9f758b76b8, type: 2}
-  meshRenderer: {fileID: 101545734365894480}
+  objectCollider: {fileID: 101545734365894481}
 --- !u!1 &101545734609305476
 GameObject:
   m_ObjectHideFlags: 0

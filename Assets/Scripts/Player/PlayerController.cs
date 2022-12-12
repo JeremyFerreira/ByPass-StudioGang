@@ -523,7 +523,7 @@ public class PlayerController : MonoBehaviour
             //resets the possibility to jump to true after jumpCoolDown Time
             Invoke(nameof(ResetJump), jumpCoolDown);
         }
-        else if (readyToJump && canDoubleJump && !wallrunning && SlowTime.IsSlowTime())
+        else if (readyToJump && canDoubleJump && !wallrunning)
         {
             DoubleJump();
             canDoubleJump = false;
@@ -576,6 +576,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             //JumpForce
             rb.AddForce(this.transform.up * _jumpVelocityChange * 1f, ForceMode.VelocityChange);
+            
             canJump = false;
 
 
