@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class FinishLine : MonoBehaviour
 {
     [SerializeField] EventSO _reachFinishLine;
-
+    [SerializeField] EventSO _desactiveInput;
     bool _alreadyTrigger = false;
     private void OnTriggerEnter(Collider other)
     {
@@ -15,6 +15,7 @@ public class FinishLine : MonoBehaviour
             {
                 _alreadyTrigger = true;
                 _reachFinishLine.OnLaunchEvent?.Invoke();
+                _desactiveInput.OnLaunchEvent?.Invoke();
             }
     }   
 }

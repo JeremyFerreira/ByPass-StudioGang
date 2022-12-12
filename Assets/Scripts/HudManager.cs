@@ -69,8 +69,6 @@ public class HudManager : MonoBehaviour
         if (_pause)
         {
             OpenInGamePanel();
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
             _pause = false;
         }
         else
@@ -87,6 +85,8 @@ public class HudManager : MonoBehaviour
     {
         CloseAllPanel();
         _mainMenu.Show();
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 
     public void OpenLevelSelector(int worldIndex)
@@ -133,6 +133,8 @@ public class HudManager : MonoBehaviour
         CloseAllPanel();
         _InGamePanel.Show();
         _pause = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void OpenWinPanel()
@@ -140,6 +142,8 @@ public class HudManager : MonoBehaviour
         _win = true;
         CloseAllPanel();
         _winPanel.Show();
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 
     public void CloseAllPanel()

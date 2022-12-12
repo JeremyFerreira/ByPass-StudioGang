@@ -111,3 +111,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reachFinishLine: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
+  _desactiveInput: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
