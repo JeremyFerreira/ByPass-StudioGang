@@ -1,3 +1,4 @@
+using FirstGearGames.SmoothCameraShaker;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class FinishLine : MonoBehaviour
 {
     [SerializeField] EventSO _reachFinishLine;
     [SerializeField] EventSO _desactiveInput;
+    [SerializeField] AudioComponent audioWin;
+    [SerializeField] ShakeData winShake;
     bool _alreadyTrigger = false;
     private void OnTriggerEnter(Collider other)
     {
@@ -16,6 +19,8 @@ public class FinishLine : MonoBehaviour
                 _alreadyTrigger = true;
                 _reachFinishLine.OnLaunchEvent?.Invoke();
                 _desactiveInput.OnLaunchEvent?.Invoke();
+                audioWin.PlayAudioCue();
+                CameraShakeManager.instance.Shake(winShake);
             }
     }   
 }

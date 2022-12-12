@@ -21,7 +21,7 @@ MonoBehaviour:
   _totalDuration: 0.5
   _fadeInDuration: 0.2
   _fadeOutDuration: 0.3
-  _magnitude: 1
+  _magnitude: 10
   _magnitudeNoise: 0
   _magnitudeCurve:
     serializedVersion: 2
@@ -73,8 +73,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _positionalInfluence: {x: 1, y: 1, z: 1}
+  _positionalInfluence: {x: 0, y: 0, z: 0}
   _positionalInverts: 0
-  _rotationalInfluence: {x: 0, y: 0, z: 0}
+  _rotationalInfluence: {x: 1, y: 1, z: 1}
   _rotationalInverts: 7
   _randomSeed: 0

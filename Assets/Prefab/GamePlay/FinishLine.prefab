@@ -405,6 +405,7 @@ GameObject:
   - component: {fileID: 7283276952524765401}
   - component: {fileID: 7283276952524765406}
   - component: {fileID: 7283276952524765407}
+  - component: {fileID: 5653626070941271366}
   m_Layer: 0
   m_Name: FinishLine
   m_TagString: Untagged
@@ -508,6 +509,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _reachFinishLine: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
   _desactiveInput: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
+  audioWin: {fileID: 5653626070941271366}
+  winShake: {fileID: 11400000, guid: 316d2d6daf6858949822fb46de8220d6, type: 2}
+--- !u!114 &5653626070941271366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7283276952524765404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a8dbc4867e1674ab88a7d17306cade, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioCue: {fileID: 11400000, guid: e5d33102306bb34449f51426633124fa, type: 2}
+  _playOnStart: 0
+  _audioCueEventChannel: {fileID: 11400000, guid: c55fbeaad229d874d82957c05a5a947f, type: 2}
+  _audioConfiguration: {fileID: 11400000, guid: 6351c94c1eeef8547b7ed8df4ccafca5, type: 2}
 --- !u!1 &8288076799127824731
 GameObject:
   m_ObjectHideFlags: 0

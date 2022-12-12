@@ -1,3 +1,4 @@
+using FirstGearGames.SmoothCameraShaker;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,9 @@ public class DeathTrigger : MonoBehaviour
     [SerializeField] private EventSO _StartRunEvent;
     [SerializeField] private EventSO _eventStopInput;
     [SerializeField] private LayerMask _layersDeath;
+
+    [SerializeField] AudioComponent _audioComponent;
+    [SerializeField] ShakeData deathShakeData;
 
     bool _IsAlive;
     bool _IsWin;
@@ -41,6 +45,8 @@ public class DeathTrigger : MonoBehaviour
                 _IsAlive = false;
                 _deathEvent.OnLaunchEvent?.Invoke();
                 _eventStopInput.OnLaunchEvent?.Invoke();
+                _audioComponent.PlayAudioCue();
+                CameraShakeManager.instance.Shake(deathShakeData);
             }
         }
     }
