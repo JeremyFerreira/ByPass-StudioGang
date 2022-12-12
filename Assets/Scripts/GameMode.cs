@@ -85,7 +85,7 @@ public class GameMode : MonoBehaviour
 
     IEnumerator DeathTimer()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.5f);
         _eventRestart.OnLaunchEvent?.Invoke();
     }
 
