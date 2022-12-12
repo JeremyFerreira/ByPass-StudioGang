@@ -22,5 +22,5 @@ MonoBehaviour:
   - 50
   <SpriteCard>k__BackingField: {fileID: 0}
   <BackGroundLoad>k__BackingField: {fileID: 0}
-  <BestTime>k__BackingField: 200000
+  <BestTime>k__BackingField: 0
   <GhostPlayer>k__BackingField: {fileID: 0}

@@ -9,5 +9,5 @@ public class EventSO : ScriptableObject
     public delegate void LaunchEventParameter<T>(T genericPatameter);
     public LaunchEventParameter<int> OnLauchEventInt;
     public LaunchEventParameter<GhostSO> OnLauchEventGhost;
-
+    public LaunchEventParameter<SceneSO> OnLauchEventSceneSO;
 }

@@ -82,11 +82,9 @@ public class PlayFabLogin : MonoBehaviour
 
     void OnGetStatistics(GetPlayerStatisticsResult result)
     {
-        Debug.Log("Received the following Statistics:");
         foreach (var eachStat in result.Statistics)
         {
-            Debug.Log("Statistic (" + eachStat.StatisticName + "): " + eachStat.Value);
-            DataManager.Instance.ModifyBestTime(eachStat.StatisticName, eachStat.Value);
+            DataManager.Instance.ModifyBestTime(eachStat.StatisticName, +((float)eachStat.Value / 1000));
         }
     }
     /// <summary>

@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
+    [SerializeField] EventSO _reachFinishLine;
+    [SerializeField] EventSO _eventBestScore;
+    [SerializeField] TimeSO _timer;
     [field: SerializeField] public List<World> AllWorld { get; set; }
     private void Awake()
     {
@@ -17,8 +21,46 @@ public class DataManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
     }
+    private void OnEnable()
+    {
+        _reachFinishLine.OnLaunchEvent += OnFinishLine;
+    }
+    private void OnDisable()
+    {
+        _reachFinishLine.OnLaunchEvent -= OnFinishLine;
+    }
+
+    private void OnFinishLine()
+    {
+        StartCoroutine(Wait());
+    }
+
+
+
+    private void ReachFinishLine()
+    {
+        SceneSO data = DataManager.Instance.GetSceneData(SceneManager.GetActiveScene().buildIndex);
+
+        if (data.BestTime == 0)
+        { 
+            data.BestTime = _timer.TotalTime;
+            _eventBestScore.OnLauchEventSceneSO?.Invoke(data);
+        }
+        if (_timer.TotalTime < data.BestTime)
+        {
+            data.BestTime = _timer.TotalTime;
+            _eventBestScore.OnLauchEventSceneSO?.Invoke(data);
+        }
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(.3f);
+        ReachFinishLine();
+    }
     public void ModifyBestTime(string levelName, float value)
     {
+        value *= -1;
         for (int i = 0; i < AllWorld.Count; i++)
         {
             for (int j = 0; j < AllWorld[i].WorldData.Count; j++)
@@ -30,6 +72,22 @@ public class DataManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public SceneSO GetSceneData(int sceneIndex)
+    {
+        for (int i = 0; i < AllWorld.Count; i++)
+        {
+            for (int j = 0; j < AllWorld[i].WorldData.Count; j++)
+            {
+                if (AllWorld[i].WorldData[j].IndexScene == sceneIndex)
+                {
+                    return AllWorld[i].WorldData[j];
+                }
+            }
+        }
+
+        return null;
     }
 }
 
