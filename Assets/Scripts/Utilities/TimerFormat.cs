@@ -12,7 +12,7 @@ public class TimerFormat
         int seconds = intTime % 60;
         float fraction = time * 1000;
         fraction = (fraction % 1000);
-        string timeText = String.Format("{0:00} : {1:00} : {2:000}", Minutes, seconds, fraction);
+        string timeText = String.Format("{0:00}:{1:00}:{2:000}", Minutes, seconds, fraction);
         return timeText;
     }
 }

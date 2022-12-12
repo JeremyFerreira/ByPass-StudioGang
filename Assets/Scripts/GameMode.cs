@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameMode : MonoBehaviour
@@ -38,8 +39,7 @@ public class GameMode : MonoBehaviour
 
         if (Time.timeScale == 0)
         {
-            
-            Time.timeScale = 1;
+                Time.timeScale = 1;
         }
         else
             Time.timeScale = 0;
