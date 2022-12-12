@@ -135,6 +135,7 @@ public class HudManager : MonoBehaviour
         _pause = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        eventSystem.SetSelectedGameObject(eventSystem.gameObject);
     }
 
     private void OpenWinPanel()
