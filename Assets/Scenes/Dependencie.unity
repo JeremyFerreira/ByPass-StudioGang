@@ -11497,19 +11497,7 @@ MonoBehaviour:
       Runners: []
       Event:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 5270613211130311336}
-            m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventSystem, UnityEngine.UI
-            m_MethodName: SetSelectedGameObject
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 2349967972196512648}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
   PressedState:
     StateType: 2
     StateEvent:
@@ -33042,7 +33030,7 @@ MonoBehaviour:
   UseCustomStartPosition: 1
   AutoHideAfterShow: 0
   AutoHideAfterShowDelay: 0
-  DisableGameObjectWhenHidden: 1
+  DisableGameObjectWhenHidden: 0
   DisableCanvasWhenHidden: 1
   DisableGraphicRaycasterWhenHidden: 1
   ClearSelectedOnShow: 1
@@ -58085,19 +58073,7 @@ MonoBehaviour:
       Runners: []
       Event:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 5270613211130311336}
-            m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventSystem, UnityEngine.UI
-            m_MethodName: SetSelectedGameObject
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 2349967972870049193}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
   PressedState:
     StateType: 2
     StateEvent:
@@ -59052,7 +59028,38 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
   Behaviours:
-    Behaviours: []
+    Behaviours:
+    - EventName: PointerClick
+      Runners: []
+      Event:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 2349967972891844256}
+            m_TargetAssemblyTypeName: MainMenuHUD, Assembly-CSharp
+            m_MethodName: OnClick
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      BehaviourName: 4
+      Receiver:
+        ConnectionMode: 1
+        SignalProviderId:
+          Type: 0
+          Category: Pointer
+          Name: Click
+        ProviderReference: {fileID: 0}
+        StreamId:
+          Category: None
+          Name: None
+          Custom: 0
+      Cooldown: 0
+      Selectable: {fileID: 2349967972891844229}
     SignalSource: {fileID: 2349967972891844255}
     Selectable: {fileID: 2349967972891844229}
   Id:
@@ -60995,6 +61002,7 @@ GameObject:
   - component: {fileID: 2349967972891844251}
   - component: {fileID: 2349967972891844250}
   - component: {fileID: 2349967972891844253}
+  - component: {fileID: 2349967972891844256}
   m_Layer: 5
   m_Name: Flex Button (Large) (4)
   m_TagString: Untagged
@@ -61002,6 +61010,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2349967972891844256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2349967972891844255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8d52a1cbb9a13478755dda52f84844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2349967972892487280
 RectTransform:
   m_ObjectHideFlags: 0
@@ -64159,7 +64179,7 @@ MonoBehaviour:
   UseCustomStartPosition: 1
   AutoHideAfterShow: 0
   AutoHideAfterShowDelay: 0
-  DisableGameObjectWhenHidden: 1
+  DisableGameObjectWhenHidden: 0
   DisableCanvasWhenHidden: 1
   DisableGraphicRaycasterWhenHidden: 1
   ClearSelectedOnShow: 0
@@ -79270,7 +79290,7 @@ MonoBehaviour:
   NormalState:
     StateType: 0
     StateEvent:
-      EventName: Unnamed
+      EventName: Normal State
       Runners: []
       Event:
         m_PersistentCalls:
@@ -79278,27 +79298,15 @@ MonoBehaviour:
   HighlightedState:
     StateType: 1
     StateEvent:
-      EventName: Unnamed
+      EventName: Highlighted State
       Runners: []
       Event:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 5270613211130311336}
-            m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventSystem, UnityEngine.UI
-            m_MethodName: SetSelectedGameObject
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 2349967973140799252}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
   PressedState:
     StateType: 2
     StateEvent:
-      EventName: Unnamed
+      EventName: Pressed State
       Runners: []
       Event:
         m_PersistentCalls:
@@ -79306,7 +79314,7 @@ MonoBehaviour:
   SelectedState:
     StateType: 3
     StateEvent:
-      EventName: Unnamed
+      EventName: Selected State
       Runners: []
       Event:
         m_PersistentCalls:
@@ -79314,7 +79322,7 @@ MonoBehaviour:
   DisabledState:
     StateType: 4
     StateEvent:
-      EventName: Unnamed
+      EventName: Disabled State
       Runners: []
       Event:
         m_PersistentCalls:
@@ -79553,7 +79561,7 @@ MonoBehaviour:
   UseCustomStartPosition: 1
   AutoHideAfterShow: 0
   AutoHideAfterShowDelay: 0
-  DisableGameObjectWhenHidden: 1
+  DisableGameObjectWhenHidden: 0
   DisableCanvasWhenHidden: 1
   DisableGraphicRaycasterWhenHidden: 1
   ClearSelectedOnShow: 0
@@ -82625,7 +82633,7 @@ MonoBehaviour:
   UseCustomStartPosition: 1
   AutoHideAfterShow: 0
   AutoHideAfterShowDelay: 0
-  DisableGameObjectWhenHidden: 1
+  DisableGameObjectWhenHidden: 0
   DisableCanvasWhenHidden: 1
   DisableGraphicRaycasterWhenHidden: 1
   ClearSelectedOnShow: 0
@@ -93827,7 +93835,7 @@ MonoBehaviour:
   UseCustomStartPosition: 1
   AutoHideAfterShow: 0
   AutoHideAfterShowDelay: 0
-  DisableGameObjectWhenHidden: 1
+  DisableGameObjectWhenHidden: 0
   DisableCanvasWhenHidden: 1
   DisableGraphicRaycasterWhenHidden: 1
   ClearSelectedOnShow: 0
@@ -119337,7 +119345,7 @@ MonoBehaviour:
   UseCustomStartPosition: 1
   AutoHideAfterShow: 0
   AutoHideAfterShowDelay: 0
-  DisableGameObjectWhenHidden: 1
+  DisableGameObjectWhenHidden: 0
   DisableCanvasWhenHidden: 1
   DisableGraphicRaycasterWhenHidden: 1
   ClearSelectedOnShow: 0
@@ -121914,19 +121922,7 @@ MonoBehaviour:
       Runners: []
       Event:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 5270613211130311336}
-            m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventSystem, UnityEngine.UI
-            m_MethodName: SetSelectedGameObject
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 2349967973685280597}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
   PressedState:
     StateType: 2
     StateEvent:
@@ -122162,7 +122158,7 @@ MonoBehaviour:
   UseCustomStartPosition: 1
   AutoHideAfterShow: 0
   AutoHideAfterShowDelay: 0
-  DisableGameObjectWhenHidden: 1
+  DisableGameObjectWhenHidden: 0
   DisableCanvasWhenHidden: 1
   DisableGraphicRaycasterWhenHidden: 1
   ClearSelectedOnShow: 0
@@ -135341,7 +135337,7 @@ MonoBehaviour:
   UseCustomStartPosition: 1
   AutoHideAfterShow: 0
   AutoHideAfterShowDelay: 0
-  DisableGameObjectWhenHidden: 1
+  DisableGameObjectWhenHidden: 0
   DisableCanvasWhenHidden: 1
   DisableGraphicRaycasterWhenHidden: 1
   ClearSelectedOnShow: 0
@@ -155054,7 +155050,7 @@ MonoBehaviour:
   NormalState:
     StateType: 0
     StateEvent:
-      EventName: Unnamed
+      EventName: Normal State
       Runners: []
       Event:
         m_PersistentCalls:
@@ -155066,19 +155062,7 @@ MonoBehaviour:
       Runners: []
       Event:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 5270613211130311336}
-            m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventSystem, UnityEngine.UI
-            m_MethodName: SetSelectedGameObject
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 2349967974114707594}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
   PressedState:
     StateType: 2
     StateEvent:
@@ -156490,7 +156474,7 @@ MonoBehaviour:
   UseCustomStartPosition: 1
   AutoHideAfterShow: 0
   AutoHideAfterShowDelay: 0
-  DisableGameObjectWhenHidden: 1
+  DisableGameObjectWhenHidden: 0
   DisableCanvasWhenHidden: 1
   DisableGraphicRaycasterWhenHidden: 1
   ClearSelectedOnShow: 0

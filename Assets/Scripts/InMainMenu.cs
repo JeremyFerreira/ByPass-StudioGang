@@ -8,5 +8,6 @@ public class InMainMenu : MonoBehaviour
     private void Start()
     {
         _eventInmainMenu.OnLaunchEvent?.Invoke();
+        Time.timeScale = 1f;
     }
 }

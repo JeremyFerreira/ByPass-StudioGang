@@ -40,7 +40,6 @@ public class CountDownHUD : MonoBehaviour
 
         if (value != 0)
         {
-            textMeshProUGUI.enabled = true;
             textMeshProUGUI.text = value.ToString();
         }
         else
