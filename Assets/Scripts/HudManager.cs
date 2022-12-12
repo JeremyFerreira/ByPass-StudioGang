@@ -83,20 +83,19 @@ public class HudManager : MonoBehaviour
     {
         if(!_win)
         {
-
-        if (_pause)
-        {
-            OpenInGamePanel();
-            _pause = false;
-        }
-        else
-        {
-            _pause = true;
-            CloseAllPanel();
-            _pausePanel.Show();
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
-        }
+            if (_pause)
+            {
+                OpenInGamePanel();
+                _pause = false;
+            }
+            else
+            {
+                _pause = true;
+                CloseAllPanel();
+                _pausePanel.Show();
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
+            }
         }
     }
     private void OpenMainMenu()
@@ -151,6 +150,7 @@ public class HudManager : MonoBehaviour
         CloseAllPanel();
         _InGamePanel.Show();
         _pause = false;
+        _win = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         eventSystem.SetSelectedGameObject(eventSystem.gameObject);
