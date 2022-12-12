@@ -40,6 +40,7 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] ShakeData shakeStart;
     [SerializeField] ShakeData shakeStop;
     [SerializeField] Animator grappinAnim;
+    
     private void EnableInput()
     {
         grapplingInput.OnPressed += StartGrapple;
@@ -68,7 +69,7 @@ public class GrapplingGun : MonoBehaviour
     {
         playerController.SetGrappin(isGrappling);
         
-        canGrapple = Physics.Raycast(cam.position, cam.forward, out hit, slowTime.IsSlowTime()? maxDistanceShoot * 1.5f : maxDistanceShoot, whatIsGrappleable);
+        canGrapple = Physics.Raycast(cam.position, cam.forward, out hit, slowTime.IsSlowTime()? maxDistanceShoot * 1.5f : 0, whatIsGrappleable);
             
     }
     private void FixedUpdate()

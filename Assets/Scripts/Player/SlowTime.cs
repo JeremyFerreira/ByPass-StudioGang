@@ -22,6 +22,8 @@ public class SlowTime : MonoBehaviour
     [SerializeField] AudioComponent audioSlowTimeStop;
     [SerializeField] GlitchEffect glitchEffect;
     [SerializeField] ValueSo slowTimeSliderData;
+    [SerializeField] EventSO slowTimeStartEvent;
+    [SerializeField] EventSO slowTimeStopEvent;
     bool InPause = false;
 
     private void EnableInput()
@@ -91,6 +93,7 @@ public class SlowTime : MonoBehaviour
         
         isSlowTime = true;
         audioSlowTimeStart.PlayAudioCue();
+        slowTimeStartEvent.OnLaunchEvent.Invoke();
         
     }
     public void StopSlowTime()
@@ -99,6 +102,7 @@ public class SlowTime : MonoBehaviour
         {
             isSlowTime = false;
             audioSlowTimeStop.PlayAudioCue();
+            slowTimeStopEvent.OnLaunchEvent.Invoke();
         }
     }
 

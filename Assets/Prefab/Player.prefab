@@ -11969,6 +11969,7 @@ MonoBehaviour:
   timeToPress: 0
   dashSpeed: 60
   timeToDash: 0.3
+  SlowTime: {fileID: 6328991210479226679}
   buttonJump: {fileID: 11400000, guid: 10db7215801b18d4c85ae3736cddb8e2, type: 2}
   vectorMove: {fileID: 11400000, guid: ee42ec2862b19b64da16190453a0584e, type: 2}
   startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
@@ -12247,6 +12248,8 @@ MonoBehaviour:
   audioSlowTimeStop: {fileID: 1018964769783814035}
   glitchEffect: {fileID: 8239205045807946164}
   slowTimeSliderData: {fileID: 11400000, guid: 6418c06464cf7ee4296ffebd4f192bfc, type: 2}
+  slowTimeStartEvent: {fileID: 11400000, guid: dd91b37eb9565bf4ba90ebfda6d17089, type: 2}
+  slowTimeStopEvent: {fileID: 11400000, guid: 5670750e062e9da409830b9f758b76b8, type: 2}
 --- !u!114 &5164068588934881455
 MonoBehaviour:
   m_ObjectHideFlags: 0

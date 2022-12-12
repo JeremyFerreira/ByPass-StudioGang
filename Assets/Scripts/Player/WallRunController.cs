@@ -66,6 +66,7 @@ public class WallRunController : MonoBehaviour
     [SerializeField] AudioComponent audioJump;
     [SerializeField] AudioComponent audioWalk;
     float timerFootstep;
+    SlowTime slowTime;
 
     [SerializeField] ShakeData shakeJump;
     private void EnableInput()
@@ -89,6 +90,7 @@ public class WallRunController : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         playerController = GetComponent<PlayerController>();
+        slowTime = GetComponent<SlowTime>();
         
     }
 
@@ -133,7 +135,7 @@ public class WallRunController : MonoBehaviour
         // State 1 - Wallrunning
         if ((wallLeft || wallRight) && verticalInput > 0 && AboveGround() && !exitingWall)
         {
-            if (!playerController.wallrunning)
+            if (!playerController.wallrunning && slowTime.IsSlowTime())
                 StartWallRun();
 
             // wallrun timer

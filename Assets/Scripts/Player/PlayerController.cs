@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashSpeed;
     [SerializeField] float timeToDash;
     float timeTodashReset;
+    [SerializeField] SlowTime SlowTime;
 
     public void SetGrappin(bool a) { isGrappling = a; }
 
@@ -522,7 +523,7 @@ public class PlayerController : MonoBehaviour
             //resets the possibility to jump to true after jumpCoolDown Time
             Invoke(nameof(ResetJump), jumpCoolDown);
         }
-        else if (readyToJump && canDoubleJump && !wallrunning)
+        else if (readyToJump && canDoubleJump && !wallrunning && SlowTime.IsSlowTime())
         {
             DoubleJump();
             canDoubleJump = false;
@@ -641,8 +642,8 @@ public class PlayerController : MonoBehaviour
     #endregion
     public void Dash()
     {
-        rb.velocity = orientation.forward * dashSpeed;
-        dash = true;
-        CameraShakeManager.instance.Shake(dashShake);
+         rb.velocity = orientation.forward * dashSpeed;
+         dash = true;
+         CameraShakeManager.instance.Shake(dashShake);
     }
 }

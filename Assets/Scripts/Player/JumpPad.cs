@@ -28,10 +28,6 @@ public class JumpPad : MonoBehaviour
 
             if (other.TryGetComponent<SlowTime>(out SlowTime slowTime) && slowTime.IsSlowTime())
             {
-                rb.AddForce(force * transform.up * 1.5f, ForceMode.Impulse);
-            }
-            else
-            {
                 rb.AddForce(force * transform.up, ForceMode.Impulse);
             }
 
