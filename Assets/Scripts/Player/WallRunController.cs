@@ -77,21 +77,42 @@ public class WallRunController : MonoBehaviour
     {
         jumpButton.OnPressed -= WallJump;
     }
+    [SerializeField] EventSO eventPause;
+
+    private bool InPause = false;
+    private void Pause()
+    {
+        if (InPause)
+        {
+            EnableInput();
+        }
+        else
+            DisableInput();
+
+        InPause = !InPause;
+    }
     // LOOPS AND FUNCTIONS///////////////////////////////////////////////////////////////////
     private void Awake()
     {
         Instance = this;
     }
-
-    private void Start()
+    private void OnEnable()
     {
         startRun.OnLaunchEvent += EnableInput;
         stopRun.OnLaunchEvent += DisableInput;
-
+        eventPause.OnLaunchEvent += Pause;
+    }
+    private void OnDisable()
+    {
+        startRun.OnLaunchEvent -= EnableInput;
+        stopRun.OnLaunchEvent -= DisableInput;
+        eventPause.OnLaunchEvent -= Pause;
+    }
+    private void Start()
+    {
         rb = GetComponent<Rigidbody>();
         playerController = GetComponent<PlayerController>();
         slowTime = GetComponent<SlowTime>();
-        
     }
 
     private void Update()
@@ -149,9 +170,8 @@ public class WallRunController : MonoBehaviour
                 exitingWall = true;
                 exitWallTimer = exitWallTime;
             }
-
             timerFootstep -= Time.deltaTime;
-            if (timerFootstep < 0 )
+            if (timerFootstep < 0 && playerController.wallrunning)
             {
                 timerFootstep = 0.2f;
                 audioWalk.PlayAudioCue();

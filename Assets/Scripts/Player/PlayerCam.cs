@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
 using FirstGearGames.SmoothCameraShaker;
+using UnityEngine.UIElements;
 
 public class PlayerCam : MonoBehaviour
 {
@@ -25,10 +26,24 @@ public class PlayerCam : MonoBehaviour
 
     [SerializeField] EventSO startRun;
     [SerializeField] EventSO stopRun;
+    [SerializeField] EventSO eventPause;
 
+    private bool InPause = false;
     private void EnableInput()
     {
         lookInput.OnValueChanged += SetLookInput;
+        
+    }
+    private void Pause()
+    {
+        if (InPause)
+        {
+            EnableInput();
+        }
+        else
+            DisableInput();
+
+        InPause = !InPause;
     }
     private void DisableInput()
     {
@@ -38,13 +53,24 @@ public class PlayerCam : MonoBehaviour
     {
         Instance = this;
     }
-    private void Start()
+    private void OnEnable()
     {
         startRun.OnLaunchEvent += EnableInput;
         stopRun.OnLaunchEvent += DisableInput;
+        eventPause.OnLaunchEvent += Pause;
+    }
+    private void OnDisable()
+    {
+        startRun.OnLaunchEvent -= EnableInput;
+        stopRun.OnLaunchEvent -= DisableInput;
+        eventPause.OnLaunchEvent -= Pause;
+    }
+    private void Start()
+    {
+        
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.visible = false;
         
     }
 

@@ -29,12 +29,13 @@ public class JumpPad : MonoBehaviour
             if (other.TryGetComponent<SlowTime>(out SlowTime slowTime) && slowTime.IsSlowTime())
             {
                 rb.AddForce(force * transform.up, ForceMode.Impulse);
+                audioJump.PlayAudioCue();
+                CameraShakeManager.instance.Shake(shake);
+                timeToEnter = 0.5f;
             }
 
 
-            audioJump.PlayAudioCue();
-            CameraShakeManager.instance.Shake(shake);
-            timeToEnter = 0.5f;
+            
         }
     }
 }

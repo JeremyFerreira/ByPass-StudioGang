@@ -144,10 +144,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] SOInputVector vectorMove;
 
 
-    [SerializeField] EventSO startRun;
-    [SerializeField] EventSO stopRun;
+    [SerializeField] EventSO startInput;
+    [SerializeField] EventSO stopInput;
     [SerializeField] EventSO startLevel;
     [SerializeField] EventSO eventPause;
+
 
     [Header("Audio")]
     [Space(10)]
@@ -176,30 +177,39 @@ public class PlayerController : MonoBehaviour
     {
         canMove = true;
     }
-    private void EnableInput()
+    private void EnableInputMove()
+    {
+        vectorMove.OnValueChanged += MyInput;
+    }
+    private void EnableInputJump()
     {
         buttonJump.OnPressed += GetPlayerJump;
         buttonJump.OnReleased += CancelJump;
-        vectorMove.OnValueChanged += MyInput;
     }
     private void DisableInput()
     {
         buttonJump.OnPressed -= GetPlayerJump;
         buttonJump.OnReleased -= CancelJump;
         vectorMove.OnValueChanged -= MyInput;
+        horizontalInput = 0;
+        verticalInput = 0;
     }
     private void OnEnable()
     {
         Instance = this;
-        startLevel.OnLaunchEvent += EnableInput;
-        startRun.OnLaunchEvent += CanMove;
-        stopRun.OnLaunchEvent += DisableInput;
+        startLevel.OnLaunchEvent += EnableInputMove;
+        startInput.OnLaunchEvent += CanMove;
+        startInput.OnLaunchEvent += EnableInputJump;
+        stopInput.OnLaunchEvent += DisableInput;
         eventPause.OnLaunchEvent += Pause;
     }
     private void Pause()
     {
         if (InPause)
-            EnableInput();
+        {
+            EnableInputMove();
+            EnableInputJump();
+        }
         else
             DisableInput();
 
@@ -208,9 +218,10 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         DisableInput();
-        startLevel.OnLaunchEvent -= EnableInput;
-        startRun.OnLaunchEvent -= CanMove;
-        stopRun.OnLaunchEvent -= DisableInput;
+        startLevel.OnLaunchEvent -= EnableInputMove;
+        startInput.OnLaunchEvent -= EnableInputJump;
+        startInput.OnLaunchEvent -= CanMove;
+        stopInput.OnLaunchEvent -= DisableInput;
         eventPause.OnLaunchEvent -= Pause;
 
     }

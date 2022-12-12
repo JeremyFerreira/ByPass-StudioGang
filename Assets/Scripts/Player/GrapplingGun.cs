@@ -40,7 +40,10 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] ShakeData shakeStart;
     [SerializeField] ShakeData shakeStop;
     [SerializeField] Animator grappinAnim;
-    
+
+    [SerializeField] EventSO eventPause;
+
+    private bool InPause = false;
     private void EnableInput()
     {
         grapplingInput.OnPressed += StartGrapple;
@@ -51,17 +54,28 @@ public class GrapplingGun : MonoBehaviour
         grapplingInput.OnPressed -= StartGrapple;
         grapplingInput.OnReleased -= StopGrapple;
     }
+    private void Pause()
+    {
+        if (InPause)
+        {
+            EnableInput();
+        }
+        else
+            DisableInput();
 
+        InPause = !InPause;
+    }
     private void OnEnable()
     {
         startRun.OnLaunchEvent += EnableInput;
         stopRun.OnLaunchEvent += DisableInput;
-
+        eventPause.OnLaunchEvent += Pause;
     }
     private void OnDisable()
     {
         startRun.OnLaunchEvent -= EnableInput;
         stopRun.OnLaunchEvent -= DisableInput;
+        eventPause.OnLaunchEvent -= Pause;
         DisableInput();
     }
 

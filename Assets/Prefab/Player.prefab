@@ -219,6 +219,7 @@ MonoBehaviour:
   shakeStart: {fileID: 11400000, guid: 767fa475a6f030b4cb6188d591760927, type: 2}
   shakeStop: {fileID: 11400000, guid: 5e3afbe01f19a394b9aca6b2b01174d3, type: 2}
   grappinAnim: {fileID: 6752232508841689284}
+  eventPause: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
 --- !u!114 &4543463312393808619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10926,7 +10927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5087830319912538887
 Transform:
   m_ObjectHideFlags: 0
@@ -11541,6 +11542,7 @@ MonoBehaviour:
   IsGamePad: 1
   startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
   stopRun: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
+  eventPause: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
 --- !u!114 &5073996410801089655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11972,8 +11974,8 @@ MonoBehaviour:
   SlowTime: {fileID: 6328991210479226679}
   buttonJump: {fileID: 11400000, guid: 10db7215801b18d4c85ae3736cddb8e2, type: 2}
   vectorMove: {fileID: 11400000, guid: ee42ec2862b19b64da16190453a0584e, type: 2}
-  startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
-  stopRun: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
+  startInput: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
+  stopInput: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
   startLevel: {fileID: 11400000, guid: 4758eda0a1896e64f8d2d256c3342cc7, type: 2}
   eventPause: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
   audioJump: {fileID: 7910607384627730868}
@@ -12203,7 +12205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatIsWall:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 320
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -12213,7 +12215,7 @@ MonoBehaviour:
   wallClimbSpeed: 0
   maxWallRunTime: 5
   tilt: 30
-  wallCheckDistance: 1
+  wallCheckDistance: 1.5
   minJumpHeight: 1
   exitWallTime: 0.25
   useGravity: 0
@@ -12226,6 +12228,7 @@ MonoBehaviour:
   audioJump: {fileID: 7910607384627730868}
   audioWalk: {fileID: 8503779224034473265}
   shakeJump: {fileID: 11400000, guid: 960582a992eb96848a8bb39ed7a4f72c, type: 2}
+  eventPause: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
 --- !u!114 &6328991210479226679
 MonoBehaviour:
   m_ObjectHideFlags: 0
