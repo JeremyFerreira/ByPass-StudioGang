@@ -34,6 +34,7 @@ public class HudManager : MonoBehaviour
 
     static bool created = false;
     bool _pause = false;
+    bool _win = false;
     void Awake()
     {
         if (!created)
@@ -62,6 +63,9 @@ public class HudManager : MonoBehaviour
     }
     private void OpenPauseMenu()
     {
+        if(!_win)
+        {
+
         if (_pause)
         {
             OpenInGamePanel();
@@ -76,6 +80,7 @@ public class HudManager : MonoBehaviour
             _pausePanel.Show();
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
+        }
         }
     }
     private void OpenMainMenu()
@@ -132,6 +137,7 @@ public class HudManager : MonoBehaviour
 
     private void OpenWinPanel()
     {
+        _win = true;
         CloseAllPanel();
         _winPanel.Show();
     }

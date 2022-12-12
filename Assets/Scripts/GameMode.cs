@@ -14,8 +14,10 @@ public class GameMode : MonoBehaviour
     [SerializeField] EventSO _eventDeath;
     [SerializeField] EventSO _eventRestart;
     [SerializeField] EventSO _eventPause;
+    [SerializeField] EventSO _eventReachLine;
     static bool created = false;
     bool alreadyLoad;
+    bool _win = false;
     void Awake()
     {
         if (!created)
@@ -31,6 +33,9 @@ public class GameMode : MonoBehaviour
 
     private void Pause()
     {
+        if (!_win)
+        {
+
         if (Time.timeScale == 0)
         {
             
@@ -38,6 +43,7 @@ public class GameMode : MonoBehaviour
         }
         else
             Time.timeScale = 0;
+        }
 
     }
 
@@ -47,6 +53,7 @@ public class GameMode : MonoBehaviour
         _eventDeath.OnLaunchEvent += Death;
         _eventRestart.OnLaunchEvent += Restart;
         _eventPause.OnLaunchEvent += Pause;
+        _eventReachLine.OnLaunchEvent += Win;
     }
     private void OnDisable()
     {
@@ -54,11 +61,16 @@ public class GameMode : MonoBehaviour
         _eventDeath.OnLaunchEvent -= Death;
         _eventRestart.OnLaunchEvent -= Restart;
         _eventPause.OnLaunchEvent -= Pause;
+        _eventReachLine.OnLaunchEvent -= Win;
     }
-
+    private void Win()
+    {
+        _win = true;
+    }
     public void StartLevel()
     {
         Time.timeScale = 1;
+        _win = false;
     }
 
     public void Restart()
