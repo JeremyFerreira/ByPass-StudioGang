@@ -8,6 +8,6 @@ public class RestartHUD : MonoBehaviour
 
     public void OnClick()
     {
-        restartEvent.OnLaunchEvent?.Invoke();
+        restartEvent.OnLaunchEvent.Invoke();
     }
 }

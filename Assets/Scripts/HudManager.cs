@@ -33,6 +33,7 @@ public class HudManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI starText;
 
     static bool created = false;
+    bool _pause = false;
     void Awake()
     {
         if (!created)
@@ -61,14 +62,16 @@ public class HudManager : MonoBehaviour
     }
     private void OpenPauseMenu()
     {
-        if (_pausePanel.isActiveAndEnabled)
+        if (_pause)
         {
             OpenInGamePanel();
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            _pause = false;
         }
         else
         {
+            _pause = true;
             CloseAllPanel();
             _pausePanel.Show();
             Cursor.lockState = CursorLockMode.Confined;
@@ -124,6 +127,7 @@ public class HudManager : MonoBehaviour
     {
         CloseAllPanel();
         _InGamePanel.Show();
+        _pause = false;
     }
 
     private void OpenWinPanel()
