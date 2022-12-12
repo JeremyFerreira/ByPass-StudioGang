@@ -12186,6 +12186,18 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9f1d6d3d-dd71-43f2-b738-974ea5a1ca1e
     m_ActionName: InGame/Pause[/XInputControllerWindows/start,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 619bb60e-2755-40d6-b84a-a3ae043805da
+    m_ActionName: UI/Click[/XInputControllerWindows/buttonSouth,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0ea2984b-2458-4396-80df-d964c9e23a3c
+    m_ActionName: UI/Back[/Keyboard/escape,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f0376ebc-dec6-4045-940e-f0bf555da0af
+    m_ActionName: UI/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: InGame
@@ -12228,6 +12240,7 @@ MonoBehaviour:
   audioJump: {fileID: 7910607384627730868}
   audioWalk: {fileID: 8503779224034473265}
   shakeJump: {fileID: 11400000, guid: 960582a992eb96848a8bb39ed7a4f72c, type: 2}
+  wall: {fileID: 0}
   eventPause: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
 --- !u!114 &6328991210479226679
 MonoBehaviour:
@@ -12266,6 +12279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deathEvent: {fileID: 11400000, guid: 2098071988993db488bf1d193b6ee824, type: 2}
+  _winEvent: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
   _StartRunEvent: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
   _eventStopInput: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
   _layersDeath:
