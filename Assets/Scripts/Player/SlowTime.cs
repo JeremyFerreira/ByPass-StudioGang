@@ -11,7 +11,7 @@ public class SlowTime : MonoBehaviour
         { return isSlowTime; }
     [SerializeField] float timeTotal = 3;
     [SerializeField] float timeLeft;
-    [SerializeField] Slider slider;
+    
     [SerializeField] SOInputButton slowTimeInput;
 
     [SerializeField] EventSO startRun;
@@ -21,7 +21,7 @@ public class SlowTime : MonoBehaviour
     [SerializeField] AudioComponent audioSlowTimeStart;
     [SerializeField] AudioComponent audioSlowTimeStop;
     [SerializeField] GlitchEffect glitchEffect;
-
+    [SerializeField] ValueSo slowTimeSliderData;
     bool InPause = false;
 
     private void EnableInput()
@@ -58,11 +58,10 @@ public class SlowTime : MonoBehaviour
     {
         if (!InPause)
         {
-        slider.value = 1-((timeTotal - timeLeft) / timeTotal);
-        Debug.Log(1 - ((timeTotal - timeLeft) / timeTotal));
+            slowTimeSliderData.ChangeValue(1 - (timeTotal - timeLeft) / timeTotal);
             if (isSlowTime)
             {
-                slider.gameObject.SetActive(true);
+                slowTimeSliderData.ChangeBoolValue(true);
                 glitchEffect.enabled = true;
                 Time.timeScale = 0.5f;
                 timeLeft -= Time.unscaledDeltaTime;
@@ -74,7 +73,7 @@ public class SlowTime : MonoBehaviour
             else
             {
                 glitchEffect.enabled = false;
-                slider.gameObject.SetActive(false);
+                slowTimeSliderData.ChangeBoolValue(false);
                 Time.timeScale = 1f;
                 if (timeLeft < timeTotal)
                 {
