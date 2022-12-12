@@ -156,7 +156,7 @@ public class GrapplingGun : MonoBehaviour
 
             SlowTimeMaterial slowTimeMaterial = grappinObject.GetComponent<SlowTimeMaterial>();
             slowTimeMaterial.isUsing = false;
-            if (!slowTimeMaterial.slowTime)
+            if (!slowTimeMaterial.slowTime && WallRunController.Instance.wall != grappinObject)
             {
                 slowTimeMaterial.MatRealime();
             }

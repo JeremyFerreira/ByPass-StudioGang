@@ -69,7 +69,7 @@ public class WallRunController : MonoBehaviour
     SlowTime slowTime;
 
     [SerializeField] ShakeData shakeJump;
-    GameObject wall;
+    public GameObject wall;
     private void EnableInput()
     {
         jumpButton.OnPressed += WallJump;
@@ -165,7 +165,7 @@ public class WallRunController : MonoBehaviour
         // State 1 - Wallrunning
         if ((wallLeft || wallRight) && verticalInput > 0 && AboveGround() && !exitingWall)
         {
-            if (!playerController.wallrunning && slowTime.IsSlowTime())
+            if (!playerController.wallrunning)
                 StartWallRun();
 
             // wallrun timer
