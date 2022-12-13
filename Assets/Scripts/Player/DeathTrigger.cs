@@ -15,7 +15,7 @@ public class DeathTrigger : MonoBehaviour
     [SerializeField] AudioComponent _audioComponent;
     [SerializeField] ShakeData deathShakeData;
 
-    bool _IsAlive;
+    public bool _IsAlive;
     bool _IsWin;
     private void OnEnable()
     {

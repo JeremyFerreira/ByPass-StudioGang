@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 public class PlatformeMove : MonoBehaviour
 {
-    [SerializeField] enum MovementType { horizontal, vertical};
+    [SerializeField] enum MovementType { horizontal, vertical, rotation};
     [SerializeField] MovementType type;
     [SerializeField] float length, speed;
     public float timer = 1;
@@ -31,6 +33,10 @@ public class PlatformeMove : MonoBehaviour
         if (type == MovementType.vertical)
         {
             MoveVertical();
+        }
+        if (type == MovementType.rotation)
+        {
+            Rotate();
         }
     }
     public void MoveHorizontal()
@@ -66,5 +72,9 @@ public class PlatformeMove : MonoBehaviour
             platform.position = Vector3.Lerp(transform.position + transform.up * length, transform.position - transform.up * length, 1 - (timerReset - timer) / timerReset);
         }
 
+    }
+    public void Rotate()
+    {
+        platform.Rotate(new Vector3(0, 1, 0) * speed * Time.deltaTime, Space.Self);
     }
 }
