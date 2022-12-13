@@ -7,8 +7,6 @@ public class HUD : MonoBehaviour
 {
     public PlayerController playerController;
     public GameObject doubleJumpImage;
-    public Image crossHair;
-    public GrapplingGun grapplingGun;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +16,8 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        crossHair.color = grapplingGun.canGrapple ? Color.red : Color.white;
-        if(playerController.CanDoubleJump() && !playerController.IsGrounded())
+        
+        if (playerController.CanDoubleJump() && !playerController.IsGrounded())
         {
             doubleJumpImage.SetActive(true);
         }
