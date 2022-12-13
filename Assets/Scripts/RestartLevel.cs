@@ -23,6 +23,9 @@ public class RestartLevel : MonoBehaviour
         _isAlive = true;
         _isStartRun = false;
         hasRestarted = false;
+#if UNITY_EDITOR
+        restartEvent.OnLaunchEvent.Invoke();
+#endif
     }
     void OnDisable()
     {
