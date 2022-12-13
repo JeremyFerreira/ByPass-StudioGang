@@ -99,6 +99,7 @@ public class Ghost : MonoBehaviour
     {
         StopCoroutineSave();
         _ghostContent.Ghost = _saveGhost;
+        _ghostContent.ValueChange?.Invoke();
     }
 
     private void PauseSaveGhost ()

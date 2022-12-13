@@ -16,19 +16,21 @@ public class PlayfabGhost : MonoBehaviour
     public string NewFileName;
     public int GlobalFileLock = 0;
 
-    public int worldIndex;
 
     void OnSharedFailure(PlayFabError error)
     {
         Debug.LogError(error.GenerateErrorReport());
         GlobalFileLock -= 1;
     }
-    public void SaveGhost(int levelIndex, int worldIndex)
-    { 
+    public void SaveGhost(int worldIndex)
+    {
         GhostSave save = new GhostSave();
-        save.FantomeData.Add(DataManager.Instance.AllWorld[worldIndex].WorldData[levelIndex].GhostPlayer.Ghost);        
+        foreach (var item in DataManager.Instance.AllWorld[worldIndex].WorldData)
+        {
+            save.FantomeData.Add(item.GhostPlayer.Ghost);
+        }             
         string data = JsonUtility.ToJson(save);
-        string filepath = Application.persistentDataPath + "/" + worldIndex.ToString();
+        string filepath = Application.persistentDataPath + "/";
         File.WriteAllText(filepath, data);
 
         UploadFile(worldIndex.ToString());

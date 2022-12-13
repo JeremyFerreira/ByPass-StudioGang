@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class DataManager : MonoBehaviour
     [SerializeField] TimeSO _timer;
 
     [SerializeField] GhostsSO _ghostsToShow;
+    [SerializeField] GhostSO ghostSave;
     [field: SerializeField] public List<World> AllWorld { get; set; }
     private void Awake()
     {
@@ -25,14 +27,39 @@ public class DataManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
     }
+
+
+
     private void OnEnable()
     {
+        ghostSave.ValueChange += SaveGhost;
         _reachFinishLine.OnLaunchEvent += OnFinishLine;
-        //_eventStartRun.OnLaunchEvent += ;
+        _eventStartRun.OnLaunchEvent += AddGhost;
     }
+
+    private void SaveGhost()
+    {
+        for (int i = 0; i < AllWorld.Count; i++)
+        {
+            for (int j = 0; j < AllWorld[i].WorldData.Count; j++)
+            {
+                if (AllWorld[i].WorldData[j].MapName == ghostSave.Ghost.LevelName)
+                {
+                    GhostSO ghost = ScriptableObject.CreateInstance<GhostSO>();
+                    ghost.Ghost = ghostSave.Ghost;
+                    AllWorld[i].WorldData[j].GhostPlayer = ghost;
+
+                    PlayfabGhost.Instance.SaveGhost(i);
+                }
+            }
+        }
+    }
+
     private void OnDisable()
     {
+        ghostSave.ValueChange -= SaveGhost;
         _reachFinishLine.OnLaunchEvent -= OnFinishLine;
+        _eventStartRun.OnLaunchEvent += AddGhost;
     }
 
     private void OnFinishLine()
@@ -40,6 +67,12 @@ public class DataManager : MonoBehaviour
         StartCoroutine(Wait());
     }
 
+    private void AddGhost()
+    {
+        SceneSO data = GetSceneData(SceneManager.GetActiveScene().buildIndex);
+        if (data.GhostPlayer != null)
+            _ghostsToShow.AddGhostPlayer(data.GhostPlayer.Ghost);
+    }
 
 
     private void ReachFinishLine()
@@ -50,6 +83,7 @@ public class DataManager : MonoBehaviour
         { 
             data.BestTime = _timer.TotalTime;
             _eventBestScore.OnLauchEventSceneSO?.Invoke(data);
+            _eventBestScore.OnLaunchEvent?.Invoke();
         }
         else
         {
