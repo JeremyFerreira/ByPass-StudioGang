@@ -100,10 +100,10 @@ public class World
 [System.Serializable]
 public class GhostSave
 {
-    public List<GhostClass> FantomeData;
+    public List<DataGhost> FantomeData;
 
     public GhostSave()
     {
-        FantomeData = new List<GhostClass>();
+        FantomeData = new List<DataGhost>();
     }
 }
