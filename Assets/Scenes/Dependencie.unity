@@ -318,6 +318,8 @@ MonoBehaviour:
   _eventRestart: {fileID: 11400000, guid: a51d14a2ad7fc6a43b313db9a9134386, type: 2}
   _eventPause: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
   _eventReachLine: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
+  _enableInput: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
+  _desactiveInput: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
 --- !u!4 &1279336314
 Transform:
   m_ObjectHideFlags: 0

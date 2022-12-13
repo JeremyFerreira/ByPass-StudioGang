@@ -16,6 +16,9 @@ public class GameMode : MonoBehaviour
     [SerializeField] EventSO _eventRestart;
     [SerializeField] EventSO _eventPause;
     [SerializeField] EventSO _eventReachLine;
+
+    [SerializeField] EventSO _enableInput;
+    [SerializeField] EventSO _desactiveInput;
     static bool created = false;
     bool alreadyLoad;
     bool _win = false;
@@ -39,10 +42,14 @@ public class GameMode : MonoBehaviour
 
             if (Time.timeScale == 0)
             {
+                _enableInput.OnLaunchEvent?.Invoke();
                 Time.timeScale = 1;
             }
             else
+            {
+                _desactiveInput.OnLaunchEvent?.Invoke();
                 Time.timeScale = 0;
+            }
         }
 
     }
