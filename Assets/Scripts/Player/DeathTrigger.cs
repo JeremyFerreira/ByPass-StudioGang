@@ -17,6 +17,7 @@ public class DeathTrigger : MonoBehaviour
 
     public bool _IsAlive;
     bool _IsWin;
+    [SerializeField] RestartLevel restart;
     private void OnEnable()
     {
         _StartRunEvent.OnLaunchEvent += Initialized;
@@ -43,8 +44,12 @@ public class DeathTrigger : MonoBehaviour
             if (_IsAlive && !_IsWin)
             {
                 _IsAlive = false;
-                _deathEvent.OnLaunchEvent?.Invoke();
-                _eventStopInput.OnLaunchEvent?.Invoke();
+                if(!restart.hasRestarted)
+                {
+                    _deathEvent.OnLaunchEvent?.Invoke();
+                    _eventStopInput.OnLaunchEvent?.Invoke();
+                }
+               
                 _audioComponent.PlayAudioCue();
                 CameraShakeManager.instance.Shake(deathShakeData);
             }

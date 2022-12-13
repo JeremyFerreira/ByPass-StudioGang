@@ -10,6 +10,7 @@ public class RestartLevel : MonoBehaviour
     [SerializeField] EventSO startRun;
     bool _isStartRun;
     bool _isAlive;
+    public bool hasRestarted;
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -21,6 +22,7 @@ public class RestartLevel : MonoBehaviour
     {
         _isAlive = true;
         _isStartRun = false;
+        hasRestarted = false;
     }
     void OnDisable()
     {
@@ -34,6 +36,7 @@ public class RestartLevel : MonoBehaviour
         {
             restartEvent.OnLaunchEvent.Invoke();
         }
+        hasRestarted = true;
     }
     private void Dead()
     {
