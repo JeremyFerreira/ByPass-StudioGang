@@ -98,6 +98,7 @@ public class Ghost : MonoBehaviour
     private void SaveGhostinContent ()
     {
         StopCoroutineSave();
+        SaveTimeAndPositionGhost();
         _ghostContent.Ghost = _saveGhost;
         _ghostContent.ValueChange?.Invoke();
     }
