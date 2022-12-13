@@ -38,6 +38,7 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] AudioComponent audioGrappinStart;
     [SerializeField] AudioComponent audioGrappinStop;
     [SerializeField] AudioComponent audioGrappinFail;
+    [SerializeField] AudioComponent audioGrappinLock;
     [SerializeField] ShakeData shakeStart;
     [SerializeField] ShakeData shakeStop;
     [SerializeField] Animator grappinAnim;
@@ -95,11 +96,13 @@ public class GrapplingGun : MonoBehaviour
         {
             crossHair.CrossFade("CrossHairViser", 0, 0);
             hasViser = true;
+            audioGrappinLock.PlayAudioCue();
         }
         if (!canGrapple && !isGrappling && hasViser)
         {
             crossHair.CrossFade("CrossHairViserInverse", 0, 0);
             hasViser = false;
+            audioGrappinLock.PlayAudioCue();
         }
     }
     private void FixedUpdate()

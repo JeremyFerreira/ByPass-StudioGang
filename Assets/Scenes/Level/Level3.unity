@@ -9109,8 +9109,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 6354751513228611186}
   doubleJumpImage: {fileID: 2057568330}
-  crossHair: {fileID: 766759583}
-  grapplingGun: {fileID: 3523645107714208785}
 --- !u!4 &2146785221 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4393639090816792192, guid: fc43a9b22cd2b014aaa7cedf2c48e627, type: 3}
@@ -9181,17 +9179,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bacc2d39440ba94196889dce6dc0f15, type: 3}
---- !u!114 &3523645107714208785 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4883337611559792534, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
-  m_PrefabInstance: {fileID: 8296643306239712135}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8df7ff7466b29fc4797d6a653567c8e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &4393639090065523322 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3289222623041009272, guid: 8bacc2d39440ba94196889dce6dc0f15, type: 3}
@@ -9223,18 +9210,6 @@ PrefabInstance:
       propertyPath: startRun
       value: 
       objectReference: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
-    - target: {fileID: 8296643305859675892, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.4056604
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296643305859675892, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.4056604
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296643305859675892, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.4056604
-      objectReference: {fileID: 0}
     - target: {fileID: 8296643307644315252, guid: 15e974798e81b4e48856f93a8cd701af, type: 3}
       propertyPath: m_RootOrder
       value: 0
