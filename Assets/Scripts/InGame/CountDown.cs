@@ -13,9 +13,10 @@ public class CountDown : MonoBehaviour
 
     AudioComponent _audioComponent;
 
-    int count;
+    int count = 0;
     private void Awake()
     {
+        count = 0;
         _audioComponent = GetComponent<AudioComponent>();
     }
     private void OnEnable()
