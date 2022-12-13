@@ -7,6 +7,8 @@ public class Ghost : MonoBehaviour
 {
     [SerializeField]
     private GhostsSO _ghostsToShow;
+    [SerializeField]
+    private GameObject _ghostToShowView;
 
     [SerializeField]
     private TimeSO _timerData;
@@ -66,8 +68,9 @@ public class Ghost : MonoBehaviour
         for(int i = 0; i<_ghostsToShow.ghostsToShow.Count;i++)
         {
             GameObject ghostSpawn = new GameObject("ghosts" + i, typeof(GhostController));
+            Instantiate(_ghostToShowView, Vector3.zero, Quaternion.identity, ghostSpawn.transform);
             GhostController ghostSpawnController = ghostSpawn.GetComponent<GhostController>();
-            ghostSpawnController.InitGhostController(_ghostsToShow.ghostsToShow[i]);
+            ghostSpawnController.InitGhostController(_ghostsToShow.ghostsToShow[i], _timerData, _eventStartRun,_eventPause);
         }
     }
     #endregion

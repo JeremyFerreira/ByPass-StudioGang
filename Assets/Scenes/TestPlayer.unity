@@ -2729,6 +2729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ghostsToShow: {fileID: 11400000, guid: 44576b89e3d563346bedb97d1d68dce0, type: 2}
+  _ghostToShowView: {fileID: 0}
   _timerData: {fileID: 11400000, guid: dce7fafda4b56e341906c5311c2b0cfb, type: 2}
   _eventStartRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
   _eventReachFinshLine: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
@@ -2736,9 +2737,6 @@ MonoBehaviour:
   _ghostContent: {fileID: 11400000, guid: 046047311093c0844a88df579c213095, type: 2}
   _playerTransform: {fileID: 6354751513228611187}
   _recurenceSave: 1
-  _saveGhost:
-    _transfomPlayer: []
-    _timeTransforme: []
 --- !u!4 &1732678136
 Transform:
   m_ObjectHideFlags: 0
