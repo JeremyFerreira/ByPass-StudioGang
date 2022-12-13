@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GrapplingGun : MonoBehaviour
 {
+    public static GrapplingGun instance;
     [SerializeField] float forcePull;
     //The distance grapple will try to keep from grapple point. 
     [SerializeField] float maxDistance;
@@ -45,7 +46,7 @@ public class GrapplingGun : MonoBehaviour
 
     private bool InPause = false;
 
-    GameObject grappinObject;
+    public GameObject grappinObject;
     private void EnableInput()
     {
         grapplingInput.OnPressed += StartGrapple;
@@ -80,7 +81,10 @@ public class GrapplingGun : MonoBehaviour
         eventPause.OnLaunchEvent -= Pause;
         DisableInput();
     }
-
+    private void Awake()
+    {
+        instance = this;
+    }
     void Update()
     {
         playerController.SetGrappin(isGrappling);
@@ -160,6 +164,7 @@ public class GrapplingGun : MonoBehaviour
             {
                 slowTimeMaterial.MatRealime();
             }
+            grappinObject = null;
         }
 
 

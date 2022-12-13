@@ -5,17 +5,18 @@ using UnityEngine.UIElements;
 
 public class PlatformeMove : MonoBehaviour
 {
-    [SerializeField] enum MovementType { horizontal, rotate, vertical};
+    [SerializeField] enum MovementType { horizontal, vertical};
     [SerializeField] MovementType type;
     [SerializeField] float length, speed;
     public float timer = 1;
     float timerReset;
     public Transform platform;
     bool goLeft;
+
     // Start is called before the first frame update
     void Start()
     {
-        timerReset = timer;
+        timerReset = 1;
         platform.parent = null;
     }
 
@@ -26,6 +27,10 @@ public class PlatformeMove : MonoBehaviour
         if(type == MovementType.horizontal)
         {
             MoveHorizontal();
+        }
+        if (type == MovementType.vertical)
+        {
+            MoveVertical();
         }
     }
     public void MoveHorizontal()
@@ -44,5 +49,22 @@ public class PlatformeMove : MonoBehaviour
             platform.position = Vector3.Lerp(transform.position + transform.right * length , transform.position - transform.right * length, 1 - (timerReset - timer) / timerReset);
         }
         
+    }
+    public void MoveVertical()
+    {
+        if (timer <= 0)
+        {
+            goLeft = !goLeft;
+            timer = timerReset;
+        }
+        if (goLeft)
+        {
+            platform.position = Vector3.Lerp(transform.position - transform.up * length, transform.position + transform.up * length, 1 - (timerReset - timer) / timerReset);
+        }
+        else
+        {
+            platform.position = Vector3.Lerp(transform.position + transform.up * length, transform.position - transform.up * length, 1 - (timerReset - timer) / timerReset);
+        }
+
     }
 }
