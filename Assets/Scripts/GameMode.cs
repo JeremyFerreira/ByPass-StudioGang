@@ -71,12 +71,14 @@ public class GameMode : MonoBehaviour
     {
         Time.timeScale = 1;
         _win = false;
+        alreadyLoad = false;
     }
 
     public void Restart()
     {
         if (!alreadyLoad)
         {
+            alreadyLoad = true;
             StartCoroutine(LoadScene());
         }
     }
@@ -94,7 +96,7 @@ public class GameMode : MonoBehaviour
 
     IEnumerator LoadScene()
     {
-        alreadyLoad = true;
+
         AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         while (!operation.isDone)
         {
@@ -103,7 +105,6 @@ public class GameMode : MonoBehaviour
         Debug.Log(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
         _eventStartLevel.OnLaunchEvent?.Invoke();
-        alreadyLoad = false;
     }
 }
 
