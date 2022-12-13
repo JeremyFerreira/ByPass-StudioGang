@@ -100,6 +100,7 @@ public class Ghost : MonoBehaviour
         StopCoroutineSave();
         SaveTimeAndPositionGhost();
         _ghostContent.Ghost = _saveGhost;
+        Debug.Log("J'ai save le fantome");
         _ghostContent.ValueChange?.Invoke();
     }
 
@@ -121,7 +122,6 @@ public class Ghost : MonoBehaviour
     {
         do
         {
-            Debug.Log("je suis appeler");
             SaveTimeAndPositionGhost();
             yield return new WaitForSeconds(_recurenceSave);
         }
