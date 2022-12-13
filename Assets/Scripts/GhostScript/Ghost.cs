@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class Ghost : MonoBehaviour
 {
     [SerializeField]
+    private GhostsSO _ghostsToShow;
+
+    [SerializeField]
     private TimeSO _timerData;
 
     [SerializeField]
@@ -24,8 +27,8 @@ public class Ghost : MonoBehaviour
     #region Save Variables
     [SerializeField]
     private float _recurenceSave;
-    [SerializeField] private DataGhost _saveGhost;
-    private bool _stopSave;
+    private DataGhost _saveGhost;
+    private bool _save;
     private bool _pause;
     #endregion
 
@@ -45,9 +48,10 @@ public class Ghost : MonoBehaviour
     #region Fonction Init
     private void InitGhost ()
     {
+        InitGhostsToShow();
         InitEvents();
         _saveGhost = new DataGhost(DataManager.Instance.GetSceneData(SceneManager.GetActiveScene().buildIndex).ToString());
-        _stopSave = true;
+        _save = true;
     }
 
     private void InitEvents ()
@@ -55,6 +59,16 @@ public class Ghost : MonoBehaviour
         _eventStartRun.OnLaunchEvent += StartCoroutineSave;
         _eventReachFinshLine.OnLaunchEvent += SaveGhostinContent;
         _eventPause.OnLaunchEvent += PauseSaveGhost;
+    }
+
+    private void InitGhostsToShow ()
+    {
+        for(int i = 0; i<_ghostsToShow.ghostsToShow.Count;i++)
+        {
+            GameObject ghostSpawn = new GameObject("ghosts" + i, typeof(GhostController));
+            GhostController ghostSpawnController = ghostSpawn.GetComponent<GhostController>();
+            ghostSpawnController.InitGhostController(_ghostsToShow.ghostsToShow[i]);
+        }
     }
     #endregion
 
@@ -68,13 +82,13 @@ public class Ghost : MonoBehaviour
     #region Coroutine Gestion Save
     private void StartCoroutineSave ()
     {
-        _stopSave = true;
+        _save = true;
         StartCoroutine(CoroutineSaveTime());
     }
 
     private void StopCoroutineSave ()
     {
-        _stopSave = false;
+        _save = false;
         StopAllCoroutines();
     }
 
@@ -106,7 +120,7 @@ public class Ghost : MonoBehaviour
             SaveTimeAndPositionGhost();
             yield return new WaitForSeconds(_recurenceSave);
         }
-        while (_stopSave);
+        while (_save);
     }
     #endregion
 

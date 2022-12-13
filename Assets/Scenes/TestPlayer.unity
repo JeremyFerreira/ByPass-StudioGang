@@ -2728,6 +2728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc1e1373ebbc9e41bfca3b5189c43b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ghostsToShow: {fileID: 11400000, guid: 44576b89e3d563346bedb97d1d68dce0, type: 2}
   _timerData: {fileID: 11400000, guid: dce7fafda4b56e341906c5311c2b0cfb, type: 2}
   _eventStartRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
   _eventReachFinshLine: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
