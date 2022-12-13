@@ -243,19 +243,12 @@ public class WallRunController : MonoBehaviour
         // forward force
         rb.AddForce(wallForward * wallRunForce, ForceMode.Force);
 
-        // upwards/downwards force
-        if (upwardsRunning)
-            rb.velocity = new Vector3(rb.velocity.x, wallClimbSpeed, rb.velocity.z);
-        if (downwardsRunning)
-            rb.velocity = new Vector3(rb.velocity.x, -wallClimbSpeed, rb.velocity.z);
-
         // push to wall force
         if (!(wallLeft && horizontalInput > 0) && !(wallRight && horizontalInput < 0))
             rb.AddForce(-wallNormal * 100, ForceMode.Force);
 
-        // weaken gravity
-        if (useGravity)
-            rb.AddForce(transform.up * gravityCounterForce, ForceMode.Force);
+        rb.velocity = new Vector3(rb.velocity.x,0,rb.velocity.z);
+
     }
 
     private void StopWallRun()
@@ -269,12 +262,11 @@ public class WallRunController : MonoBehaviour
         stopWallRun = true;
         SlowTimeMaterial slowTimeMaterial = wall.GetComponent<SlowTimeMaterial>();
         slowTimeMaterial.isUsing = false;
-        if(!slowTimeMaterial.slowTime)
+        if (!slowTimeMaterial.slowTime && GrapplingGun.instance.grappinObject != wall)
         {
             slowTimeMaterial.MatRealime();
         }
-        
-
+        wall = null;
     }
 
     public void WallJump()
