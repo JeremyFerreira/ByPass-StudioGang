@@ -11551,7 +11551,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4087
+    m_Bits: 12279
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -12009,7 +12009,10 @@ MonoBehaviour:
   playerHeight: 1.5
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 576
+    m_Bits: 8768
+  whatIsMovableGround:
+    serializedVersion: 2
+    m_Bits: 8192
   timeToJump: 0.25
   canJump: 0
   orientation: {fileID: 8296643305863257373}
@@ -12303,8 +12306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0fb8f8bc3647ef4b8bc85ec5eeecb4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeTotal: 6
-  timeLeft: 6
   slowTimeInput: {fileID: 11400000, guid: d2ef8f050695cf247b6b209f6f335d3a, type: 2}
   startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
   stopRun: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}

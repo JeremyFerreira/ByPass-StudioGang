@@ -9,8 +9,6 @@ public class SlowTime : MonoBehaviour
     bool isSlowTime;
     public bool IsSlowTime()
         { return isSlowTime; }
-    [SerializeField] float timeTotal = 3;
-    [SerializeField] float timeLeft;
     
     [SerializeField] SOInputButton slowTimeInput;
 
@@ -50,10 +48,6 @@ public class SlowTime : MonoBehaviour
         stopRun.OnLaunchEvent -= DisableInput;
         pauseEvent.OnLaunchEvent -= Pause;
         DisableInput();
-    }
-    private void Start()
-    {
-        timeLeft = timeTotal;
     }
     // Update is called once per frame
     void Update()
