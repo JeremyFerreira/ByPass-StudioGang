@@ -8,6 +8,7 @@ public class DataManager : MonoBehaviour
     public static DataManager Instance;
     [SerializeField] EventSO _reachFinishLine;
     [SerializeField] EventSO _eventBestScore;
+    [SerializeField] EventSO _getPosPlayer;
     [SerializeField] TimeSO _timer;
     [field: SerializeField] public List<World> AllWorld { get; set; }
     private void Awake()
@@ -41,15 +42,14 @@ public class DataManager : MonoBehaviour
     {
         SceneSO data = DataManager.Instance.GetSceneData(SceneManager.GetActiveScene().buildIndex);
 
-        if (data.BestTime == 0)
+        if (data.BestTime == 0 || _timer.TotalTime < data.BestTime)
         { 
             data.BestTime = _timer.TotalTime;
             _eventBestScore.OnLauchEventSceneSO?.Invoke(data);
         }
-        if (_timer.TotalTime < data.BestTime)
+        else
         {
-            data.BestTime = _timer.TotalTime;
-            _eventBestScore.OnLauchEventSceneSO?.Invoke(data);
+            _getPosPlayer.OnLaunchEvent?.Invoke();
         }
     }
 
