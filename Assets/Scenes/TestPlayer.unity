@@ -2732,7 +2732,7 @@ MonoBehaviour:
   _ghostToShowView: {fileID: 0}
   _timerData: {fileID: 11400000, guid: dce7fafda4b56e341906c5311c2b0cfb, type: 2}
   _eventStartRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
-  _eventReachFinshLine: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
+  _eventBestScore: {fileID: 11400000, guid: 2b06790e32da4ea44b218f8efa59d767, type: 2}
   _eventPause: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
   _ghostContent: {fileID: 11400000, guid: 046047311093c0844a88df579c213095, type: 2}
   _playerTransform: {fileID: 6354751513228611187}

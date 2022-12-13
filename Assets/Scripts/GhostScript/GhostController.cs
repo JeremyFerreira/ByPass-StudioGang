@@ -118,4 +118,10 @@ public class GhostController : MonoBehaviour
             }
         }
     }
+
+    private void OnDisable()
+    {
+        _eventStartRun.OnLaunchEvent -= StartReproduce;
+        _pauseEvent.OnLaunchEvent -= PauseReproduce;
+    }
 }

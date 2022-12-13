@@ -16,7 +16,7 @@ public class Ghost : MonoBehaviour
     [SerializeField]
     private EventSO _eventStartRun;
     [SerializeField]
-    private EventSO _eventReachFinshLine;
+    private EventSO _eventBestScore;
     [SerializeField]
     private EventSO _eventPause;
 
@@ -59,7 +59,7 @@ public class Ghost : MonoBehaviour
     private void InitEvents ()
     {
         _eventStartRun.OnLaunchEvent += StartCoroutineSave;
-        _eventReachFinshLine.OnLaunchEvent += SaveGhostinContent;
+        _eventBestScore.OnLaunchEvent += SaveGhostinContent;
         _eventPause.OnLaunchEvent += PauseSaveGhost;
     }
 
@@ -130,7 +130,7 @@ public class Ghost : MonoBehaviour
     private void OnDisable()
     {
         _eventStartRun.OnLaunchEvent -= StartCoroutineSave;
-        _eventReachFinshLine.OnLaunchEvent -= SaveGhostinContent;
+        _eventBestScore.OnLaunchEvent -= SaveGhostinContent;
         _eventPause.OnLaunchEvent -= PauseSaveGhost;
     }
 }
