@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     [Space(10)]
     [SerializeField] float playerHeight;
     [SerializeField] LayerMask whatIsGround;
+    [SerializeField] LayerMask whatIsMovableGround;
     bool grounded;
     bool behindGround;
     public bool IsGrounded() { return grounded; }
@@ -308,6 +309,15 @@ public class PlayerController : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, col.height * 0.5f + Physics.defaultContactOffset * 3, whatIsGround);
         behindGround = Physics.Raycast(transform.position - (Vector3.up * 0.3f), moveDirection.normalized, playerHeight, whatIsGround) || Physics.Raycast(transform.position + (Vector3.up * 0.3f), moveDirection.normalized, playerHeight, whatIsGround);
 
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, Vector3.down,out hit, col.height * 0.5f + Physics.defaultContactOffset * 3, whatIsMovableGround))
+        {
+            col.gameObject.transform.SetParent(hit.transform, true);
+        }
+        else
+        {
+            transform.parent = null;
+        }
         hasJustLanded = grounded && playerYposLastFrame > transform.position.y + 0.05f;
         playerYposLastFrame = transform.position.y;
         if (hasJustLanded && hasJustLandedTemp)
