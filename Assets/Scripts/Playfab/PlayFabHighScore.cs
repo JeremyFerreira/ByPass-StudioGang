@@ -13,6 +13,7 @@ public class PlayFabHighScore : MonoBehaviour
     [SerializeField] EventSO NewHighScoreEvent;
     [SerializeField] EventSO _eventChangePos;
     [SerializeField] EventSO _eventOnReachLine;
+    [SerializeField] EventSO _getPosPlayer;
 
     [SerializeField] EventSO eventGetLeaderboardAroundPlayer;
     [SerializeField] EventSO leaderBoardTop;
@@ -35,8 +36,7 @@ public class PlayFabHighScore : MonoBehaviour
     private void OnEnable()
     {
         NewHighScoreEvent.OnLauchEventSceneSO += NewHighScore;
-        _eventOnReachLine.OnLaunchEvent += GetPosPlayer;
-
+        _getPosPlayer.OnLaunchEvent += GetPosPlayer;
         eventGetLeaderboardAroundPlayer.OnLauchEventSceneSO += GetLeaderBoardAroundPlayer;
         leaderBoardTop.OnLauchEventSceneSO += GetTopLeaderBord;
         leaderBoardFriend.OnLauchEventSceneSO += GetFriendLeaderBoard;
@@ -45,7 +45,7 @@ public class PlayFabHighScore : MonoBehaviour
     private void OnDisable()
     {
         NewHighScoreEvent.OnLauchEventSceneSO -= NewHighScore;
-        _eventOnReachLine.OnLaunchEvent -= GetPosPlayer;
+        _getPosPlayer.OnLaunchEvent -= GetPosPlayer;
 
         eventGetLeaderboardAroundPlayer.OnLauchEventSceneSO -= GetLeaderBoardAroundPlayer;
         leaderBoardTop.OnLauchEventSceneSO -= GetTopLeaderBord;

@@ -247,6 +247,7 @@ MonoBehaviour:
   NewHighScoreEvent: {fileID: 11400000, guid: 2b06790e32da4ea44b218f8efa59d767, type: 2}
   _eventChangePos: {fileID: 11400000, guid: d81492798a253fb48aac7d27d5e229e7, type: 2}
   _eventOnReachLine: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
+  _getPosPlayer: {fileID: 11400000, guid: cb03748ccc65fc24f89b6b8d8032d6a2, type: 2}
   eventGetLeaderboardAroundPlayer: {fileID: 11400000, guid: 84c4abd5d69cedb4683949ab06079b36, type: 2}
   leaderBoardTop: {fileID: 11400000, guid: 1cb55454935329647a0827d9e59d65ab, type: 2}
   leaderBoardFriend: {fileID: 11400000, guid: 04144748cdd61cf429602d939392ca18, type: 2}
@@ -317,7 +318,6 @@ MonoBehaviour:
   _eventRestart: {fileID: 11400000, guid: a51d14a2ad7fc6a43b313db9a9134386, type: 2}
   _eventPause: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
   _eventReachLine: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
-  playerInput: {fileID: 1279336315}
 --- !u!4 &1279336314
 Transform:
   m_ObjectHideFlags: 0
@@ -731,6 +731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _reachFinishLine: {fileID: 11400000, guid: b8878e4ec400a154985c796c03b5c38d, type: 2}
   _eventBestScore: {fileID: 11400000, guid: 2b06790e32da4ea44b218f8efa59d767, type: 2}
+  _getPosPlayer: {fileID: 11400000, guid: cb03748ccc65fc24f89b6b8d8032d6a2, type: 2}
   _timer: {fileID: 11400000, guid: dce7fafda4b56e341906c5311c2b0cfb, type: 2}
   <AllWorld>k__BackingField:
   - WorldData:
@@ -116645,49 +116646,37 @@ MonoBehaviour:
           m_Calls: []
   Behaviours:
     Behaviours:
-    - EventName: PointerEnter
-      Runners: []
-      Event:
-        m_PersistentCalls:
-          m_Calls: []
-      BehaviourName: 0
-      Receiver:
-        ConnectionMode: 1
-        SignalProviderId:
-          Type: 0
-          Category: Pointer
-          Name: Enter
-        ProviderReference: {fileID: 0}
-        StreamId:
-          Category: None
-          Name: None
-          Custom: 0
-      Cooldown: 0
-      Selectable: {fileID: 2349967973619230065}
-    - EventName: PointerExit
-      Runners: []
-      Event:
-        m_PersistentCalls:
-          m_Calls: []
-      BehaviourName: 1
-      Receiver:
-        ConnectionMode: 1
-        SignalProviderId:
-          Type: 0
-          Category: Pointer
-          Name: Exit
-        ProviderReference: {fileID: 0}
-        StreamId:
-          Category: None
-          Name: None
-          Custom: 0
-      Cooldown: 0
-      Selectable: {fileID: 2349967973619230065}
     - EventName: PointerClick
       Runners: []
       Event:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 2349967973813925120}
+            m_TargetAssemblyTypeName: Doozy.Runtime.UIManager.Containers.UIContainer,
+              DoozyRuntime
+            m_MethodName: Hide
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 2349967974137267918}
+            m_TargetAssemblyTypeName: Doozy.Runtime.UIManager.Containers.UIContainer,
+              DoozyRuntime
+            m_MethodName: Show
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       BehaviourName: 4
       Receiver:
         ConnectionMode: 1
