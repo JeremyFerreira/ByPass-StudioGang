@@ -5,4 +5,7 @@ using UnityEngine;
 public class GhostSO : ScriptableObject
 {
     [field: SerializeField]public DataGhost Ghost { get; set; }
+    public delegate void OnValueChange();
+    public OnValueChange ValueChange;
+
 }

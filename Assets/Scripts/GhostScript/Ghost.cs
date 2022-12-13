@@ -7,6 +7,8 @@ public class Ghost : MonoBehaviour
 {
     [SerializeField]
     private GhostsSO _ghostsToShow;
+    [SerializeField]
+    private GameObject _ghostToShowView;
 
     [SerializeField]
     private TimeSO _timerData;
@@ -14,7 +16,7 @@ public class Ghost : MonoBehaviour
     [SerializeField]
     private EventSO _eventStartRun;
     [SerializeField]
-    private EventSO _eventReachFinshLine;
+    private EventSO _eventBestScore;
     [SerializeField]
     private EventSO _eventPause;
 
@@ -57,7 +59,7 @@ public class Ghost : MonoBehaviour
     private void InitEvents ()
     {
         _eventStartRun.OnLaunchEvent += StartCoroutineSave;
-        _eventReachFinshLine.OnLaunchEvent += SaveGhostinContent;
+        _eventBestScore.OnLaunchEvent += SaveGhostinContent;
         _eventPause.OnLaunchEvent += PauseSaveGhost;
     }
 
@@ -66,8 +68,9 @@ public class Ghost : MonoBehaviour
         for(int i = 0; i<_ghostsToShow.ghostsToShow.Count;i++)
         {
             GameObject ghostSpawn = new GameObject("ghosts" + i, typeof(GhostController));
+            Instantiate(_ghostToShowView, Vector3.zero, Quaternion.identity, ghostSpawn.transform);
             GhostController ghostSpawnController = ghostSpawn.GetComponent<GhostController>();
-            ghostSpawnController.InitGhostController(_ghostsToShow.ghostsToShow[i]);
+            ghostSpawnController.InitGhostController(_ghostsToShow.ghostsToShow[i], _timerData, _eventStartRun,_eventPause);
         }
     }
     #endregion
@@ -96,6 +99,7 @@ public class Ghost : MonoBehaviour
     {
         StopCoroutineSave();
         _ghostContent.Ghost = _saveGhost;
+        _ghostContent.ValueChange?.Invoke();
     }
 
     private void PauseSaveGhost ()
@@ -127,7 +131,7 @@ public class Ghost : MonoBehaviour
     private void OnDisable()
     {
         _eventStartRun.OnLaunchEvent -= StartCoroutineSave;
-        _eventReachFinshLine.OnLaunchEvent -= SaveGhostinContent;
+        _eventBestScore.OnLaunchEvent -= SaveGhostinContent;
         _eventPause.OnLaunchEvent -= PauseSaveGhost;
     }
 }
