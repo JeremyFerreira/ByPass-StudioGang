@@ -39,7 +39,6 @@ public class GameMode : MonoBehaviour
     {
         if (!_win)
         {
-
             if (Time.timeScale == 0)
             {
                 _enableInput.OnLaunchEvent?.Invoke();

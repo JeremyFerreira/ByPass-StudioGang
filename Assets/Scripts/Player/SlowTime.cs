@@ -9,11 +9,8 @@ public class SlowTime : MonoBehaviour
     bool isSlowTime;
     public bool IsSlowTime()
         { return isSlowTime; }
-    
-    [SerializeField] SOInputButton slowTimeInput;
 
-    [SerializeField] EventSO startRun;
-    [SerializeField] EventSO stopRun;
+    Input input;
     [SerializeField] EventSO pauseEvent;
 
     [SerializeField] AudioComponent audioSlowTimeStart;
@@ -24,36 +21,28 @@ public class SlowTime : MonoBehaviour
     [SerializeField] EventSO slowTimeStopEvent;
     bool InPause = false;
 
-    private void EnableInput()
-    {
-        slowTimeInput.OnPressed += StartSlowTime;
-        slowTimeInput.OnReleased += StopSlowTime;
-        
-    }
-    private void DisableInput()
-    {
-        slowTimeInput.OnPressed -= StartSlowTime;
-        slowTimeInput.OnReleased -= StopSlowTime;
-    }
     private void OnEnable()
     {
-        startRun.OnLaunchEvent += EnableInput;
-        stopRun.OnLaunchEvent += DisableInput;
-        pauseEvent.OnLaunchEvent += Pause;
+        input = InputManager.Input;
+        if(input != null)
+        {
+            input.InGame.SlowTime.performed += context => StartSlowTime();
+            input.InGame.SlowTime.canceled += context => StopSlowTime();
+
+            pauseEvent.OnLaunchEvent += Pause;
+        }
     }
 
     private void OnDisable()
     {
-        startRun.OnLaunchEvent -= EnableInput;
-        stopRun.OnLaunchEvent -= DisableInput;
-        pauseEvent.OnLaunchEvent -= Pause;
-        DisableInput();
+        if (input != null)
+        {
+            input.InGame.SlowTime.performed -= context => StartSlowTime();
+            input.InGame.SlowTime.canceled -= context => StopSlowTime();
+            pauseEvent.OnLaunchEvent -= Pause;
+        }
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     public void StartSlowTime()
     {
         if (!InPause)
