@@ -322,7 +322,6 @@ public class PlayerController : MonoBehaviour
         playerYposLastFrame = transform.position.y;
         if (hasJustLanded && hasJustLandedTemp)
         {
-            Debug.Log("landed");
             CameraShakeManager.instance.Shake(landedShake);
             audioLanded.PlayAudioCue();
             hasJustLanded = false;
