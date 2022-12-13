@@ -10,7 +10,7 @@ public class GameMode : MonoBehaviour
 {
     [SerializeField] bool _haveAlreadySeeCinematique;
     [SerializeField] GameState _gameState;
-    [SerializeField] EventSO _eventStartLevel;  
+    [SerializeField] EventSO _eventStartLevel;
     [SerializeField] EventSO _eventStartCinematique;
     [SerializeField] EventSO _eventDeath;
     [SerializeField] EventSO _eventRestart;
@@ -37,12 +37,12 @@ public class GameMode : MonoBehaviour
         if (!_win)
         {
 
-        if (Time.timeScale == 0)
-        {
+            if (Time.timeScale == 0)
+            {
                 Time.timeScale = 1;
-        }
-        else
-            Time.timeScale = 0;
+            }
+            else
+                Time.timeScale = 0;
         }
 
     }
@@ -75,7 +75,10 @@ public class GameMode : MonoBehaviour
 
     public void Restart()
     {
-        StartCoroutine(LoadScene());
+        if (!alreadyLoad)
+        {
+            StartCoroutine(LoadScene());
+        }
     }
 
     public void Death()
@@ -91,23 +94,19 @@ public class GameMode : MonoBehaviour
 
     IEnumerator LoadScene()
     {
-        if (!alreadyLoad)
-        {
-            alreadyLoad = true;
+        alreadyLoad = true;
         AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         while (!operation.isDone)
         {
             yield return null;
         }
-            Debug.Log(SceneManager.GetActiveScene().name);
-            Time.timeScale = 1;
-            _eventStartLevel.OnLaunchEvent?.Invoke();
-            alreadyLoad = false;
-        }    
+        Debug.Log(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
+        _eventStartLevel.OnLaunchEvent?.Invoke();
+        alreadyLoad = false;
     }
-
-
 }
+
 
 public enum GameState
 {
