@@ -52,7 +52,7 @@ public class Ghost : MonoBehaviour
     {
         InitGhostsToShow();
         InitEvents();
-        _saveGhost = new DataGhost(DataManager.Instance.GetSceneData(SceneManager.GetActiveScene().buildIndex).ToString());
+        _saveGhost = new DataGhost(DataManager.Instance.GetSceneData(SceneManager.GetActiveScene().buildIndex).MapName);
         _save = true;
     }
 
