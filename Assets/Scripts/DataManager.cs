@@ -59,7 +59,7 @@ public class DataManager : MonoBehaviour
     {
         ghostSave.ValueChange -= SaveGhost;
         _reachFinishLine.OnLaunchEvent -= OnFinishLine;
-        _eventStartRun.OnLaunchEvent += AddGhost;
+        _eventStartRun.OnLaunchEvent -= AddGhost;
     }
 
     private void OnFinishLine()

@@ -16,7 +16,13 @@ public class PlayfabGhost : MonoBehaviour
     public string NewFileName;
     public int GlobalFileLock = 0;
 
-
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+    }
     void OnSharedFailure(PlayFabError error)
     {
         Debug.LogError(error.GenerateErrorReport());

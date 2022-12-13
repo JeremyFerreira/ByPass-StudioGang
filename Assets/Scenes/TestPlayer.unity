@@ -439,7 +439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7283276952524765403, guid: a0a6c623fe2cad34c9d645de55cfc4af, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 145.0346
+      value: 67.9
       objectReference: {fileID: 0}
     - target: {fileID: 7283276952524765403, guid: a0a6c623fe2cad34c9d645de55cfc4af, type: 3}
       propertyPath: m_LocalPosition.y
@@ -447,7 +447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7283276952524765403, guid: a0a6c623fe2cad34c9d645de55cfc4af, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 70.1232
+      value: 15.6
       objectReference: {fileID: 0}
     - target: {fileID: 7283276952524765403, guid: a0a6c623fe2cad34c9d645de55cfc4af, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2653,7 +2653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ghostsToShow: {fileID: 11400000, guid: 44576b89e3d563346bedb97d1d68dce0, type: 2}
-  _ghostToShowView: {fileID: 0}
+  _ghostToShowView: {fileID: 6352738604357179905, guid: 01c2d8d4bb87d0147a5a38c912832f63, type: 3}
   _timerData: {fileID: 11400000, guid: dce7fafda4b56e341906c5311c2b0cfb, type: 2}
   _eventStartRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
   _eventBestScore: {fileID: 11400000, guid: 2b06790e32da4ea44b218f8efa59d767, type: 2}
