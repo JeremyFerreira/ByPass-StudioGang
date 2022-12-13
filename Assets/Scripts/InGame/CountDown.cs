@@ -34,7 +34,7 @@ public class CountDown : MonoBehaviour
 
     IEnumerator CoroutineCountDown()
     {
-        yield return new WaitForSecondsRealtime(timeOfCountDown / writeinCountDown.Length);
+        yield return new WaitForSeconds(timeOfCountDown / writeinCountDown.Length);
         _countDownData.ChangeTimer(writeinCountDown[count]);
         _audioComponent.PlayAudioCue();
         count++;

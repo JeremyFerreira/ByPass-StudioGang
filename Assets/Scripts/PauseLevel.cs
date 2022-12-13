@@ -6,17 +6,31 @@ public class PauseLevel : MonoBehaviour
 {
     [SerializeField] SOInputButton sOInputButton;
     [SerializeField] EventSO pauseEvent;
+
+    bool canClick = true;
     // Start is called before the first frame update
     void OnEnable()
     {
-        sOInputButton.OnPressed += RestartTheLevel;
+        sOInputButton.OnPressed += Pause;
+
     }
     void OnDisable()
     {
-        sOInputButton.OnPressed -= RestartTheLevel;
+        sOInputButton.OnPressed -= Pause;
     }
-    public void RestartTheLevel()
+    public void Pause()
     {
-        pauseEvent.OnLaunchEvent.Invoke();
+        if(canClick)
+        {
+            pauseEvent.OnLaunchEvent?.Invoke();
+            StartCoroutine(DoCheck());
+        }
+    }
+
+    IEnumerator DoCheck()
+    {
+        canClick = false;
+        yield return new WaitForSecondsRealtime(.8f);
+        canClick = true;
     }
 }
