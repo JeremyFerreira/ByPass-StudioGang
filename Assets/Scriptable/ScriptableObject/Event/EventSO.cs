@@ -10,4 +10,5 @@ public class EventSO : ScriptableObject
     public LaunchEventParameter<int> OnLauchEventInt;
     public LaunchEventParameter<GhostSO> OnLauchEventGhost;
     public LaunchEventParameter<SceneSO> OnLauchEventSceneSO;
+    public LaunchEventParameter<DataGhost> OnLauchEventDataGhost;
 }

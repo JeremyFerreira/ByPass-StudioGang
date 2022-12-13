@@ -9,7 +9,10 @@ public class DataManager : MonoBehaviour
     [SerializeField] EventSO _reachFinishLine;
     [SerializeField] EventSO _eventBestScore;
     [SerializeField] EventSO _getPosPlayer;
+    [SerializeField] EventSO _eventStartRun;
     [SerializeField] TimeSO _timer;
+
+    [SerializeField] GhostsSO _ghostsToShow;
     [field: SerializeField] public List<World> AllWorld { get; set; }
     private void Awake()
     {
@@ -25,6 +28,7 @@ public class DataManager : MonoBehaviour
     private void OnEnable()
     {
         _reachFinishLine.OnLaunchEvent += OnFinishLine;
+        //_eventStartRun.OnLaunchEvent += ;
     }
     private void OnDisable()
     {

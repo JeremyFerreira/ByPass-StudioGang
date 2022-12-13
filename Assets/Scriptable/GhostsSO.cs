@@ -6,4 +6,13 @@ using UnityEngine;
 public class GhostsSO : ScriptableObject
 {
     public List<DataGhost> ghostsToShow;
+
+    public void AddGhostPlayer (DataGhost ghostPlayer)
+    {
+        if(ghostsToShow == null)
+        {
+            ghostsToShow = new List<DataGhost>();
+        }
+        ghostsToShow.Add(ghostPlayer);
+    }
 }
