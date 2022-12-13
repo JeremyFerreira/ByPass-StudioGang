@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 using TMPro;
 using System;
 using DG.Tweening.Core.Easing;
-using Unity.VisualScripting;
 
 public enum ControlDeviceType
 {
@@ -31,28 +30,16 @@ public class InputManager : MonoBehaviour
     public static event Action<InputAction, int> rebindStarted;
 
     [SerializeField] List<InputActionReference> allBinding;
-    bool created = false;
 
 
     private void Awake()
     {
-        if (!created)
-        {
-            DontDestroyOnLoad(this.gameObject);
-            created = true;
-            Input = new Input();
-            Instance = this;
-            SensibilityMouseX = PlayerPrefs.GetFloat("SensibilityMouseX", 100f);
-            SensibilityMouseY = PlayerPrefs.GetFloat("SensibilityMouseY", 100f);
-            SensibilityGamePadX = PlayerPrefs.GetFloat("SensibilityGamePadX", 100f);
-            SensibilityGamePadY = PlayerPrefs.GetFloat("SensibilityGamePadY", 100f);
-            EnableinputAction();
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-
+        Input = new Input();
+        Instance = this;
+        SensibilityMouseX = PlayerPrefs.GetFloat("SensibilityMouseX", 100f);
+        SensibilityMouseY = PlayerPrefs.GetFloat("SensibilityMouseY", 100f);
+        SensibilityGamePadX = PlayerPrefs.GetFloat("SensibilityGamePadX", 100f);
+        SensibilityGamePadY = PlayerPrefs.GetFloat("SensibilityGamePadY", 100f);
     }
 
     public void ActiveActioMapInGame(bool active)
