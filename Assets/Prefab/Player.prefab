@@ -13076,12 +13076,7 @@ MonoBehaviour:
   dashSpeed: 60
   timeToDash: 0.3
   SlowTime: {fileID: 6328991210479226679}
-  buttonJump: {fileID: 11400000, guid: 10db7215801b18d4c85ae3736cddb8e2, type: 2}
-  vectorMove: {fileID: 11400000, guid: ee42ec2862b19b64da16190453a0584e, type: 2}
-  startInput: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
-  stopInput: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
-  startLevel: {fileID: 11400000, guid: 4758eda0a1896e64f8d2d256c3342cc7, type: 2}
-  eventPause: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
+  _inputSO: {fileID: 11400000, guid: 40c0e1913835e4a49a03467f7cb001c3, type: 2}
   audioJump: {fileID: 7910607384627730868}
   audioDoubleJump: {fileID: 8878757221792884349}
   audioGetDoubleJump: {fileID: 2451535488360290433}
@@ -13148,14 +13143,10 @@ MonoBehaviour:
   gravityCounterForce: 30
   orientation: {fileID: 8296643305863257373}
   cam: {fileID: 5749424482394223915}
-  jumpButton: {fileID: 11400000, guid: 10db7215801b18d4c85ae3736cddb8e2, type: 2}
-  startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
-  stopRun: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
   audioJump: {fileID: 7910607384627730868}
   audioWalk: {fileID: 8503779224034473265}
   shakeJump: {fileID: 11400000, guid: 960582a992eb96848a8bb39ed7a4f72c, type: 2}
   wall: {fileID: 0}
-  eventPause: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
 --- !u!114 &6328991210479226679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13224,7 +13215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda26ad69f171994cb85bfb24df0a9e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sOInputButton: {fileID: 11400000, guid: e9a9b43c94df8504ba4449957b7dbd6d, type: 2}
+  inputSO: {fileID: 11400000, guid: 40c0e1913835e4a49a03467f7cb001c3, type: 2}
   restartEvent: {fileID: 11400000, guid: a51d14a2ad7fc6a43b313db9a9134386, type: 2}
   deathEvent: {fileID: 11400000, guid: 2098071988993db488bf1d193b6ee824, type: 2}
   startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
@@ -13241,7 +13232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78e689b760dec9f4c9ce3de36eca01a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sOInputButton: {fileID: 11400000, guid: def4cbb75897af84c97292eca7617f8d, type: 2}
+  inputSO: {fileID: 11400000, guid: 40c0e1913835e4a49a03467f7cb001c3, type: 2}
   pauseEvent: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
 --- !u!1 &8296643307644315253
 GameObject:

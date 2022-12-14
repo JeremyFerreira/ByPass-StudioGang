@@ -142,15 +142,7 @@ public class PlayerController : MonoBehaviour
     bool hasJustLandedTemp;
     float playerYposLastFrame;
 
-    [SerializeField] SOInputButton buttonJump;
-    [SerializeField] SOInputVector vectorMove;
-
-
-    [SerializeField] EventSO startInput;
-    [SerializeField] EventSO stopInput;
-    [SerializeField] EventSO startLevel;
-    [SerializeField] EventSO eventPause;
-
+    [SerializeField] InputSO _inputSO;
 
     [Header("Audio")]
     [Space(10)]
@@ -174,58 +166,22 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Animator grappinAnim;
 
-    private bool InPause = false;
     private void CanMove()
     {
         canMove = true;
     }
-    private void EnableInputMove()
-    {
-        vectorMove.OnValueChanged += MyInput;
-    }
-    private void EnableInputJump()
-    {
-        buttonJump.OnPressed += GetPlayerJump;
-        buttonJump.OnReleased += CancelJump;
-    }
-    private void DisableInput()
-    {
-        buttonJump.OnPressed -= GetPlayerJump;
-        buttonJump.OnReleased -= CancelJump;
-        vectorMove.OnValueChanged -= MyInput;
-        horizontalInput = 0;
-        verticalInput = 0;
-    }
     private void OnEnable()
     {
-        Instance = this;
-        startLevel.OnLaunchEvent += EnableInputMove;
-        startInput.OnLaunchEvent += CanMove;
-        startInput.OnLaunchEvent += EnableInputJump;
-        stopInput.OnLaunchEvent += DisableInput;
-        eventPause.OnLaunchEvent += Pause;
+        _inputSO.OnJumpPressed += GetPlayerJump;
+        _inputSO.OnJumpReleased += CancelJump;
+        _inputSO.OnMoveChanged += MoveDirection;
     }
-    private void Pause()
-    {
-        if (InPause)
-        {
-            EnableInputMove();
-            EnableInputJump();
-        }
-        else
-            DisableInput();
 
-        InPause = !InPause;
-    }
     private void OnDisable()
     {
-        DisableInput();
-        startLevel.OnLaunchEvent -= EnableInputMove;
-        startInput.OnLaunchEvent -= EnableInputJump;
-        startInput.OnLaunchEvent -= CanMove;
-        stopInput.OnLaunchEvent -= DisableInput;
-        eventPause.OnLaunchEvent -= Pause;
-
+        _inputSO.OnJumpPressed -= GetPlayerJump;
+        _inputSO.OnJumpReleased -= CancelJump;
+        _inputSO.OnMoveChanged -= MoveDirection;
     }
     // LOOPS AND FUNCTIONS///////////////////////////////////////////////////////////////////
     private void Awake()
@@ -331,11 +287,8 @@ public class PlayerController : MonoBehaviour
         {
             hasJustLandedTemp = true;
         }
-        if(canMove)
-        {
-            MovePlayer();
-        }
         
+        MovePlayer();
         SpeedControl();
         Accelerate();
         LongJump();
@@ -406,11 +359,15 @@ public class PlayerController : MonoBehaviour
     }
 
     //MOVEMENT////////////////////////////////////////////////////////////////
+    public void MoveDirection(Vector2 dir)
+    {
+        // calculate movement direction
+        moveDirection = orientation.forward * dir + orientation.right * dir;
+    }
     private void MovePlayer()
     {
         
-        // calculate movement direction
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        
 
         // on ground
         if (grounded)
@@ -533,7 +490,6 @@ public class PlayerController : MonoBehaviour
     #region Jump
     public void GetPlayerJump()
     {
-        
         // when to jump
         if (readyToJump && (grounded || canJump) && !wallrunning)
         {
@@ -564,8 +520,6 @@ public class PlayerController : MonoBehaviour
     }
     public void Jump()
     {
-        if(canMove)
-        {
             isJumping = true;
             _maxJumpTime = resetMaxJumpTime;
 
@@ -579,8 +533,6 @@ public class PlayerController : MonoBehaviour
 
             audioJump.PlayAudioCue();
             CameraShakeManager.instance.Shake(jumpShake);
-        }
-        
     }
     public void DoubleJump()
     {

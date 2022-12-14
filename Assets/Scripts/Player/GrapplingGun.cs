@@ -50,39 +50,14 @@ public class GrapplingGun : MonoBehaviour
     private bool InPause = false;
 
     public GameObject grappinObject;
-    private void EnableInput()
-    {
-        grapplingInput.OnPressed += StartGrapple;
-        grapplingInput.OnReleased += StopGrapple;
-    }
-    private void DisableInput()
-    {
-        grapplingInput.OnPressed -= StartGrapple;
-        grapplingInput.OnReleased -= StopGrapple;
-    }
-    private void Pause()
-    {
-        if (InPause)
-        {
-            EnableInput();
-        }
-        else
-            DisableInput();
-
-        InPause = !InPause;
-    }
+    
     private void OnEnable()
     {
-        startRun.OnLaunchEvent += EnableInput;
-        stopRun.OnLaunchEvent += DisableInput;
-        eventPause.OnLaunchEvent += Pause;
+
     }
     private void OnDisable()
     {
-        startRun.OnLaunchEvent -= EnableInput;
-        stopRun.OnLaunchEvent -= DisableInput;
-        eventPause.OnLaunchEvent -= Pause;
-        DisableInput();
+
     }
     private void Awake()
     {

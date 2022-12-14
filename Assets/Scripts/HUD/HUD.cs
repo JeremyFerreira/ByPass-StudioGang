@@ -17,7 +17,7 @@ public class HUD : MonoBehaviour
     void Update()
     {
         
-        if (playerController.CanDoubleJump() && !playerController.IsGrounded())
+        if (playerController.CanDoubleJump() || playerController.IsGrounded() ||playerController.wallrunning)
         {
             doubleJumpImage.SetActive(true);
         }

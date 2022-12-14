@@ -58,10 +58,6 @@ public class WallRunController : MonoBehaviour
     float timerDouble = 0.3f;
     bool stopWallRun;
 
-    [SerializeField]SOInputButton jumpButton;
-
-    [SerializeField] EventSO startRun;
-    [SerializeField] EventSO stopRun;
 
     [SerializeField] AudioComponent audioJump;
     [SerializeField] AudioComponent audioWalk;
@@ -70,28 +66,7 @@ public class WallRunController : MonoBehaviour
 
     [SerializeField] ShakeData shakeJump;
     public GameObject wall;
-    private void EnableInput()
-    {
-        jumpButton.OnPressed += WallJump;
-    }
-    private void DisableInput()
-    {
-        jumpButton.OnPressed -= WallJump;
-    }
-    [SerializeField] EventSO eventPause;
 
-    private bool InPause = false;
-    private void Pause()
-    {
-        if (InPause)
-        {
-            EnableInput();
-        }
-        else
-            DisableInput();
-
-        InPause = !InPause;
-    }
     // LOOPS AND FUNCTIONS///////////////////////////////////////////////////////////////////
     private void Awake()
     {
@@ -99,15 +74,11 @@ public class WallRunController : MonoBehaviour
     }
     private void OnEnable()
     {
-        startRun.OnLaunchEvent += EnableInput;
-        stopRun.OnLaunchEvent += DisableInput;
-        eventPause.OnLaunchEvent += Pause;
+
     }
     private void OnDisable()
     {
-        startRun.OnLaunchEvent -= EnableInput;
-        stopRun.OnLaunchEvent -= DisableInput;
-        eventPause.OnLaunchEvent -= Pause;
+
     }
     private void Start()
     {
@@ -263,7 +234,7 @@ public class WallRunController : MonoBehaviour
             cam.DoFov(cam.GetFov());
         }
         
-        timerDouble = 0.3f;
+        timerDouble = 0f;
         stopWallRun = true;
         SlowTimeMaterial slowTimeMaterial = wall.GetComponent<SlowTimeMaterial>();
         slowTimeMaterial.isUsing = false;
