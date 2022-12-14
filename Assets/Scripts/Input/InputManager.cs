@@ -60,10 +60,7 @@ public class InputManager : MonoBehaviour
 
     private void StartRun()
     {
-        _Input.InGame.Move.performed -= context => _inputSO.OnMove(_Input.InGame.Move.ReadValue<Vector2>());
-        _Input.InGame.Move.canceled -= context => _inputSO.OnMove(Vector2.zero);
-
-        EnableGameInput();
+        EnableGameInput(true);
     }
 
     private void OnEnable()
@@ -81,7 +78,7 @@ public class InputManager : MonoBehaviour
     private void Resume()
     {
         _Input.UI.Disable();
-        EnableGameInput();
+        EnableGameInput(false);
     }
 
     private void Pause()
@@ -111,10 +108,15 @@ public class InputManager : MonoBehaviour
 
 
 
-    void EnableGameInput()
+    void EnableGameInput(bool startLevel)
     {
+        if (!startLevel)
+        {
         _Input.InGame.Move.performed += context => _inputSO.OnMove(_Input.InGame.Move.ReadValue<Vector2>());
         _Input.InGame.Look.performed += context => _inputSO.OnLook(_Input.InGame.Look.ReadValue<Vector2>());
+        }
+
+
         _Input.InGame.Move.canceled += context => _inputSO.OnMove(Vector2.zero);
         _Input.InGame.Look.canceled += context => _inputSO.OnLook(Vector2.zero);
 
