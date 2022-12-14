@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RestartLevel : MonoBehaviour
 {
-    [SerializeField] SOInputButton sOInputButton;
+    [SerializeField] InputSO inputSO;
     [SerializeField] EventSO restartEvent;
     [SerializeField] EventSO deathEvent;
     [SerializeField] EventSO startRun;
@@ -14,7 +14,7 @@ public class RestartLevel : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-        sOInputButton.OnPressed += RestartTheLevel;
+        inputSO.OnRestartPressed += RestartTheLevel;
         deathEvent.OnLaunchEvent += Dead;
         startRun.OnLaunchEvent += StartRun;
     }
@@ -26,7 +26,7 @@ public class RestartLevel : MonoBehaviour
     }
     void OnDisable()
     {
-        sOInputButton.OnPressed -= RestartTheLevel;
+        inputSO.OnRestartPressed -= RestartTheLevel;
         deathEvent.OnLaunchEvent -= Dead;
         startRun.OnLaunchEvent -= StartRun;
     }

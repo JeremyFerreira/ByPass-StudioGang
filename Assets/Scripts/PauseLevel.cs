@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class PauseLevel : MonoBehaviour
 {
-    [SerializeField] SOInputButton sOInputButton;
+    [SerializeField] InputSO inputSO;
     [SerializeField] EventSO pauseEvent;
 
     bool canClick = true;
     // Start is called before the first frame update
     void OnEnable()
     {
-        sOInputButton.OnPressed += Pause;
+        inputSO.OnPausePressed += Pause;
 
     }
     void OnDisable()
     {
-        sOInputButton.OnPressed -= Pause;
+        inputSO.OnPausePressed -= Pause;
     }
     public void Pause()
     {
