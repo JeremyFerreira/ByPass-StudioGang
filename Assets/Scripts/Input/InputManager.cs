@@ -39,6 +39,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] EventSO _eventReachFinishLine;
     [SerializeField] EventSO _eventRestart;
     [SerializeField] EventSO _eventResume;
+    [SerializeField] EventSO _eventStartLevel;
 
     private void Awake()
     {
@@ -51,9 +52,24 @@ public class InputManager : MonoBehaviour
     }
 
 
+    private void StartLevel()
+    {
+        _Input.InGame.Move.performed += context => _inputSO.OnMove(_Input.InGame.Move.ReadValue<Vector2>());
+        _Input.InGame.Move.canceled += context => _inputSO.OnMove(Vector2.zero);
+    }
+
+    private void StartRun()
+    {
+        _Input.InGame.Move.performed -= context => _inputSO.OnMove(_Input.InGame.Move.ReadValue<Vector2>());
+        _Input.InGame.Move.canceled -= context => _inputSO.OnMove(Vector2.zero);
+
+        EnableGameInput();
+    }
+
     private void OnEnable()
     {
-        _eventStartRun.OnLaunchEvent += EnableGameInput;
+        _eventStartLevel.OnLaunchEvent += StartLevel;
+        _eventStartRun.OnLaunchEvent += StartRun;
         _eventPause.OnLaunchEvent += Pause;
         _eventDead.OnLaunchEvent += DisableGameInput;
         _eventReachFinishLine.OnLaunchEvent += ReachFinishLine;
@@ -83,12 +99,13 @@ public class InputManager : MonoBehaviour
     private void OnDisable()
     {
         _Input.Disable();
-        _eventStartRun.OnLaunchEvent -= EnableGameInput;
+        _eventStartLevel.OnLaunchEvent -= StartLevel;
+        _eventStartRun.OnLaunchEvent -= StartRun;
         _eventPause.OnLaunchEvent -= Pause;
         _eventDead.OnLaunchEvent -= DisableGameInput;
-        _eventReachFinishLine.OnLaunchEvent -= DisableGameInput;
+        _eventReachFinishLine.OnLaunchEvent -= ReachFinishLine;
         _eventRestart.OnLaunchEvent -= DisableGameInput;
-        _eventResume.OnLaunchEvent -= EnableGameInput;
+        _eventResume.OnLaunchEvent -= Resume;
 
     }
 
