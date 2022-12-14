@@ -398,8 +398,8 @@ MonoBehaviour:
   grappinAnim: {fileID: 6752232508841689284}
   crossHair: {fileID: 8289168371343249076}
   playerCam: {fileID: 5749424482394223915}
-  eventPause: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
   grappinObject: {fileID: 5053277201783861314}
+  _inputSO: {fileID: 11400000, guid: 40c0e1913835e4a49a03467f7cb001c3, type: 2}
 --- !u!114 &4543463312393808619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12637,13 +12637,10 @@ MonoBehaviour:
   orientation: {fileID: 8296643305863257373}
   camHolder: {fileID: 8296643305697743633}
   camParent: {fileID: 4440692790997228732}
-  lookInput: {fileID: 11400000, guid: 4c596e50aa0ab5d448fbdd866796d577, type: 2}
   fovDash: 115
   fovallRun: 115
   IsGamePad: 1
-  startRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
-  stopRun: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
-  eventPause: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
+  _inputSO: {fileID: 11400000, guid: 40c0e1913835e4a49a03467f7cb001c3, type: 2}
 --- !u!114 &5073996410801089655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13147,6 +13144,7 @@ MonoBehaviour:
   audioWalk: {fileID: 8503779224034473265}
   shakeJump: {fileID: 11400000, guid: 960582a992eb96848a8bb39ed7a4f72c, type: 2}
   wall: {fileID: 0}
+  _inputSO: {fileID: 11400000, guid: 40c0e1913835e4a49a03467f7cb001c3, type: 2}
 --- !u!114 &6328991210479226679
 MonoBehaviour:
   m_ObjectHideFlags: 0

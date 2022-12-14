@@ -15,7 +15,6 @@ public class PlayerCam : MonoBehaviour
     [SerializeField] Transform camHolder;
     [SerializeField] Transform camParent;
 
-    [SerializeField] SOInputVector lookInput;
     Vector2 looking;
 
     float xRotation;
@@ -31,47 +30,20 @@ public class PlayerCam : MonoBehaviour
 
 
     [SerializeField] bool IsGamePad;
+    [SerializeField] InputSO _inputSO;
 
-    [SerializeField] EventSO startRun;
-    [SerializeField] EventSO stopRun;
-    [SerializeField] EventSO eventPause;
 
-    private bool InPause = false;
-    private void EnableInput()
-    {
-        lookInput.OnValueChanged += SetLookInput;
-        
-    }
-    private void Pause()
-    {
-        if (InPause)
-        {
-            EnableInput();
-        }
-        else
-            DisableInput();
-
-        InPause = !InPause;
-    }
-    private void DisableInput()
-    {
-        lookInput.OnValueChanged -= SetLookInput;
-    }
     private void Awake()
     {
         Instance = this;
     }
     private void OnEnable()
     {
-        startRun.OnLaunchEvent += EnableInput;
-        stopRun.OnLaunchEvent += DisableInput;
-        eventPause.OnLaunchEvent += Pause;
+        _inputSO.OnLookChanged += SetLookInput;
     }
     private void OnDisable()
     {
-        startRun.OnLaunchEvent -= EnableInput;
-        stopRun.OnLaunchEvent -= DisableInput;
-        eventPause.OnLaunchEvent -= Pause;
+        _inputSO.OnLookChanged -= SetLookInput;
     }
     private void Start()
     {

@@ -362,13 +362,13 @@ public class PlayerController : MonoBehaviour
     public void MoveDirection(Vector2 dir)
     {
         // calculate movement direction
-        moveDirection = orientation.forward * dir + orientation.right * dir;
+        verticalInput = dir.y;
+        horizontalInput = dir.x;
+        Debug.Log(dir);
     }
     private void MovePlayer()
     {
-        
-        
-
+        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
         // on ground
         if (grounded)
         {

@@ -67,6 +67,7 @@ public class WallRunController : MonoBehaviour
     [SerializeField] ShakeData shakeJump;
     public GameObject wall;
 
+    [SerializeField] InputSO _inputSO;
     // LOOPS AND FUNCTIONS///////////////////////////////////////////////////////////////////
     private void Awake()
     {
@@ -74,11 +75,11 @@ public class WallRunController : MonoBehaviour
     }
     private void OnEnable()
     {
-
+        _inputSO.OnJumpPressed += WallJump;
     }
     private void OnDisable()
     {
-
+        _inputSO.OnJumpPressed -= WallJump;
     }
     private void Start()
     {

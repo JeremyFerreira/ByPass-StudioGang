@@ -45,19 +45,19 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] Animator crossHair;
     [SerializeField] PlayerCam playerCam;
     bool hasViser;
-    [SerializeField] EventSO eventPause;
-
-    private bool InPause = false;
 
     public GameObject grappinObject;
-    
+    [SerializeField] InputSO _inputSO;
+    // LOOPS AND FUNCTIONS///////////////////////////////////////////////////////////////////
     private void OnEnable()
     {
-
+        _inputSO.OnGrapplePressed += StartGrapple;
+        _inputSO.OnGrappleReleased += StopGrapple;
     }
     private void OnDisable()
     {
-
+        _inputSO.OnGrapplePressed -= StartGrapple;
+        _inputSO.OnGrappleReleased -= StopGrapple;
     }
     private void Awake()
     {
