@@ -21,17 +21,7 @@ public class GameMode : MonoBehaviour
     static bool created = false;
     bool alreadyLoad;
     bool _win = false;
-#if UNITY_EDITOR
-    bool firstTime = true;
-    private void Start()
-    {
-        if(firstTime)
-        {
-            firstTime = false;
-            _eventRestart.OnLaunchEvent?.Invoke();
-        }
-    }
-#endif
+
     void Awake()
     {
         if (!created)
@@ -118,6 +108,12 @@ public class GameMode : MonoBehaviour
             yield return null;
         }
         Debug.Log(SceneManager.GetActiveScene().name);
+        StartCoroutine(StartTimer());
+    }
+
+    IEnumerator StartTimer()
+    {
+        yield return new WaitForSeconds(0.2f);
         Time.timeScale = 1;
         _eventStartLevel.OnLaunchEvent?.Invoke();
     }

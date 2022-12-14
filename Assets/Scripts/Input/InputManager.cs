@@ -56,6 +56,7 @@ public class InputManager : MonoBehaviour
     {
         _Input.InGame.Move.performed += context => _inputSO.OnMove(_Input.InGame.Move.ReadValue<Vector2>());
         _Input.InGame.Move.canceled += context => _inputSO.OnMove(Vector2.zero);
+        _Input.InGame.Enable();
     }
 
     private void StartRun()
@@ -110,14 +111,7 @@ public class InputManager : MonoBehaviour
 
     void EnableGameInput(bool startLevel)
     {
-        if (!startLevel)
-        {
-        _Input.InGame.Move.performed += context => _inputSO.OnMove(_Input.InGame.Move.ReadValue<Vector2>());
         _Input.InGame.Look.performed += context => _inputSO.OnLook(_Input.InGame.Look.ReadValue<Vector2>());
-        }
-
-
-        _Input.InGame.Move.canceled += context => _inputSO.OnMove(Vector2.zero);
         _Input.InGame.Look.canceled += context => _inputSO.OnLook(Vector2.zero);
 
         _Input.InGame.Jump.performed += context => _inputSO.JumpPressed();
@@ -132,7 +126,14 @@ public class InputManager : MonoBehaviour
         _Input.InGame.RestartLevel.performed += context => _inputSO.RestartPressed();
 
         _Input.InGame.Pause.performed += context => _inputSO.PausePressed();
-        _Input.InGame.Enable();
+
+        if (!startLevel)
+        {
+            _Input.InGame.Move.performed += context => _inputSO.OnMove(_Input.InGame.Move.ReadValue<Vector2>());
+            _Input.InGame.Move.canceled += context => _inputSO.OnMove(Vector2.zero);
+
+            _Input.InGame.Enable();
+        }
     }
 
     void DisableGameInput()
