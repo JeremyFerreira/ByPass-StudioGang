@@ -11,6 +11,7 @@ public class DataManager : MonoBehaviour
     [SerializeField] EventSO _eventBestScore;
     [SerializeField] EventSO _getPosPlayer;
     [SerializeField] EventSO _eventStartRun;
+
     [SerializeField] TimeSO _timer;
 
     [SerializeField] GhostsSO _ghostsToShow;

@@ -8,6 +8,7 @@ public class Timer : MonoBehaviour
     [SerializeField] EventSO _startLevelEvent;
     [SerializeField] EventSO _startRunEvent;
     [SerializeField] EventSO _PauseEvent;
+    [SerializeField] EventSO _ResumeEvent;
     [SerializeField] EventSO _reachFinishLineEvent;
     [SerializeField] TimeSO _timer;
     [SerializeField] bool _timerIsLaunch;
@@ -23,6 +24,7 @@ public class Timer : MonoBehaviour
         _reachFinishLineEvent.OnLaunchEvent += StopTimer;
         _PauseEvent.OnLaunchEvent += Pause;
         _startLevelEvent.OnLaunchEvent += ResetTimer;
+        _ResumeEvent.OnLaunchEvent += Resume;
     }
     private void OnDisable()
     {
@@ -30,8 +32,15 @@ public class Timer : MonoBehaviour
         _reachFinishLineEvent.OnLaunchEvent -= StopTimer;
         _PauseEvent.OnLaunchEvent -= Pause;
         _startLevelEvent.OnLaunchEvent -= ResetTimer;
+        _ResumeEvent.OnLaunchEvent -= Resume;
     }
 
+    private void Resume()
+    {
+
+            _timerIsLaunch = true;
+        
+    }
     private void ResetTimer()
     {
         _timer.ChangeTimer(0);
@@ -39,14 +48,10 @@ public class Timer : MonoBehaviour
 
     private void Pause()
     {
-        if (!_timerIsLaunch)
-        {
-            _timerIsLaunch = true;
-        }
-        else
-        {
+
+
             _timerIsLaunch = false;
-        }
+        
 
     }
     private void LaunchRun()

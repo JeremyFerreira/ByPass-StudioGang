@@ -16,9 +16,8 @@ public class GameMode : MonoBehaviour
     [SerializeField] EventSO _eventRestart;
     [SerializeField] EventSO _eventPause;
     [SerializeField] EventSO _eventReachLine;
+    [SerializeField] EventSO _eventResume;
 
-    [SerializeField] EventSO _enableInput;
-    [SerializeField] EventSO _desactiveInput;
     static bool created = false;
     bool alreadyLoad;
     bool _win = false;
@@ -35,21 +34,18 @@ public class GameMode : MonoBehaviour
         }
     }
 
+    private void Resume()
+    {
+        if (!_win)
+        {
+            Time.timeScale = 1;
+        }
+    }
     private void Pause()
     {
         if (!_win)
         {
-
-            if (Time.timeScale == 0)
-            {
-                _enableInput.OnLaunchEvent?.Invoke();
-                Time.timeScale = 1;
-            }
-            else
-            {
-                _desactiveInput.OnLaunchEvent?.Invoke();
-                Time.timeScale = 0;
-            }
+            Time.timeScale = 0;
         }
 
     }
@@ -61,6 +57,7 @@ public class GameMode : MonoBehaviour
         _eventRestart.OnLaunchEvent += Restart;
         _eventPause.OnLaunchEvent += Pause;
         _eventReachLine.OnLaunchEvent += Win;
+        _eventResume.OnLaunchEvent += Resume;
     }
     private void OnDisable()
     {
@@ -69,6 +66,7 @@ public class GameMode : MonoBehaviour
         _eventRestart.OnLaunchEvent -= Restart;
         _eventPause.OnLaunchEvent -= Pause;
         _eventReachLine.OnLaunchEvent -= Win;
+        _eventResume.OnLaunchEvent -= Resume;
     }
     private void Win()
     {
