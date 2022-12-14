@@ -25,6 +25,7 @@ public class HudManager : MonoBehaviour
     [SerializeField] EventSO _eventStartLevel;
     [SerializeField] EventSO _eventInMainMenu;
     [SerializeField] EventSO _eventPause;
+    [SerializeField] EventSO _eventResume;
 
     [SerializeField] EventSO _eventAround;
     [SerializeField] EventSO _eventFriend;
@@ -61,6 +62,8 @@ public class HudManager : MonoBehaviour
         _eventAround.OnLauchEventSceneSO += OpenLeaderBoard;
         _eventFriend.OnLauchEventSceneSO += OpenLeaderBoard;
         _eventTop.OnLauchEventSceneSO += OpenLeaderBoard;
+
+        _eventResume.OnLaunchEvent += OpenInGamePanel;
     }
     private void OnDisable()
     {
@@ -68,7 +71,7 @@ public class HudManager : MonoBehaviour
         _eventStartLevel.OnLaunchEvent -= OpenInGamePanel;
         _eventInMainMenu.OnLaunchEvent -= OpenMainMenu;
         _eventPause.OnLaunchEvent -= OpenPauseMenu;
-
+        _eventResume.OnLaunchEvent -= OpenInGamePanel;
         _eventAround.OnLauchEventSceneSO -= OpenLeaderBoard;
         _eventFriend.OnLauchEventSceneSO -= OpenLeaderBoard;
         _eventTop.OnLauchEventSceneSO -= OpenLeaderBoard;
