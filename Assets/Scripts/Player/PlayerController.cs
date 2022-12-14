@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
     bool grounded;
     bool behindGround;
     public bool IsGrounded() { return grounded; }
+    GameObject groundObject;
     [SerializeField] float timeToJump;
     private float resetTimeToJump;
     public bool canJump;
@@ -127,7 +128,7 @@ public class PlayerController : MonoBehaviour
     public float timeToPress;
 
     bool stateGroundOld;
-    bool isGrappling;
+    public bool isGrappling;
     CapsuleCollider col;
     private bool dash;
     [SerializeField] float dashSpeed;
@@ -294,6 +295,7 @@ public class PlayerController : MonoBehaviour
             {
                 dash = false;
                 timeToDash = timeTodashReset;
+                playerCam.DoFov(playerCam.GetFov());
             }
         }
 
@@ -304,15 +306,14 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // ground check
-        
 
         grounded = Physics.Raycast(transform.position, Vector3.down, col.height * 0.5f + Physics.defaultContactOffset * 3, whatIsGround);
         behindGround = Physics.Raycast(transform.position - (Vector3.up * 0.3f), moveDirection.normalized, playerHeight, whatIsGround) || Physics.Raycast(transform.position + (Vector3.up * 0.3f), moveDirection.normalized, playerHeight, whatIsGround);
 
-        RaycastHit hit;
-        if(Physics.Raycast(transform.position, Vector3.down,out hit, col.height * 0.5f + Physics.defaultContactOffset * 3, whatIsMovableGround))
+        RaycastHit hit2;
+        if(Physics.Raycast(transform.position, Vector3.down,out hit2, col.height * 0.5f + Physics.defaultContactOffset * 3, whatIsMovableGround))
         {
-            col.gameObject.transform.SetParent(hit.transform, true);
+            col.gameObject.transform.SetParent(hit2.transform, true);
         }
         else
         {
@@ -666,5 +667,6 @@ public class PlayerController : MonoBehaviour
          rb.velocity = orientation.forward * dashSpeed;
          dash = true;
          CameraShakeManager.instance.Shake(dashShake);
+         playerCam.DoFov(playerCam.fovDash);
     }
 }

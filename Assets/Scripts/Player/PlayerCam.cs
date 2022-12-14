@@ -20,6 +20,14 @@ public class PlayerCam : MonoBehaviour
 
     float xRotation;
     float yRotation;
+    Camera cam;
+    float fov;
+    public float GetFov()
+    {
+        return fov;
+    }
+    public float fovDash;
+    public float fovallRun;
 
 
     [SerializeField] bool IsGamePad;
@@ -67,7 +75,8 @@ public class PlayerCam : MonoBehaviour
     }
     private void Start()
     {
-        
+        cam = GetComponent<Camera>();
+        fov = cam.fieldOfView;
 
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         UnityEngine.Cursor.visible = false;
@@ -106,4 +115,9 @@ public class PlayerCam : MonoBehaviour
     {
         camParent.transform.DOLocalRotate(new Vector3(0, 0, zTilt), 0.5f);
     }
+    public void DoFov(float fov)
+    {
+        cam.DOFieldOfView(fov, 0.25f);
+    }
+
 }

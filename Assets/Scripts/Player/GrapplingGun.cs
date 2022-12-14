@@ -43,6 +43,7 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] ShakeData shakeStop;
     [SerializeField] Animator grappinAnim;
     [SerializeField] Animator crossHair;
+    [SerializeField] PlayerCam playerCam;
     bool hasViser;
     [SerializeField] EventSO eventPause;
 
@@ -150,6 +151,7 @@ public class GrapplingGun : MonoBehaviour
             grappinObject.GetComponent<SlowTimeMaterial>().isUsing = true;
 
             crossHair.CrossFade("CrossHairLock",0,0);
+            playerCam.DoFov(playerCam.fovallRun);
 
         }
         else
@@ -181,6 +183,10 @@ public class GrapplingGun : MonoBehaviour
             }
             grappinObject = null;
             crossHair.CrossFade("CrossHairUnlock", 0, 0);
+            if(!playerController.wallrunning)
+            {
+                playerCam.DoFov(playerCam.GetFov());
+            }
         }
         
 

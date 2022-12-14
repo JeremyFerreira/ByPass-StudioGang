@@ -224,6 +224,8 @@ public class WallRunController : MonoBehaviour
         if (wallLeft) cam.DoTilt(-tilt);
         if (wallRight) cam.DoTilt(tilt);
 
+        cam.DoFov(cam.fovallRun);
+
         wall.GetComponent<SlowTimeMaterial>().isUsing = true;
         timerFootstep = -1;
 
@@ -257,7 +259,11 @@ public class WallRunController : MonoBehaviour
 
         // reset camera effects
         cam.DoTilt(0f);
-
+        if(!playerController.isGrappling)
+        {
+            cam.DoFov(cam.GetFov());
+        }
+        
         timerDouble = 0.3f;
         stopWallRun = true;
         SlowTimeMaterial slowTimeMaterial = wall.GetComponent<SlowTimeMaterial>();
