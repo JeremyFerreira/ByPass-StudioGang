@@ -31,6 +31,13 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] List<InputActionReference> allBinding;
 
+    [SerializeField] InputSO _inputSO;
+
+    [SerializeField] EventSO _eventStartRun;
+    [SerializeField] EventSO _eventPause;
+    [SerializeField] EventSO _eventDead;
+    [SerializeField] EventSO _eventReachFinishLine;
+    [SerializeField] EventSO _eventRestart;
 
     private void Awake()
     {
@@ -42,31 +49,65 @@ public class InputManager : MonoBehaviour
         SensibilityGamePadY = PlayerPrefs.GetFloat("SensibilityGamePadY", 100f);
     }
 
-    public void ActiveActioMapInGame(bool active)
+
+    private void OnEnable()
     {
-        if (active)
-        {
-            EnableinputAction();
-        }
-        else
-        {
-            DisableInputActionMap();
-        }
+        _eventStartRun.OnLaunchEvent += EnableGameInput;
+        _eventPause.OnLaunchEvent += DisableGameInput;
+        _eventDead.OnLaunchEvent += DisableGameInput;
+        _eventReachFinishLine.OnLaunchEvent += DisableGameInput;
+        _eventRestart.OnLaunchEvent += DisableGameInput;
     }
 
     private void OnDisable()
     {
-        ActiveActioMapInGame(false);
+        _eventStartRun.OnLaunchEvent -= EnableGameInput;
+        _eventPause.OnLaunchEvent -= DisableGameInput;
+        _eventDead.OnLaunchEvent -= DisableGameInput;
+        _eventReachFinishLine.OnLaunchEvent -= DisableGameInput;
+        _eventRestart.OnLaunchEvent -= DisableGameInput;
     }
 
-    void EnableinputAction()
+
+
+    void EnableGameInput()
     {
+        Input.InGame.Move.performed += context => _inputSO.OnLook(Input.InGame.Move.ReadValue<Vector2>());
+        Input.InGame.Look.performed += context => _inputSO.OnLook(Input.InGame.Look.ReadValue<Vector2>());
+
+        Input.InGame.Jump.performed += context => _inputSO.JumpPressed();
+        Input.InGame.Jump.canceled += context => _inputSO.JumpReleased();
+
+        Input.InGame.SlowTime.performed += context => _inputSO.SlowTimePressed();
+        Input.InGame.SlowTime.canceled += context => _inputSO.SlowTimeReleased();
+
+        Input.InGame.Grappling.performed += context => _inputSO.GrapplePressed();
+        Input.InGame.Grappling.canceled += context => _inputSO.GrappleReleased();
+
+        Input.InGame.RestartLevel.performed += context => _inputSO.RestartPressed();
+
+        Input.InGame.Pause.performed += context => _inputSO.PausePressed();
         Input.Enable();
     }
 
-    void DisableInputActionMap()
+    void DisableGameInput()
     {
         Input.Disable();
+        Input.InGame.Move.performed -= context => _inputSO.OnLook(Input.InGame.Move.ReadValue<Vector2>());
+        Input.InGame.Look.performed -= context => _inputSO.OnLook(Input.InGame.Look.ReadValue<Vector2>());
+
+        Input.InGame.Jump.started -= context => _inputSO.JumpPressed();
+        Input.InGame.Jump.canceled -= context => _inputSO.JumpReleased();
+
+        Input.InGame.SlowTime.started -= context => _inputSO.SlowTimePressed();
+        Input.InGame.SlowTime.canceled -= context => _inputSO.SlowTimeReleased();
+
+        Input.InGame.Grappling.started -= context => _inputSO.GrapplePressed();
+        Input.InGame.Grappling.canceled -= context => _inputSO.GrappleReleased();
+
+        Input.InGame.RestartLevel.started -= context => _inputSO.RestartPressed();
+
+        Input.InGame.Pause.started -= context => _inputSO.PausePressed();
     }
 
     private void OnControlsChanged(UnityEngine.InputSystem.PlayerInput obj)

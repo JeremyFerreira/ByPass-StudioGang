@@ -8,13 +8,9 @@ public class SlowTime : MonoBehaviour
 {
     bool isSlowTime;
     public bool IsSlowTime()
-        { return isSlowTime; }
-    
-    [SerializeField] SOInputButton slowTimeInput;
+    { return isSlowTime; }
 
-    [SerializeField] EventSO startRun;
-    [SerializeField] EventSO stopRun;
-    [SerializeField] EventSO pauseEvent;
+    [SerializeField] InputSO input;
 
     [SerializeField] AudioComponent audioSlowTimeStart;
     [SerializeField] AudioComponent audioSlowTimeStop;
@@ -22,63 +18,34 @@ public class SlowTime : MonoBehaviour
     [SerializeField] ValueSo slowTimeSliderData;
     [SerializeField] EventSO slowTimeStartEvent;
     [SerializeField] EventSO slowTimeStopEvent;
-    bool InPause = false;
 
-    private void EnableInput()
-    {
-        slowTimeInput.OnPressed += StartSlowTime;
-        slowTimeInput.OnReleased += StopSlowTime;
-        
-    }
-    private void DisableInput()
-    {
-        slowTimeInput.OnPressed -= StartSlowTime;
-        slowTimeInput.OnReleased -= StopSlowTime;
-    }
     private void OnEnable()
     {
-        startRun.OnLaunchEvent += EnableInput;
-        stopRun.OnLaunchEvent += DisableInput;
-        pauseEvent.OnLaunchEvent += Pause;
+        input.OnSlowTimePressed += StartSlowTime;
+        input.OnSlowTimeReleased += StopSlowTime;
     }
 
     private void OnDisable()
     {
-        startRun.OnLaunchEvent -= EnableInput;
-        stopRun.OnLaunchEvent -= DisableInput;
-        pauseEvent.OnLaunchEvent -= Pause;
-        DisableInput();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void StartSlowTime()
-    {
-        if (!InPause)
-        {
-            isSlowTime = true;
-            audioSlowTimeStart.PlayAudioCue();
-            slowTimeStartEvent.OnLaunchEvent.Invoke();
-            glitchEffect.enabled = true;
-            Time.timeScale = 0.5f;
-        }
-    }
-    public void StopSlowTime()
-    {
-        if(isSlowTime)
-        {
-            isSlowTime = false;
-            audioSlowTimeStop.PlayAudioCue();
-            slowTimeStopEvent.OnLaunchEvent.Invoke();
-            glitchEffect.enabled = false;
-            Time.timeScale = 1;
-        }
+        input.OnSlowTimePressed -= StartSlowTime;
+        input.OnSlowTimeReleased -= StopSlowTime;
     }
 
-    public void Pause()
+    public void StartSlowTime()
     {
-        InPause = !InPause;
+        isSlowTime = true;
+        audioSlowTimeStart.PlayAudioCue();
+        slowTimeStartEvent.OnLaunchEvent.Invoke();
+        glitchEffect.enabled = true;
+        Time.timeScale = 0.5f;
+    }
+
+    public void StopSlowTime()
+    {
+        isSlowTime = false;
+        audioSlowTimeStop.PlayAudioCue();
+        slowTimeStopEvent.OnLaunchEvent.Invoke();
+        glitchEffect.enabled = false;
+        Time.timeScale = 1;
     }
 }
