@@ -21,6 +21,17 @@ public class GameMode : MonoBehaviour
     static bool created = false;
     bool alreadyLoad;
     bool _win = false;
+#if UNITY_EDITOR
+    bool firstTime = true;
+    private void Start()
+    {
+        if(firstTime)
+        {
+            firstTime = false;
+            _eventRestart.OnLaunchEvent?.Invoke();
+        }
+    }
+#endif
     void Awake()
     {
         if (!created)
@@ -47,7 +58,6 @@ public class GameMode : MonoBehaviour
         {
             Time.timeScale = 0;
         }
-
     }
 
     private void OnEnable()
