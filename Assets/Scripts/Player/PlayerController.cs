@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour
         stateGroundOld = true;
 
         col = GetComponent<CapsuleCollider>();
-        
+        Instance = this;
     }
     
 
