@@ -78,7 +78,7 @@ public class InputManager : MonoBehaviour
 
     void EnableGameInput()
     {
-        _Input.InGame.Move.performed += context => _inputSO.OnLook(_Input.InGame.Move.ReadValue<Vector2>());
+        _Input.InGame.Move.performed += context => _inputSO.OnMove(_Input.InGame.Move.ReadValue<Vector2>());
         _Input.InGame.Look.performed += context => _inputSO.OnLook(_Input.InGame.Look.ReadValue<Vector2>());
 
         _Input.InGame.Jump.performed += context => _inputSO.JumpPressed();
@@ -99,7 +99,7 @@ public class InputManager : MonoBehaviour
     void DisableGameInput()
     {
         _Input.InGame.Disable();
-        _Input.InGame.Move.performed -= context => _inputSO.OnLook(_Input.InGame.Move.ReadValue<Vector2>());
+        _Input.InGame.Move.performed -= context => _inputSO.OnMove(_Input.InGame.Move.ReadValue<Vector2>());
         _Input.InGame.Look.performed -= context => _inputSO.OnLook(_Input.InGame.Look.ReadValue<Vector2>());
 
         _Input.InGame.Jump.started -= context => _inputSO.JumpPressed();
