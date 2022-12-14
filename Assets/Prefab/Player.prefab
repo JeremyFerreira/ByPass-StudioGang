@@ -13108,6 +13108,9 @@ MonoBehaviour:
   doubleJumpShake: {fileID: 11400000, guid: f7047426ffa90084e8d0154ff8d5c906, type: 2}
   landedShake: {fileID: 11400000, guid: 9110330da5ba6c64a9a67bd1a1bf7ee8, type: 2}
   canMove: 0
+  _eventStartRun: {fileID: 11400000, guid: abd7b499bfc69ea459ca4c68f5e6b0cf, type: 2}
+  _eventResumeRun: {fileID: 11400000, guid: 7ac409783d4b6b940a6f80fae41ebb25, type: 2}
+  _eventPauseRun: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
   grappinAnim: {fileID: 6752232508841689284}
 --- !u!114 &8296643306588700844
 MonoBehaviour:
@@ -13164,6 +13167,8 @@ MonoBehaviour:
   slowTimeSliderData: {fileID: 11400000, guid: 6418c06464cf7ee4296ffebd4f192bfc, type: 2}
   slowTimeStartEvent: {fileID: 11400000, guid: dd91b37eb9565bf4ba90ebfda6d17089, type: 2}
   slowTimeStopEvent: {fileID: 11400000, guid: 5670750e062e9da409830b9f758b76b8, type: 2}
+  pauseEvent: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
+  resumeEvent: {fileID: 11400000, guid: 7ac409783d4b6b940a6f80fae41ebb25, type: 2}
 --- !u!114 &5164068588934881455
 MonoBehaviour:
   m_ObjectHideFlags: 0

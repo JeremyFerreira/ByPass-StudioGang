@@ -163,6 +163,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ShakeData landedShake;
 
     [SerializeField] bool canMove = false;
+    [SerializeField] EventSO _eventStartRun;
+    [SerializeField] EventSO _eventResumeRun;
+    [SerializeField] EventSO _eventPauseRun;
 
     [SerializeField] Animator grappinAnim;
 
@@ -170,8 +173,15 @@ public class PlayerController : MonoBehaviour
     {
         canMove = true;
     }
+    private void CantMove()
+    {
+        canMove = false;
+    }
     private void OnEnable()
     {
+        _eventStartRun.OnLaunchEvent += CanMove;
+        _eventResumeRun.OnLaunchEvent += CanMove;
+        _eventPauseRun.OnLaunchEvent += CantMove;
         _inputSO.OnJumpPressed += GetPlayerJump;
         _inputSO.OnJumpReleased += CancelJump;
         _inputSO.OnMoveChanged += MoveDirection;
@@ -179,6 +189,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
+        _eventStartRun.OnLaunchEvent -= CanMove;
+        _eventResumeRun.OnLaunchEvent -= CanMove;
+        _eventPauseRun.OnLaunchEvent -= CantMove;
         _inputSO.OnJumpPressed -= GetPlayerJump;
         _inputSO.OnJumpReleased -= CancelJump;
         _inputSO.OnMoveChanged -= MoveDirection;
@@ -368,7 +381,15 @@ public class PlayerController : MonoBehaviour
     }
     private void MovePlayer()
     {
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        if(canMove)
+        {
+            moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        }
+        else
+        {
+            moveDirection = Vector3.zero;
+        }
+        
         // on ground
         if (grounded)
         {

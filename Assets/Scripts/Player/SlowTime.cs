@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
@@ -19,16 +20,28 @@ public class SlowTime : MonoBehaviour
     [SerializeField] EventSO slowTimeStartEvent;
     [SerializeField] EventSO slowTimeStopEvent;
 
+    [SerializeField] EventSO pauseEvent;
+    [SerializeField] EventSO resumeEvent;
+    bool pause;
+
     private void OnEnable()
     {
         input.OnSlowTimePressed += StartSlowTime;
         input.OnSlowTimeReleased += StopSlowTime;
+
+        pauseEvent.OnLaunchEvent += Pause;
+        resumeEvent.OnLaunchEvent += Resume;
+
+        pause = false;
     }
 
     private void OnDisable()
     {
         input.OnSlowTimePressed -= StartSlowTime;
         input.OnSlowTimeReleased -= StopSlowTime;
+
+        pauseEvent.OnLaunchEvent -= Pause;
+        resumeEvent.OnLaunchEvent -= Resume;
     }
 
     public void StartSlowTime()
@@ -46,6 +59,18 @@ public class SlowTime : MonoBehaviour
         audioSlowTimeStop.PlayAudioCue();
         slowTimeStopEvent.OnLaunchEvent.Invoke();
         glitchEffect.enabled = false;
-        Time.timeScale = 1;
+        if(!pause)
+        {
+            Time.timeScale = 1;
+        }
+        
+    }
+    void Pause()
+    {
+        pause = true;
+    }
+    void Resume()
+    {
+        pause = false;
     }
 }
