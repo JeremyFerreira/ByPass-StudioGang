@@ -54,19 +54,37 @@ public class InputManager : MonoBehaviour
     private void OnEnable()
     {
         _eventStartRun.OnLaunchEvent += EnableGameInput;
-        _eventPause.OnLaunchEvent += DisableGameInput;
+        _eventPause.OnLaunchEvent += Pause;
         _eventDead.OnLaunchEvent += DisableGameInput;
-        _eventReachFinishLine.OnLaunchEvent += DisableGameInput;
+        _eventReachFinishLine.OnLaunchEvent += ReachFinishLine;
         _eventRestart.OnLaunchEvent += DisableGameInput;
-        _eventResume.OnLaunchEvent += EnableGameInput;
+        _eventResume.OnLaunchEvent += Resume;
         _Input.Enable();
+    }
+
+    private void Resume()
+    {
+        _Input.UI.Disable();
+        EnableGameInput();
+    }
+
+    private void Pause()
+    {
+        DisableGameInput();
+        _Input.UI.Enable();
+    }
+
+    private void ReachFinishLine()
+    {
+        DisableGameInput();
+        _Input.UI.Enable();
     }
 
     private void OnDisable()
     {
         _Input.Disable();
         _eventStartRun.OnLaunchEvent -= EnableGameInput;
-        _eventPause.OnLaunchEvent -= DisableGameInput;
+        _eventPause.OnLaunchEvent -= Pause;
         _eventDead.OnLaunchEvent -= DisableGameInput;
         _eventReachFinishLine.OnLaunchEvent -= DisableGameInput;
         _eventRestart.OnLaunchEvent -= DisableGameInput;
