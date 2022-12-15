@@ -377,7 +377,6 @@ public class PlayerController : MonoBehaviour
         // calculate movement direction
         verticalInput = dir.y;
         horizontalInput = dir.x;
-        Debug.Log(dir);
     }
     private void MovePlayer()
     {
