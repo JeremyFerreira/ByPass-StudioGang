@@ -45,14 +45,20 @@ public class InputManager : MonoBehaviour
 
     void Awake()
     {
-
+        if (Instance == null)
+        {
             _Input = new Input();
             Instance = this;
             SensibilityMouseX = PlayerPrefs.GetFloat("SensibilityMouseX", 100f);
             SensibilityMouseY = PlayerPrefs.GetFloat("SensibilityMouseY", 100f);
             SensibilityGamePadX = PlayerPrefs.GetFloat("SensibilityGamePadX", 100f);
             SensibilityGamePadY = PlayerPrefs.GetFloat("SensibilityGamePadY", 100f);
-
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 
