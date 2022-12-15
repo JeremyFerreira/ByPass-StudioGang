@@ -15,7 +15,7 @@ public enum ControlDeviceType
 public class InputManager : MonoBehaviour
 {
 
-    public static Input _Input { private set; get; }
+    public static Input _input { private set; get; }
     public static InputManager Instance;
 
     [SerializeField] PlayerInput playerInput;
@@ -47,7 +47,7 @@ public class InputManager : MonoBehaviour
     {
         if (Instance == null)
         {
-            _Input = new Input();
+            _input = new Input();
             Instance = this;
             SensibilityMouseX = PlayerPrefs.GetFloat("SensibilityMouseX", 100f);
             SensibilityMouseY = PlayerPrefs.GetFloat("SensibilityMouseY", 100f);
@@ -62,19 +62,19 @@ public class InputManager : MonoBehaviour
     }
     private void StartLevel()
     {
-        _Input.UI.Disable();
-        _Input.InGame.Move.performed += context => _inputSO.OnMove(_Input.InGame.Move.ReadValue<Vector2>());
-        _Input.InGame.Move.canceled += context => _inputSO.OnMove(Vector2.zero);
-        _Input.InGame.Enable();
+        _input.UI.Disable();
     }
 
     private void StartRun()
     {
-        EnableGameInput(true);
+        EnableGameInput();
     }
 
     private void OnEnable()
     {
+        if (Instance == this)
+        {
+
         _eventStartLevel.OnLaunchEvent += StartLevel;
         _eventStartRun.OnLaunchEvent += StartRun;
         _eventPause.OnLaunchEvent += Pause;
@@ -82,31 +82,35 @@ public class InputManager : MonoBehaviour
         _eventReachFinishLine.OnLaunchEvent += ReachFinishLine;
         _eventRestart.OnLaunchEvent += DisableGameInput;
         _eventResume.OnLaunchEvent += Resume;
-        _Input.Enable();
+        _input.Enable();
+        }
     }
 
     private void Resume()
     {
-        _Input.UI.Disable();
-        EnableGameInput(false);
+        _input.UI.Disable();
+        EnableGameInput();
     }
 
     private void Pause()
     {
         DisableGameInput();
-        _Input.UI.Enable();
+        _input.UI.Enable();
     }
 
     private void ReachFinishLine()
     {
         DisableGameInput();
-        _Input.UI.Enable();
+        _input.UI.Enable();
     }
 
     private void OnDisable()
     {
+        if (Instance == this)
+        {
+
         Debug.Log("disable");
-        _Input.Disable();
+        _input.Disable();
         _eventStartLevel.OnLaunchEvent -= StartLevel;
         _eventStartRun.OnLaunchEvent -= StartRun;
         _eventPause.OnLaunchEvent -= Pause;
@@ -114,58 +118,60 @@ public class InputManager : MonoBehaviour
         _eventReachFinishLine.OnLaunchEvent -= ReachFinishLine;
         _eventRestart.OnLaunchEvent -= DisableGameInput;
         _eventResume.OnLaunchEvent -= Resume;
+        }
 
     }
 
 
 
-    void EnableGameInput(bool startLevel)
+    void EnableGameInput()
     {
-        _Input.InGame.Look.performed += context => _inputSO.OnLook(_Input.InGame.Look.ReadValue<Vector2>());
-        _Input.InGame.Look.canceled += context => _inputSO.OnLook(Vector2.zero);
+        _input.InGame.Enable();
 
-        _Input.InGame.Jump.performed += context => _inputSO.JumpPressed();
-        _Input.InGame.Jump.canceled += context => _inputSO.JumpReleased();
+        _input.InGame.Look.performed += context => _inputSO.OnLook(_input.InGame.Look.ReadValue<Vector2>());
+        _input.InGame.Look.canceled += context => _inputSO.OnLook(Vector2.zero);
 
-        _Input.InGame.SlowTime.performed += context => _inputSO.SlowTimePressed();
-        _Input.InGame.SlowTime.canceled += context => _inputSO.SlowTimeReleased();
+        _input.InGame.Jump.performed += context => _inputSO.JumpPressed();
+        _input.InGame.Jump.canceled += context => _inputSO.JumpReleased();
 
-        _Input.InGame.Grappling.performed += context => _inputSO.GrapplePressed();
-        _Input.InGame.Grappling.canceled += context => _inputSO.GrappleReleased();
+        _input.InGame.SlowTime.performed += context => _inputSO.SlowTimePressed();
+        _input.InGame.SlowTime.canceled += context => _inputSO.SlowTimeReleased();
 
-        _Input.InGame.RestartLevel.performed += context => _inputSO.RestartPressed();
+        _input.InGame.Grappling.performed += context => _inputSO.GrapplePressed();
+        _input.InGame.Grappling.canceled += context => _inputSO.GrappleReleased();
 
-        _Input.InGame.Pause.performed += context => _inputSO.PausePressed();
+        _input.InGame.RestartLevel.performed += context => _inputSO.RestartPressed();
 
-        if (!startLevel)
-        {
-            _Input.InGame.Move.performed += context => _inputSO.OnMove(_Input.InGame.Move.ReadValue<Vector2>());
-            _Input.InGame.Move.canceled += context => _inputSO.OnMove(Vector2.zero);
+        _input.InGame.Pause.performed += context => _inputSO.PausePressed();
 
-            _Input.InGame.Enable();
-        }
+            _input.InGame.Move.performed += context => _inputSO.OnMove(_input.InGame.Move.ReadValue<Vector2>());
+            _input.InGame.Move.canceled += context => _inputSO.OnMove(Vector2.zero);
+
+        Debug.Log("enable Input");
     }
 
     void DisableGameInput()
     {
-        _Input.InGame.Disable();
-        _Input.InGame.Move.performed -= context => _inputSO.OnMove(_Input.InGame.Move.ReadValue<Vector2>());
-        _Input.InGame.Look.performed -= context => _inputSO.OnLook(_Input.InGame.Look.ReadValue<Vector2>());
-        _Input.InGame.Move.canceled -= context => _inputSO.OnMove(Vector2.zero);
-        _Input.InGame.Look.canceled -= context => _inputSO.OnLook(Vector2.zero);
+        _input.InGame.Move.performed -= context => _inputSO.OnMove(_input.InGame.Move.ReadValue<Vector2>());
+        _input.InGame.Look.performed -= context => _inputSO.OnLook(_input.InGame.Look.ReadValue<Vector2>());
+        _input.InGame.Move.canceled -= context => _inputSO.OnMove(Vector2.zero);
+        _input.InGame.Look.canceled -= context => _inputSO.OnLook(Vector2.zero);
 
-        _Input.InGame.Jump.performed -= context => _inputSO.JumpPressed();
-        _Input.InGame.Jump.canceled -= context => _inputSO.JumpReleased();
+        _input.InGame.Jump.performed -= context => _inputSO.JumpPressed();
+        _input.InGame.Jump.canceled -= context => _inputSO.JumpReleased();
 
-        _Input.InGame.SlowTime.performed -= context => _inputSO.SlowTimePressed();
-        _Input.InGame.SlowTime.canceled -= context => _inputSO.SlowTimeReleased();
+        _input.InGame.SlowTime.performed -= context => _inputSO.SlowTimePressed();
+        _input.InGame.SlowTime.canceled -= context => _inputSO.SlowTimeReleased();
 
-        _Input.InGame.Grappling.performed -= context => _inputSO.GrapplePressed();
-        _Input.InGame.Grappling.canceled -= context => _inputSO.GrappleReleased();
+        _input.InGame.Grappling.performed -= context => _inputSO.GrapplePressed();
+        _input.InGame.Grappling.canceled -= context => _inputSO.GrappleReleased();
 
-        _Input.InGame.RestartLevel.performed -= context => _inputSO.RestartPressed();
+        _input.InGame.RestartLevel.performed -= context => _inputSO.RestartPressed();
 
-        _Input.InGame.Pause.performed -= context => _inputSO.PausePressed();
+        _input.InGame.Pause.performed -= context => _inputSO.PausePressed();
+
+        _input.InGame.Disable();
+        Debug.Log("disable Input");
     }
 
     private void OnControlsChanged(UnityEngine.InputSystem.PlayerInput obj)
@@ -205,7 +211,7 @@ public class InputManager : MonoBehaviour
 
     public static void StartRebind(string actionName, int bindingIndex, TextMeshProUGUI statusText, bool excludeMouse)
     {
-        InputAction action = _Input.asset.FindAction(actionName);
+        InputAction action = _input.asset.FindAction(actionName);
         if (action == null || action.bindings.Count <= bindingIndex)
         {
             Debug.Log("Couln't find action or binding");
@@ -269,12 +275,12 @@ public class InputManager : MonoBehaviour
 
     public static string GetBindingName(string actionName, int bindingIndex)
     {
-        if (_Input == null)
+        if (_input == null)
         {
-            _Input = new Input();
+            _input = new Input();
         }
 
-        InputAction action = _Input.asset.FindAction(actionName);
+        InputAction action = _input.asset.FindAction(actionName);
         return action.GetBindingDisplayString(bindingIndex);
     }
 
@@ -288,10 +294,10 @@ public class InputManager : MonoBehaviour
 
     public static void LoadBindingOverride(string actionName)
     {
-        if (_Input == null)
-            _Input = new Input();
+        if (_input == null)
+            _input = new Input();
 
-        InputAction action = _Input.asset.FindAction(actionName);
+        InputAction action = _input.asset.FindAction(actionName);
 
         for (int i = 0; i < action.bindings.Count; i++)
         {
@@ -304,7 +310,7 @@ public class InputManager : MonoBehaviour
 
     public static void ResetBinding(string actionName, int bindingIndex)
     {
-        InputAction action = _Input.asset.FindAction(actionName);
+        InputAction action = _input.asset.FindAction(actionName);
 
         if (action == null || action.bindings.Count <= bindingIndex)
         {

@@ -107,16 +107,10 @@ public class GameMode : MonoBehaviour
         {
             yield return null;
         }
-        Debug.Log(SceneManager.GetActiveScene().name);
-        StartCoroutine(StartTimer());
-    }
-
-    IEnumerator StartTimer()
-    {
-        yield return new WaitForSecondsRealtime(0.2f);
-        Time.timeScale = 1;
         _eventStartLevel.OnLaunchEvent?.Invoke();
     }
+
+
 }
 
 

@@ -465,6 +465,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1796263973550421589, guid: c7f62a9bbcce44043960fd54bc1a5de9, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: 4d807fb9-ab20-4de0-aec5-b135f4f3477f
+      objectReference: {fileID: 0}
     - target: {fileID: 1796263973550421590, guid: c7f62a9bbcce44043960fd54bc1a5de9, type: 3}
       propertyPath: m_Name
       value: InputManager
