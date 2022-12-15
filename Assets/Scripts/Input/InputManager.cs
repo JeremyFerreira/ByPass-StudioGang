@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using TMPro;
 using System;
 using DG.Tweening.Core.Easing;
+using Unity.VisualScripting;
 
 public enum ControlDeviceType
 {
@@ -41,19 +42,31 @@ public class InputManager : MonoBehaviour
     [SerializeField] EventSO _eventResume;
     [SerializeField] EventSO _eventStartLevel;
 
-    private void Awake()
+
+    void Awake()
     {
-        _Input = new Input();
-        Instance = this;
-        SensibilityMouseX = PlayerPrefs.GetFloat("SensibilityMouseX", 100f);
-        SensibilityMouseY = PlayerPrefs.GetFloat("SensibilityMouseY", 100f);
-        SensibilityGamePadX = PlayerPrefs.GetFloat("SensibilityGamePadX", 100f);
-        SensibilityGamePadY = PlayerPrefs.GetFloat("SensibilityGamePadY", 100f);
+        if (Instance == null)
+        {
+            _Input = new Input();
+            Instance = this;
+            SensibilityMouseX = PlayerPrefs.GetFloat("SensibilityMouseX", 100f);
+            SensibilityMouseY = PlayerPrefs.GetFloat("SensibilityMouseY", 100f);
+            SensibilityGamePadX = PlayerPrefs.GetFloat("SensibilityGamePadX", 100f);
+            SensibilityGamePadY = PlayerPrefs.GetFloat("SensibilityGamePadY", 100f);
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
+
+
 
 
     private void StartLevel()
     {
+        _Input.UI.Disable();
         _Input.InGame.Move.performed += context => _inputSO.OnMove(_Input.InGame.Move.ReadValue<Vector2>());
         _Input.InGame.Move.canceled += context => _inputSO.OnMove(Vector2.zero);
         _Input.InGame.Enable();
@@ -164,14 +177,14 @@ public class InputManager : MonoBehaviour
         {
             if (currentControlDevice != ControlDeviceType.Gamepad)
             {
-                
+
             }
         }
         else
         {
             if (currentControlDevice != ControlDeviceType.KeyboardAndMouse)
             {
-                
+
             }
         }
     }
