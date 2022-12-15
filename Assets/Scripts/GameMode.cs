@@ -19,7 +19,7 @@ public class GameMode : MonoBehaviour
     [SerializeField] EventSO _eventResume;
 
     static bool created = false;
-    bool alreadyLoad;
+    bool alreadyLoad = false;
     bool _win = false;
 
     void Awake()
@@ -113,7 +113,7 @@ public class GameMode : MonoBehaviour
 
     IEnumerator StartTimer()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSecondsRealtime(0.2f);
         Time.timeScale = 1;
         _eventStartLevel.OnLaunchEvent?.Invoke();
     }
