@@ -60,10 +60,6 @@ public class InputManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-
-
-
     private void StartLevel()
     {
         _Input.UI.Disable();
@@ -109,6 +105,7 @@ public class InputManager : MonoBehaviour
 
     private void OnDisable()
     {
+        Debug.Log("disable");
         _Input.Disable();
         _eventStartLevel.OnLaunchEvent -= StartLevel;
         _eventStartRun.OnLaunchEvent -= StartRun;
@@ -157,18 +154,18 @@ public class InputManager : MonoBehaviour
         _Input.InGame.Move.canceled -= context => _inputSO.OnMove(Vector2.zero);
         _Input.InGame.Look.canceled -= context => _inputSO.OnLook(Vector2.zero);
 
-        _Input.InGame.Jump.started -= context => _inputSO.JumpPressed();
+        _Input.InGame.Jump.performed -= context => _inputSO.JumpPressed();
         _Input.InGame.Jump.canceled -= context => _inputSO.JumpReleased();
 
-        _Input.InGame.SlowTime.started -= context => _inputSO.SlowTimePressed();
+        _Input.InGame.SlowTime.performed -= context => _inputSO.SlowTimePressed();
         _Input.InGame.SlowTime.canceled -= context => _inputSO.SlowTimeReleased();
 
-        _Input.InGame.Grappling.started -= context => _inputSO.GrapplePressed();
+        _Input.InGame.Grappling.performed -= context => _inputSO.GrapplePressed();
         _Input.InGame.Grappling.canceled -= context => _inputSO.GrappleReleased();
 
-        _Input.InGame.RestartLevel.started -= context => _inputSO.RestartPressed();
+        _Input.InGame.RestartLevel.performed -= context => _inputSO.RestartPressed();
 
-        _Input.InGame.Pause.started -= context => _inputSO.PausePressed();
+        _Input.InGame.Pause.performed -= context => _inputSO.PausePressed();
     }
 
     private void OnControlsChanged(UnityEngine.InputSystem.PlayerInput obj)
