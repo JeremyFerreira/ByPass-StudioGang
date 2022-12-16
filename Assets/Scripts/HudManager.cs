@@ -30,6 +30,8 @@ public class HudManager : MonoBehaviour
     [SerializeField] EventSO _eventAround;
     [SerializeField] EventSO _eventFriend;
     [SerializeField] EventSO _eventTop;
+    [SerializeField] EventSO _eventLaunchLevel;
+
 
     [Header("LevelSelector")]
     [SerializeField] GameObject _parentLevelSelection;
@@ -64,7 +66,14 @@ public class HudManager : MonoBehaviour
         _eventTop.OnLauchEventSceneSO += OpenLeaderBoard;
 
         _eventResume.OnLaunchEvent += OpenInGamePanel;
+        _eventLaunchLevel.OnLauchEventInt += OnLaunchLevel;
     }
+
+    public void OnLaunchLevel(int level)
+    {
+        CloseAllPanel();
+    }
+
     private void OnDisable()
     {
         _eventReachFinishLine.OnLaunchEvent -= OpenWinPanel;
@@ -75,6 +84,7 @@ public class HudManager : MonoBehaviour
         _eventAround.OnLauchEventSceneSO -= OpenLeaderBoard;
         _eventFriend.OnLauchEventSceneSO -= OpenLeaderBoard;
         _eventTop.OnLauchEventSceneSO -= OpenLeaderBoard;
+        _eventLaunchLevel.OnLauchEventInt -= OnLaunchLevel;
     }
 
     public void OpenLeaderBoard(SceneSO so)
@@ -112,14 +122,16 @@ public class HudManager : MonoBehaviour
     public void OpenLevelSelector(int worldIndex)
     {
         CloseAllPanel();
-        _levelSelectionPanel.Show();
+
         int totalStar = 0;
         int starUnlock = 0;
 
 
-        foreach (var item in _parentLevelSelection.GetComponentsInChildren<CardWorld>())
+        foreach (Transform child in _parentLevelSelection.transform)
         {
-            Destroy(item.gameObject);
+
+            Destroy(child.gameObject);
+            Debug.Log("Destroy Children poto");
         }
 
         for (int i = 0; i < DataManager.Instance.AllWorld[worldIndex].WorldData.Count; i++)
@@ -146,6 +158,8 @@ public class HudManager : MonoBehaviour
         }
 
         starText.text = "STAR : " + starUnlock.ToString() + " / " + totalStar.ToString();
+
+        _levelSelectionPanel.Show();
     }
 
     private void OpenInGamePanel()

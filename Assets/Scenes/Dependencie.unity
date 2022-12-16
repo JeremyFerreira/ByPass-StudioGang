@@ -1028,6 +1028,7 @@ MonoBehaviour:
   _eventAround: {fileID: 11400000, guid: 84c4abd5d69cedb4683949ab06079b36, type: 2}
   _eventFriend: {fileID: 11400000, guid: 04144748cdd61cf429602d939392ca18, type: 2}
   _eventTop: {fileID: 11400000, guid: 1cb55454935329647a0827d9e59d65ab, type: 2}
+  _eventLaunchLevel: {fileID: 11400000, guid: dbee5bbf32296cf4d99aa02af8326886, type: 2}
   _parentLevelSelection: {fileID: 2349967972464073842}
   eventSystem: {fileID: 5270613211130311336}
   CardWorldPrefab: {fileID: 8240622982679906376, guid: 36134287fbd18f147b6b2411c75b7b28, type: 3}
@@ -85271,156 +85272,13 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
   Behaviours:
-    Behaviours:
-    - EventName: PointerEnter
-      Runners: []
-      Event:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 2349967972991987177, guid: 3c64b71a98926804bb2a32963860f3fb, type: 3}
-            m_TargetAssemblyTypeName: HudMainMenu, Assembly-CSharp
-            m_MethodName: PlaySoundbutton
-            m_Mode: 3
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      BehaviourName: 0
-      Receiver:
-        ConnectionMode: 1
-        SignalProviderId:
-          Type: 0
-          Category: Pointer
-          Name: Enter
-        ProviderReference: {fileID: 0}
-        StreamId:
-          Category: None
-          Name: None
-          Custom: 0
-      Cooldown: 0
-      Selectable: {fileID: 2349967973171269019}
-    - EventName: PointerExit
-      Runners: []
-      Event:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 2349967972991987177, guid: 3c64b71a98926804bb2a32963860f3fb, type: 3}
-            m_TargetAssemblyTypeName: HudMainMenu, Assembly-CSharp
-            m_MethodName: PlaySoundbutton
-            m_Mode: 3
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 2
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      BehaviourName: 1
-      Receiver:
-        ConnectionMode: 1
-        SignalProviderId:
-          Type: 0
-          Category: Pointer
-          Name: Exit
-        ProviderReference: {fileID: 0}
-        StreamId:
-          Category: None
-          Name: None
-          Custom: 0
-      Cooldown: 0
-      Selectable: {fileID: 2349967973171269019}
-    - EventName: PointerClick
-      Runners: []
-      Event:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 2349967972991987177, guid: 3c64b71a98926804bb2a32963860f3fb, type: 3}
-            m_TargetAssemblyTypeName: HudMainMenu, Assembly-CSharp
-            m_MethodName: OpenPanelSelectionLevel
-            m_Mode: 3
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 1
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-          - m_Target: {fileID: 2349967974137267918}
-            m_TargetAssemblyTypeName: Doozy.Runtime.UIManager.Containers.UIContainer,
-              DoozyRuntime
-            m_MethodName: Hide
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-          - m_Target: {fileID: 2349967973813925120}
-            m_TargetAssemblyTypeName: Doozy.Runtime.UIManager.Containers.UIContainer,
-              DoozyRuntime
-            m_MethodName: Show
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-          - m_Target: {fileID: 2349967972991987177, guid: 3c64b71a98926804bb2a32963860f3fb, type: 3}
-            m_TargetAssemblyTypeName: HudMainMenu, Assembly-CSharp
-            m_MethodName: PlaySoundbutton
-            m_Mode: 3
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 1
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-            m_MethodName: ChangeWorldIndex
-            m_Mode: 3
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 1
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      BehaviourName: 4
-      Receiver:
-        ConnectionMode: 1
-        SignalProviderId:
-          Type: 0
-          Category: Pointer
-          Name: Click
-        ProviderReference: {fileID: 0}
-        StreamId:
-          Category: None
-          Name: None
-          Custom: 0
-      Cooldown: 0
-      Selectable: {fileID: 2349967973171269019}
+    Behaviours: []
     SignalSource: {fileID: 2349967973171269010}
     Selectable: {fileID: 2349967973171269019}
   Id:
     Category: None
     Name: None
-    Custom: 1
+    Custom: 0
   Cooldown: 0
   DisableWhenInCooldown: 0
 --- !u!114 &2349967973171269020
@@ -104194,156 +104052,13 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
   Behaviours:
-    Behaviours:
-    - EventName: PointerEnter
-      Runners: []
-      Event:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 2349967972991987177, guid: 3c64b71a98926804bb2a32963860f3fb, type: 3}
-            m_TargetAssemblyTypeName: HudMainMenu, Assembly-CSharp
-            m_MethodName: PlaySoundbutton
-            m_Mode: 3
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      BehaviourName: 0
-      Receiver:
-        ConnectionMode: 1
-        SignalProviderId:
-          Type: 0
-          Category: Pointer
-          Name: Enter
-        ProviderReference: {fileID: 0}
-        StreamId:
-          Category: None
-          Name: None
-          Custom: 0
-      Cooldown: 0
-      Selectable: {fileID: 2349967973457445027}
-    - EventName: PointerExit
-      Runners: []
-      Event:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 2349967972991987177, guid: 3c64b71a98926804bb2a32963860f3fb, type: 3}
-            m_TargetAssemblyTypeName: HudMainMenu, Assembly-CSharp
-            m_MethodName: PlaySoundbutton
-            m_Mode: 3
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 2
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      BehaviourName: 1
-      Receiver:
-        ConnectionMode: 1
-        SignalProviderId:
-          Type: 0
-          Category: Pointer
-          Name: Exit
-        ProviderReference: {fileID: 0}
-        StreamId:
-          Category: None
-          Name: None
-          Custom: 0
-      Cooldown: 0
-      Selectable: {fileID: 2349967973457445027}
-    - EventName: PointerClick
-      Runners: []
-      Event:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 2349967972991987177, guid: 3c64b71a98926804bb2a32963860f3fb, type: 3}
-            m_TargetAssemblyTypeName: HudMainMenu, Assembly-CSharp
-            m_MethodName: OpenPanelSelectionLevel
-            m_Mode: 3
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 2
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-          - m_Target: {fileID: 2349967974137267918}
-            m_TargetAssemblyTypeName: Doozy.Runtime.UIManager.Containers.UIContainer,
-              DoozyRuntime
-            m_MethodName: Hide
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-          - m_Target: {fileID: 2349967973813925120}
-            m_TargetAssemblyTypeName: Doozy.Runtime.UIManager.Containers.UIContainer,
-              DoozyRuntime
-            m_MethodName: Show
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-          - m_Target: {fileID: 2349967972991987177, guid: 3c64b71a98926804bb2a32963860f3fb, type: 3}
-            m_TargetAssemblyTypeName: HudMainMenu, Assembly-CSharp
-            m_MethodName: PlaySoundbutton
-            m_Mode: 3
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 1
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-            m_MethodName: ChangeWorldIndex
-            m_Mode: 3
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 2
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      BehaviourName: 4
-      Receiver:
-        ConnectionMode: 1
-        SignalProviderId:
-          Type: 0
-          Category: Pointer
-          Name: Click
-        ProviderReference: {fileID: 0}
-        StreamId:
-          Category: None
-          Name: None
-          Custom: 0
-      Cooldown: 0
-      Selectable: {fileID: 2349967973457445027}
+    Behaviours: []
     SignalSource: {fileID: 2349967973457445050}
     Selectable: {fileID: 2349967973457445027}
   Id:
     Category: None
     Name: None
-    Custom: 1
+    Custom: 0
   Cooldown: 0
   DisableWhenInCooldown: 0
 --- !u!114 &2349967973457445028
