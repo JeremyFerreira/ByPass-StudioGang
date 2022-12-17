@@ -68,15 +68,18 @@ public class PlayerCam : MonoBehaviour
         //getMouse Inputs
         float lookX;
         float lookY;
-        lookX = looking.x * sensibility * Time.deltaTime;
-        lookY = looking.y * sensibility * Time.deltaTime;
+        lookX = looking.x * Settings.SensibilityMouse * Time.deltaTime;
+        lookY = looking.y * Settings.SensibilityMouse * Time.deltaTime;
 
 
         yRotation += lookX;
         xRotation -= lookY;
         
-
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        if(Settings.UseCameraClamp)
+        {
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        }
+        
 
         // rotate cam and orientation
         camHolder.rotation = Quaternion.Euler(xRotation, yRotation, 0);
