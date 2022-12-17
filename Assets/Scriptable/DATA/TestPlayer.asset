@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestPlayer
   m_EditorClassIdentifier: 
   <MapName>k__BackingField: TestPlayer
-  <IndexScene>k__BackingField: 7
+  <IndexScene>k__BackingField: 9
   <TimeStar>k__BackingField:
   - 10
   - 20

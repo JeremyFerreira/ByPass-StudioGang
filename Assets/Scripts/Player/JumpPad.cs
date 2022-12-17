@@ -26,16 +26,25 @@ public class JumpPad : MonoBehaviour
 
             other.GetComponent<PlayerController>().SetCanDoubleJump(true);
 
+
             if (other.TryGetComponent<SlowTime>(out SlowTime slowTime) && slowTime.IsSlowTime())
             {
-                rb.AddForce(force * transform.up, ForceMode.Impulse);
+                rb.AddForce(force * Vector3.up *1.5f, ForceMode.Impulse);
+                audioJump.PlayAudioCue();
+                CameraShakeManager.instance.Shake(shake);
+                timeToEnter = 0.5f;
+                
+            }
+            else
+            {
+                rb.AddForce(force * Vector3.up * 1f, ForceMode.Impulse);
                 audioJump.PlayAudioCue();
                 CameraShakeManager.instance.Shake(shake);
                 timeToEnter = 0.5f;
             }
+            Debug.Log("JumpPad");
 
 
-            
         }
     }
 }

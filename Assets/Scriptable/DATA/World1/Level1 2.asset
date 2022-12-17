@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7434ffc26fcc027459738389cfe10a2a, type: 3}
   m_Name: Level1 2
   m_EditorClassIdentifier: 
-  <MapName>k__BackingField: level 1 2
+  <MapName>k__BackingField: level 1.2
   <IndexScene>k__BackingField: 3
   <TimeStar>k__BackingField:
   - 10
@@ -22,5 +22,5 @@ MonoBehaviour:
   - 50
   <SpriteCard>k__BackingField: {fileID: 21300000, guid: b82fc415f8063484faeca4fbec889b7b, type: 3}
   <BackGroundLoad>k__BackingField: {fileID: 21300000, guid: 8ed4ae8a77f485a44a11e0f488b986fe, type: 3}
-  <BestTime>k__BackingField: 0
+  <BestTime>k__BackingField: 11.235
   <GhostPlayer>k__BackingField: {fileID: 0}

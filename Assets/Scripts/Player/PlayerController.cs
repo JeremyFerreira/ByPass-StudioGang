@@ -76,7 +76,6 @@ public class PlayerController : MonoBehaviour
     bool grounded;
     bool behindGround;
     public bool IsGrounded() { return grounded; }
-    GameObject groundObject;
     [SerializeField] float timeToJump;
     private float resetTimeToJump;
     public bool canJump;
@@ -169,6 +168,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Animator grappinAnim;
 
+
+    public GameObject groundObject;
+    [SerializeField] LayerMask ralentiGround;
+    SlowTimeMaterial slowTimeMaterial;
     private void CanMove()
     {
         canMove = true;
@@ -278,7 +281,7 @@ public class PlayerController : MonoBehaviour
 
         grounded = Physics.Raycast(transform.position, Vector3.down, col.height * 0.5f + Physics.defaultContactOffset * 3, whatIsGround);
         behindGround = Physics.Raycast(transform.position - (Vector3.up * 0.3f), moveDirection.normalized, playerHeight, whatIsGround) || Physics.Raycast(transform.position + (Vector3.up * 0.3f), moveDirection.normalized, playerHeight, whatIsGround);
-
+        
         RaycastHit hit2;
         if(Physics.Raycast(transform.position, Vector3.down,out hit2, col.height * 0.5f + Physics.defaultContactOffset * 3, whatIsMovableGround))
         {
@@ -288,6 +291,28 @@ public class PlayerController : MonoBehaviour
         {
             transform.parent = null;
         }
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down,out hit, col.height * 0.5f +1))
+        {
+            if (hit.collider.TryGetComponent<SlowTimeMaterial>(out slowTimeMaterial))
+            {
+                groundObject = hit.collider.gameObject;
+                slowTimeMaterial = groundObject.GetComponent<SlowTimeMaterial>();
+                slowTimeMaterial.isUsing = true;
+                Debug.Log("a");
+            }
+            
+        }
+        else
+        {
+            if (groundObject!= null && !slowTimeMaterial.slowTime && GrapplingGun.instance.grappinObject != groundObject)
+            {
+                slowTimeMaterial.isUsing = false;
+                slowTimeMaterial.MatRealime();
+            }
+            groundObject = null;
+        }
+
         hasJustLanded = grounded && playerYposLastFrame > transform.position.y + 0.05f;
         playerYposLastFrame = transform.position.y;
         if (hasJustLanded && hasJustLandedTemp)
@@ -553,6 +578,7 @@ public class PlayerController : MonoBehaviour
 
             audioJump.PlayAudioCue();
             CameraShakeManager.instance.Shake(jumpShake);
+            //Rumbler.instance.RumbleConstant(0.1f, 1f, 0.3f);
     }
     public void DoubleJump()
     {

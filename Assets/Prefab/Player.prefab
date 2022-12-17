@@ -368,7 +368,7 @@ MonoBehaviour:
   forcePull: 7
   maxDistance: 0.8
   minDistance: 0.2
-  maxDistanceShoot: 18
+  maxDistanceShoot: 22
   damper: 3
   jointspring: 4
   massScale: 1
@@ -13112,6 +13112,10 @@ MonoBehaviour:
   _eventResumeRun: {fileID: 11400000, guid: 7ac409783d4b6b940a6f80fae41ebb25, type: 2}
   _eventPauseRun: {fileID: 11400000, guid: 55fd77dd72a1fb941b371553293df24e, type: 2}
   grappinAnim: {fileID: 6752232508841689284}
+  groundObject: {fileID: 0}
+  ralentiGround:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &8296643306588700844
 MonoBehaviour:
   m_ObjectHideFlags: 0

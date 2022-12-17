@@ -67,8 +67,9 @@ public class GrapplingGun : MonoBehaviour
     {
         playerController.SetGrappin(isGrappling);
         
-        canGrapple = Physics.Raycast(cam.position, cam.forward, out hit, slowTime.IsSlowTime()? maxDistanceShoot * 1.5f : 0, whatIsGrappleable);
-        if(canGrapple&& !isGrappling && !hasViser)
+        canGrapple = Physics.Raycast(cam.position, cam.forward, out hit, slowTime.IsSlowTime()? maxDistanceShoot * 1.5f : maxDistanceShoot, whatIsGrappleable);
+
+        if(canGrapple && !isGrappling && !hasViser)
         {
             crossHair.CrossFade("CrossHairViser", 0, 0);
             hasViser = true;
@@ -152,7 +153,7 @@ public class GrapplingGun : MonoBehaviour
 
             SlowTimeMaterial slowTimeMaterial = grappinObject.GetComponent<SlowTimeMaterial>();
             slowTimeMaterial.isUsing = false;
-            if (!slowTimeMaterial.slowTime && WallRunController.Instance.wall != grappinObject)
+            if (!slowTimeMaterial.slowTime && WallRunController.Instance.wall != grappinObject && PlayerController.Instance.groundObject!=grappinObject)
             {
                 slowTimeMaterial.MatRealime();
             }
