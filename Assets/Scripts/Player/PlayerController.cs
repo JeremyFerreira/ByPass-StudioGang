@@ -299,7 +299,6 @@ public class PlayerController : MonoBehaviour
                 groundObject = hit.collider.gameObject;
                 slowTimeMaterial = groundObject.GetComponent<SlowTimeMaterial>();
                 slowTimeMaterial.isUsing = true;
-                Debug.Log("a");
             }
             
         }
