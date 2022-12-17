@@ -62,7 +62,6 @@ public class WallRunController : MonoBehaviour
     [SerializeField] AudioComponent audioJump;
     [SerializeField] AudioComponent audioWalk;
     float timerFootstep;
-    SlowTime slowTime;
 
     [SerializeField] ShakeData shakeJump;
     public GameObject wall;
@@ -85,7 +84,6 @@ public class WallRunController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerController = GetComponent<PlayerController>();
-        slowTime = GetComponent<SlowTime>();
     }
 
     private void Update()

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3324052443545894222}
   - component: {fileID: 3324052443545894223}
   - component: {fileID: 3324052443545894220}
+  - component: {fileID: 7809518783278960319}
   m_Layer: 10
   m_Name: Water
   m_TagString: Untagged
@@ -63,6 +64,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 848918a99d11f25f110026ca44295342, type: 2}
+  - {fileID: 2100000, guid: bf0de29acc0d3264aa8e72a5cadda12a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91,9 +93,26 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3324052443545894210}
-  m_Material: {fileID: 13400000, guid: 3e0fed22b835cda42bbb3c8ed668f2f5, type: 2}
-  m_IsTrigger: 0
+  m_Material: {fileID: 13400000, guid: e52fb17f9b1e7fd48b8955f1391d3688, type: 2}
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.99999976, y: 133.71275, z: 1}
+  m_Center: {x: 0, y: -66.35638, z: 0}
+--- !u!114 &7809518783278960319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3324052443545894210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 1a78183ec29ad6f43afb39a3c1a25a78, type: 2}
+  isGlobal: 0
+  blendDistance: 0
+  weight: 1
+  priority: 1

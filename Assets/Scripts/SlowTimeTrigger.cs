@@ -20,7 +20,7 @@ public class SlowTimeTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DisactiveTrigger();
+        //DisactiveTrigger();
     }
 
     // Update is called once per frame
@@ -30,10 +30,10 @@ public class SlowTimeTrigger : MonoBehaviour
     }
     private void ActiveTrigger()
     {
-        objectCollider.enabled = true;
+        //objectCollider.enabled = true;
     }
     private void DisactiveTrigger()
     {
-        objectCollider.enabled = false;
+        //objectCollider.enabled = false;
     }
 }

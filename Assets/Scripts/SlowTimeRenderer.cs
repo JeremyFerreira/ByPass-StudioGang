@@ -21,7 +21,7 @@ public class SlowTimeRenderer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DisactiveRenderer();
+        //DisactiveRenderer();
     }
 
     // Update is called once per frame
@@ -31,10 +31,10 @@ public class SlowTimeRenderer : MonoBehaviour
     }
     private void ActiveRenderer()
     {
-        meshRenderer.enabled = true;
+        //meshRenderer.enabled = true;
     }
     private void DisactiveRenderer()
     {
-        meshRenderer.enabled = false;
+        //meshRenderer.enabled = false;
     }
 }

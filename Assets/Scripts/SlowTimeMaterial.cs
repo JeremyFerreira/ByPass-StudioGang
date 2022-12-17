@@ -30,7 +30,7 @@ public class SlowTimeMaterial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MatRealime();
+        //MatRealime();
     }
 
     // Update is called once per frame
@@ -40,15 +40,15 @@ public class SlowTimeMaterial : MonoBehaviour
     }
     private void MatSlowTime()
     {
-        meshRenderer.material = matSlowTime;
-        col.enabled = true;
+        //meshRenderer.material = matSlowTime;
+        //col.enabled = true;
     }
     public void MatRealime()
     {
         if(!isUsing)
         {
-            meshRenderer.material = matRealTime;
-            col.enabled = false;
+            //meshRenderer.material = matRealTime;
+            //col.enabled = false;
         }
     }
     void IsSlowTime()
