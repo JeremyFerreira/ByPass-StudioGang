@@ -8,6 +8,13 @@ public class Settings : MonoBehaviour
     public void Awake()
     {
         Instance = this;
+        StartCoroutine(DoCheck());
+    }
+
+    IEnumerator DoCheck()
+    {
+
+        yield return new WaitForSeconds(.2f);
         LoadAudioSettings();
         LoadKeyboardSettings();
         LoadGamePadSettings();
@@ -32,9 +39,9 @@ public class Settings : MonoBehaviour
     //Load Audio Settings on PlayerPref
     void LoadAudioSettings()
     {
-        VolumeGeneral = PlayerPrefs.GetFloat("VolumeGeneral", DefaultVolumeGeneral);
-        VolumeMusic = PlayerPrefs.GetFloat("VolumeMusic", DefaultVolumeMusic);
-        VolumeSFX = PlayerPrefs.GetFloat("VolumeSFX", DefaultVolumeSFX);
+        VolumeGeneral = PlayerPrefs.GetFloat("MasterVolume", DefaultVolumeGeneral);
+        VolumeMusic = PlayerPrefs.GetFloat("MusicVolume", DefaultVolumeMusic);
+        VolumeSFX = PlayerPrefs.GetFloat("SFXVolume", DefaultVolumeSFX);
 
         ModifyAudioManager();
     }
@@ -42,33 +49,33 @@ public class Settings : MonoBehaviour
     //
     void ModifyAudioManager()
     {
-        /*if (AudioManager.instance != null)
+        if (AudioManager.Instance != null)
         {
-            AudioManager.instance.SetGeneralVolume(VolumeGeneral);
-            AudioManager.instance.ChangeVolumeMusic(VolumeMusic);
-            AudioManager.instance.ChangeVolumeSoundEFFect(VolumeSFX);
-        }*/
+            AudioManager.Instance.SetGroupVolume("MasterVolume", VolumeGeneral);
+            AudioManager.Instance.SetGroupVolume("MusicVolume", VolumeMusic);
+            AudioManager.Instance.SetGroupVolume("SFXVolume", VolumeSFX);
+        }
     }
 
-    public static void ChangeVolumeGeneral(float value)
+    public void ChangeVolumeGeneral(float value)
     {
         VolumeGeneral = value;
-        PlayerPrefs.SetFloat("VolumeGeneral", value);
-        Instance.ModifyAudioManager();
+        PlayerPrefs.SetFloat("MasterVolume", value);
+        ModifyAudioManager();
     }
 
-    public static void ChangeVolumeMusic(float value)
+    public void ChangeVolumeMusic(float value)
     {
         VolumeMusic = value;
-        PlayerPrefs.SetFloat("VolumeMusic", value);
-        Instance.ModifyAudioManager();
+        PlayerPrefs.SetFloat("MusicVolume", value);
+        ModifyAudioManager();
     }
 
-    public static void ChangeVolumeSFX(float value)
+    public void ChangeVolumeSFX(float value)
     {
         VolumeSFX = value;
-        PlayerPrefs.SetFloat("VolumeSFX", value);
-        Instance.ModifyAudioManager();
+        PlayerPrefs.SetFloat("SFXVolume", value);
+        ModifyAudioManager();
     }
     #endregion
 

@@ -185,26 +185,6 @@ public class HUD_Settings : MonoBehaviour
         _sliderVolumeSoundEffect.value = Settings.VolumeSFX;
     }
     //Slider Audio General
-    public void ChangeAudioGeneral(float value)
-    {
-
-            Settings.ChangeVolumeGeneral(value);
-        //GameManager.Instance.ChangeVolumeMixer(AudioMixerManager.ChoseCanal.main, value);
-    }
-    //Slider Volume Music
-    public void ChangeAudioMusic(float value)
-    {
-
-            Settings.ChangeVolumeMusic(value);
-        //GameManager.Instance.ChangeVolumeMixer(AudioMixerManager.ChoseCanal.music, value);
-    }
-
-    public void ChangeAudioSFX(float value)
-    {
-
-            Settings.ChangeVolumeSFX(value);
-        //GameManager.Instance.ChangeVolumeMixer(AudioMixerManager.ChoseCanal.sfx, value);
-    }
     #endregion
 
     #region KEYBOARD SETTINGS PANEL

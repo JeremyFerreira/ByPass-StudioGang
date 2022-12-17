@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9620f3b14364583418baa2b727db6729, type: 3}
   m_Name: new Audio
   m_EditorClassIdentifier: 
-  looping: 0
+  looping: 1
   _audioClipGroups:
-  - sequenceMode: 0
+  - sequenceMode: 1
     audioClips:
-    - {fileID: 8300000, guid: 8a10496d206e0e04e8f64270fce9da3b, type: 3}
+    - {fileID: 8300000, guid: d61840865d1378e429c622004239dbc6, type: 3}
+    - {fileID: 8300000, guid: f4f313197f04b4e45974ee2e0c03bb09, type: 3}
+    - {fileID: 8300000, guid: d3330f04c58b9ed47b43dc8d5266fa8e, type: 3}
+    - {fileID: 8300000, guid: a3bf2d92c3ef8414c98ccf3150aff9a0, type: 3}
+    - {fileID: 8300000, guid: 65982d5048ae81b48a926d07200edfc1, type: 3}
+    - {fileID: 8300000, guid: b4060165e8936264a9c4d4db9f01433a, type: 3}
+    - {fileID: 8300000, guid: 9164eab5cc978d8408682990f70f956e, type: 3}

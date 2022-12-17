@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
     [Header("SoundEmitters pool")]
     [SerializeField] private SoundEmitterPoolSO _pool = default;
     [SerializeField] private int _initialSize = 10;
@@ -19,12 +20,6 @@ public class AudioManager : MonoBehaviour
 
     [Header("Audio control")]
     [SerializeField] private AudioMixer audioMixer = default;
-    [Range(0f, 1f)]
-    [SerializeField] private float _masterVolume = 1f;
-    [Range(0f, 1f)]
-    [SerializeField] private float _musicVolume = 1f;
-    [Range(0f, 1f)]
-    [SerializeField] private float _sfxVolume = 1f;
     static bool created = false;
 
     private void Awake()
@@ -32,6 +27,7 @@ public class AudioManager : MonoBehaviour
         //TODO: Get the initial volume levels from the settings
         if (!created)
         {
+            Instance = this;
             DontDestroyOnLoad(this.gameObject);
             created = true;
             _SFXEventChannel.OnAudioCueRequested += PlayAudioCue;
@@ -53,12 +49,12 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     void OnValidate()
     {
-        if (Application.isPlaying)
+        /*if (Application.isPlaying)
         {
             SetGroupVolume("MasterVolume", _masterVolume);
             SetGroupVolume("MusicVolume", _musicVolume);
             SetGroupVolume("SFXVolume", _sfxVolume);
-        }
+        }*/
     }
 
     public void SetGroupVolume(string parameterName, float normalizedVolume)
