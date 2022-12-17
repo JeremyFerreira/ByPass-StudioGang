@@ -54,6 +54,7 @@ MonoBehaviour:
   - 2
   - 1
   - 0
+  countDownRumbler: {fileID: 11400000, guid: aa54aff7309b594418b406597090b050, type: 2}
 --- !u!114 &8602257369243492716
 MonoBehaviour:
   m_ObjectHideFlags: 0

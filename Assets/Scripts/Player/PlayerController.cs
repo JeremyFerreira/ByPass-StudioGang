@@ -172,6 +172,10 @@ public class PlayerController : MonoBehaviour
     public GameObject groundObject;
     [SerializeField] LayerMask ralentiGround;
     SlowTimeMaterial slowTimeMaterial;
+    [Header("Vibration")]
+    [Space(10)]
+    [SerializeField]RumblerDataConstant jumpRumble;
+    [SerializeField] RumblerDataConstant landedRumble;
     private void CanMove()
     {
         canMove = true;
@@ -292,6 +296,7 @@ public class PlayerController : MonoBehaviour
             transform.parent = null;
         }
         RaycastHit hit;
+
         if (Physics.Raycast(transform.position, Vector3.down,out hit, col.height * 0.5f +1))
         {
             if (hit.collider.TryGetComponent<SlowTimeMaterial>(out slowTimeMaterial))
@@ -318,6 +323,7 @@ public class PlayerController : MonoBehaviour
         {
             CameraShakeManager.instance.Shake(landedShake);
             audioLanded.PlayAudioCue();
+            Rumbler.instance.RumbleConstant(landedRumble);
             hasJustLanded = false;
         }
         if(!grounded)
@@ -577,7 +583,7 @@ public class PlayerController : MonoBehaviour
 
             audioJump.PlayAudioCue();
             CameraShakeManager.instance.Shake(jumpShake);
-            //Rumbler.instance.RumbleConstant(0.1f, 1f, 0.3f);
+            Rumbler.instance.RumbleConstant(jumpRumble);
     }
     public void DoubleJump()
     {
@@ -600,7 +606,8 @@ public class PlayerController : MonoBehaviour
 
             audioDoubleJump.PlayAudioCue();
             CameraShakeManager.instance.Shake(doubleJumpShake);
-            if(!isGrappling)
+            Rumbler.instance.RumbleConstant(jumpRumble);
+            if (!isGrappling)
             {
                 grappinAnim.CrossFade("DoubleJump", 0, 0);
             }

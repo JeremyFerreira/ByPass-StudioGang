@@ -10,6 +10,7 @@ public class Ventilateur : MonoBehaviour
     [SerializeField] AudioComponent audioVentilateurIn;
     public float force;
     [SerializeField] ShakeData shake;
+    [SerializeField] RumblerDataConstant rumbleVentilo;
 
     private void Start()
     {
@@ -35,6 +36,7 @@ public class Ventilateur : MonoBehaviour
         {
             audioVentilateurIn.PlayAudioCue();
             CameraShakeManager.instance.Shake(shake);
+            Rumbler.instance.RumbleConstant(rumbleVentilo);
         }
         if(other.TryGetComponent<PlayerController>(out PlayerController player))
         {

@@ -1033,6 +1033,7 @@ MonoBehaviour:
     m_Bits: 8
   audioJump: {fileID: 68601678}
   shake: {fileID: 11400000, guid: bc7acd6f3b516ab4fa832598fcadb4ba, type: 2}
+  jumpPadRumble: {fileID: 11400000, guid: 7f47c6dee2e3fe44e8c375db415c7a0b, type: 2}
 --- !u!4 &361687964 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 320670726615135618, guid: fb1c38cb0b6c00c48bbe25e83d2199cf, type: 3}
@@ -3354,15 +3355,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4538487089210112428, guid: 10602dee86f90284381f366072e2876f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.012
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4538487089210112428, guid: 10602dee86f90284381f366072e2876f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4538487089210112428, guid: 10602dee86f90284381f366072e2876f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.46
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600264511229584425, guid: 10602dee86f90284381f366072e2876f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600264511229584425, guid: 10602dee86f90284381f366072e2876f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600264511229584425, guid: 10602dee86f90284381f366072e2876f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8110192779365699819, guid: 10602dee86f90284381f366072e2876f, type: 3}

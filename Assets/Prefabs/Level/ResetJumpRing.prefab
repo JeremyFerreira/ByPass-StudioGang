@@ -735,6 +735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a1b4c5807853544aefba712836bf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetJumpRumble: {fileID: 11400000, guid: 6a10f0df298a5e047881b6b8ecbf9685, type: 2}
 --- !u!114 &7120875443372318673
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,10 +14,12 @@ public class DeathTrigger : MonoBehaviour
 
     [SerializeField] AudioComponent _audioComponent;
     [SerializeField] ShakeData deathShakeData;
-
+    [SerializeField] RumblerDataConstant rumbleDeath;
     public bool _IsAlive;
     bool _IsWin;
     [SerializeField] RestartLevel restart;
+
+
     private void OnEnable()
     {
         _StartRunEvent.OnLaunchEvent += Initialized;
@@ -52,6 +54,7 @@ public class DeathTrigger : MonoBehaviour
                
                 _audioComponent.PlayAudioCue();
                 CameraShakeManager.instance.Shake(deathShakeData);
+                Rumbler.instance.RumbleConstant(rumbleDeath);
             }
         }
     }

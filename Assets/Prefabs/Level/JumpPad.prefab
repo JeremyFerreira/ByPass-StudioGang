@@ -5503,6 +5503,7 @@ MonoBehaviour:
     m_Bits: 8
   audioJump: {fileID: 138551268630747861}
   shake: {fileID: 11400000, guid: bc7acd6f3b516ab4fa832598fcadb4ba, type: 2}
+  jumpPadRumble: {fileID: 11400000, guid: 7f47c6dee2e3fe44e8c375db415c7a0b, type: 2}
 --- !u!23 &4538487089212537676 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 2300000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}

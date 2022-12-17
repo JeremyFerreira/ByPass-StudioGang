@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class ResetJumpRing : MonoBehaviour
 {
+    [SerializeField] RumblerDataConstant resetJumpRumble;
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
         {
             controller.SetCanDoubleJump(true);
+            Rumbler.instance.RumbleConstant(resetJumpRumble);
         }
     }
 }

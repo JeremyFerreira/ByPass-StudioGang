@@ -12,6 +12,7 @@ public class CountDown : MonoBehaviour
     [SerializeField] float[] writeinCountDown;
 
     AudioComponent _audioComponent;
+    [SerializeField] RumblerDataConstant countDownRumbler;
 
     int count = 0;
     private void Awake()
@@ -38,6 +39,7 @@ public class CountDown : MonoBehaviour
         yield return new WaitForSeconds(timeOfCountDown / writeinCountDown.Length);
         _countDownData.ChangeTimer(writeinCountDown[count]);
         _audioComponent.PlayAudioCue();
+        Rumbler.instance.RumbleConstant(countDownRumbler);
         count++;
         if (count < writeinCountDown.Length)
         {

@@ -130,6 +130,7 @@ MonoBehaviour:
   audioVentilateurIn: {fileID: 6517193726762436}
   force: 200
   shake: {fileID: 11400000, guid: d737f37d2e055e64f989a058d4ea4ac5, type: 2}
+  rumbleVentilo: {fileID: 11400000, guid: 77925a8aed817aa409e8f68ef498cbe7, type: 2}
 --- !u!114 &1457217430796824418
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -34,7 +34,8 @@ public class HUD : MonoBehaviour
         {
             if (Settings.ShowFps)
             {
-                fps.text = Application.targetFrameRate.ToString() + " fps";
+                float fpsCount = 1.0f / Time.unscaledDeltaTime;
+                fps.text = Mathf.Ceil(fpsCount).ToString() + "fps"; ;
             }
             else
             {

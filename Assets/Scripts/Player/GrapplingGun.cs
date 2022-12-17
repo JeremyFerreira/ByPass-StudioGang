@@ -48,6 +48,7 @@ public class GrapplingGun : MonoBehaviour
 
     public GameObject grappinObject;
     [SerializeField] InputSO _inputSO;
+    [SerializeField] RumblerDataConstant grappinRumble;
     // LOOPS AND FUNCTIONS///////////////////////////////////////////////////////////////////
     private void OnEnable()
     {
@@ -122,6 +123,7 @@ public class GrapplingGun : MonoBehaviour
             isGrappling = true;
             audioGrappinStart.PlayAudioCue();
             CameraShakeManager.instance.Shake(shakeStart);
+            Rumbler.instance.RumbleConstant(grappinRumble);
             grappinAnim.CrossFade("GrappleStart", 0, 0);
             grappinObject = hit.collider.gameObject;
             grappinObject.GetComponent<SlowTimeMaterial>().isUsing = true;

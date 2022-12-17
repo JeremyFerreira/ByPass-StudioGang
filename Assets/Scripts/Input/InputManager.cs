@@ -108,8 +108,6 @@ public class InputManager : MonoBehaviour
     {
         if (Instance == this)
         {
-
-        Debug.Log("disable");
         _input.Disable();
         _eventStartLevel.OnLaunchEvent -= StartLevel;
         _eventStartRun.OnLaunchEvent -= StartRun;
@@ -146,8 +144,6 @@ public class InputManager : MonoBehaviour
 
             _input.InGame.Move.performed += context => _inputSO.OnMove(_input.InGame.Move.ReadValue<Vector2>());
             _input.InGame.Move.canceled += context => _inputSO.OnMove(Vector2.zero);
-
-        Debug.Log("enable Input");
     }
 
     void DisableGameInput()
