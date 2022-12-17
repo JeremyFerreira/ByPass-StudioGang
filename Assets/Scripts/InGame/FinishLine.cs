@@ -10,6 +10,8 @@ public class FinishLine : MonoBehaviour
     [SerializeField] EventSO _desactiveInput;
     [SerializeField] AudioComponent audioWin;
     [SerializeField] ShakeData winShake;
+    [SerializeField] RumblerDataConstant winRumble;
+
     bool _alreadyTrigger = false;
     private void OnTriggerEnter(Collider other)
     {
@@ -21,6 +23,7 @@ public class FinishLine : MonoBehaviour
                 _desactiveInput.OnLaunchEvent?.Invoke();
                 audioWin.PlayAudioCue();
                 CameraShakeManager.instance.Shake(winShake);
+                Rumbler.instance.RumbleConstant(winRumble);
             }
     }   
 }

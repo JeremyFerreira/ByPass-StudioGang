@@ -11,6 +11,8 @@ public class JumpPad : MonoBehaviour
     [SerializeField] AudioComponent audioJump;
     float timeToEnter;
     [SerializeField] ShakeData shake;
+    [SerializeField] RumblerDataConstant jumpPadRumble;
+    
 
     private void Update()
     {
@@ -30,20 +32,17 @@ public class JumpPad : MonoBehaviour
             if (other.TryGetComponent<SlowTime>(out SlowTime slowTime) && slowTime.IsSlowTime())
             {
                 rb.AddForce(force * Vector3.up *1.5f, ForceMode.Impulse);
-                audioJump.PlayAudioCue();
-                CameraShakeManager.instance.Shake(shake);
-                timeToEnter = 0.5f;
                 
             }
             else
             {
                 rb.AddForce(force * Vector3.up * 1f, ForceMode.Impulse);
-                audioJump.PlayAudioCue();
-                CameraShakeManager.instance.Shake(shake);
-                timeToEnter = 0.5f;
+                
             }
-            Debug.Log("JumpPad");
-
+            Rumbler.instance.RumbleConstant(jumpPadRumble);
+            audioJump.PlayAudioCue();
+            CameraShakeManager.instance.Shake(shake);
+            timeToEnter = 0.5f;
 
         }
     }

@@ -64,6 +64,8 @@ public class WallRunController : MonoBehaviour
     float timerFootstep;
 
     [SerializeField] ShakeData shakeJump;
+    [SerializeField] RumblerDataConstant rumbleWall;
+    [SerializeField] RumblerDataConstant rumbleJump;
     public GameObject wall;
 
     [SerializeField] InputSO _inputSO;
@@ -154,6 +156,7 @@ public class WallRunController : MonoBehaviour
             {
                 timerFootstep = 0.2f;
                 audioWalk.PlayAudioCue();
+                Rumbler.instance.RumbleConstant(rumbleWall);
             }
 
         }
@@ -273,6 +276,7 @@ public class WallRunController : MonoBehaviour
 
                 audioJump.PlayAudioCue();
                 CameraShakeManager.instance.Shake(shakeJump);
+                Rumbler.instance.RumbleConstant(rumbleJump);
             }
         }
     }

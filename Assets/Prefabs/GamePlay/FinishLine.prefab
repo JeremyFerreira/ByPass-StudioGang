@@ -511,6 +511,7 @@ MonoBehaviour:
   _desactiveInput: {fileID: 11400000, guid: a406e64dac580144e9f561521f0c1056, type: 2}
   audioWin: {fileID: 5653626070941271366}
   winShake: {fileID: 11400000, guid: 316d2d6daf6858949822fb46de8220d6, type: 2}
+  winRumble: {fileID: 11400000, guid: c6d4ca64b02c9d64a8f4883da85d34ee, type: 2}
 --- !u!114 &5653626070941271366
 MonoBehaviour:
   m_ObjectHideFlags: 0

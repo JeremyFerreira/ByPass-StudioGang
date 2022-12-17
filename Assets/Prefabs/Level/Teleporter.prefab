@@ -1997,6 +1997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {fileID: 303901528022845599}
   audioTP: {fileID: 1430067366258514575}
+  teleportRumble: {fileID: 11400000, guid: ffec3fb6eb244854cb80751f3b0a5c20, type: 2}
 --- !u!114 &8655780039350095219
 MonoBehaviour:
   m_ObjectHideFlags: 0

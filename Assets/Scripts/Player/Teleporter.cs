@@ -8,6 +8,7 @@ public class Teleporter : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] Transform destination;
     [SerializeField] AudioComponent audioTP;
+    [SerializeField] RumblerDataConstant teleportRumble;
 
     // Update is called once per frame
     void OnTriggerEnter(Collider col)
@@ -16,6 +17,7 @@ public class Teleporter : MonoBehaviour
         {
             col.transform.position = destination.position;
             audioTP.PlayAudioCue();
+            Rumbler.instance.RumbleConstant(teleportRumble);
         }
     }
 }

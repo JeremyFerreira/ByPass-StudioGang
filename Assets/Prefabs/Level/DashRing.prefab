@@ -404,6 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioDash: {fileID: 1635180552048464849}
+  dashRumble: {fileID: 11400000, guid: 06d33c70527a597439f9ad6c3bdc24dc, type: 2}
 --- !u!114 &8094589060187659790
 MonoBehaviour:
   m_ObjectHideFlags: 0

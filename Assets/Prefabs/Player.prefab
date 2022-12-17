@@ -400,6 +400,7 @@ MonoBehaviour:
   playerCam: {fileID: 5749424482394223915}
   grappinObject: {fileID: 5053277201783861314}
   _inputSO: {fileID: 11400000, guid: 40c0e1913835e4a49a03467f7cb001c3, type: 2}
+  grappinRumble: {fileID: 11400000, guid: f8f33ca4a70db714bb4fa168abfdd4e6, type: 2}
 --- !u!114 &4543463312393808619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13155,6 +13156,8 @@ MonoBehaviour:
   ralentiGround:
     serializedVersion: 2
     m_Bits: 0
+  jumpRumble: {fileID: 11400000, guid: 986143eab9425bc4fa012ceadbfd2e28, type: 2}
+  landedRumble: {fileID: 11400000, guid: a09eee2483898c14b9738e415e7f5543, type: 2}
 --- !u!114 &8296643306588700844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13173,13 +13176,13 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  wallRunForce: 500
+  wallRunForce: 250
   wallJumpUpForce: 20
   wallJumpSideForce: 40
   wallClimbSpeed: 0
   maxWallRunTime: 5
   tilt: 30
-  wallCheckDistance: 1.5
+  wallCheckDistance: 1
   minJumpHeight: 1
   exitWallTime: 0.25
   useGravity: 0
@@ -13189,6 +13192,8 @@ MonoBehaviour:
   audioJump: {fileID: 7910607384627730868}
   audioWalk: {fileID: 8503779224034473265}
   shakeJump: {fileID: 11400000, guid: 960582a992eb96848a8bb39ed7a4f72c, type: 2}
+  rumbleWall: {fileID: 11400000, guid: bd8b9e928a512fc48825a4c82245085f, type: 2}
+  rumbleJump: {fileID: 11400000, guid: 986143eab9425bc4fa012ceadbfd2e28, type: 2}
   wall: {fileID: 0}
   _inputSO: {fileID: 11400000, guid: 40c0e1913835e4a49a03467f7cb001c3, type: 2}
 --- !u!114 &6328991210479226679
@@ -13233,6 +13238,7 @@ MonoBehaviour:
     m_Bits: 3072
   _audioComponent: {fileID: 6055628250688232580}
   deathShakeData: {fileID: 11400000, guid: d3194bf269ffd4c40be25eb92ae37ffd, type: 2}
+  rumbleDeath: {fileID: 11400000, guid: eb4251390b41e6843a1a3620ad0c6581, type: 2}
   _IsAlive: 0
   restart: {fileID: 7647796451653947262}
 --- !u!136 &631361876807595820
