@@ -12,6 +12,10 @@ public class CameraShakeManager : MonoBehaviour
     }
     public void Shake(ShakeData shakeData)
     {
-        CameraShakerHandler.Shake(shakeData);
+        if(Settings.UseCameraShake)
+        {
+            CameraShakerHandler.Shake(shakeData);
+        }
+        
     }
 }
