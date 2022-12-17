@@ -578,7 +578,7 @@ public class PlayerController : MonoBehaviour
 
             audioJump.PlayAudioCue();
             CameraShakeManager.instance.Shake(jumpShake);
-            Rumbler.instance.RumbleConstant(0.1f, 1f, 0.3f);
+            //Rumbler.instance.RumbleConstant(0.1f, 1f, 0.3f);
     }
     public void DoubleJump()
     {
