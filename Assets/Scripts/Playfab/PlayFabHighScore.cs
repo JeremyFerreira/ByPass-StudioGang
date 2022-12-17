@@ -87,8 +87,8 @@ public class PlayFabHighScore : MonoBehaviour
 
     void OnCloudResult(ExecuteCloudScriptResult result)
     {
-        _eventChangePos.OnLauchEventInt?.Invoke(int.Parse(result.FunctionResult.ToString()) + 1);
-        Debug.Log(result.FunctionResult.ToString());
+        if (result != null)
+            _eventChangePos.OnLauchEventInt?.Invoke(int.Parse(result.FunctionResult.ToString()) + 1);
         //HudMainMenu.Instance.ChangePosPlayerText(int.Parse(result.FunctionResult.ToString()));
     }
 
