@@ -13143,6 +13143,39 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  windVolume:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.2
+      value: 0
+      inSlope: 0.02151452
+      outSlope: 0.02151452
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.14488631
+    - serializedVersion: 3
+      time: 1
+      value: 0.25
+      inSlope: 0.3125
+      outSlope: 0.3125
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   dashShake: {fileID: 11400000, guid: 56239f7de6d06a945801676aaf9b3dc4, type: 2}
   jumpShake: {fileID: 11400000, guid: 960582a992eb96848a8bb39ed7a4f72c, type: 2}
   doubleJumpShake: {fileID: 11400000, guid: f7047426ffa90084e8d0154ff8d5c906, type: 2}

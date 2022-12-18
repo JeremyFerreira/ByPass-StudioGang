@@ -152,6 +152,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioComponent audioLanded;
     [SerializeField] AudioSource audioSourceWind;
     [SerializeField] AnimationCurve windPitch;
+    [SerializeField] AnimationCurve windVolume;
     float timeToUpdatePitch;
 
     [Header("CameraShake")]
@@ -231,7 +232,7 @@ public class PlayerController : MonoBehaviour
         resetMaxJumpTime = _maxJumpTime;
 
         //audio
-        audioSourceWind.Play();
+        //audioSourceWind.Play();
     }
 
     private void Update()
@@ -276,7 +277,8 @@ public class PlayerController : MonoBehaviour
         }
 
         //audio
-        audioSourceWind.pitch = windPitch.Evaluate(Mathf.Sqrt((new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude / (float)speedMax))*Time.timeScale);
+        //audioSourceWind.pitch = windPitch.Evaluate(Mathf.Sqrt((new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude / (float)speedMax))*Time.timeScale);
+        //audioSourceWind.volume = Settings.VolumeSFX * windVolume.Evaluate(Mathf.Sqrt((new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude / (float)speedMax)) * Time.timeScale);
     }
 
     private void FixedUpdate()
@@ -290,6 +292,7 @@ public class PlayerController : MonoBehaviour
         if(Physics.Raycast(transform.position, Vector3.down,out hit2, col.height * 0.5f + Physics.defaultContactOffset * 3, whatIsMovableGround))
         {
             col.gameObject.transform.SetParent(hit2.transform, true);
+            grounded = true;
         }
         else
         {

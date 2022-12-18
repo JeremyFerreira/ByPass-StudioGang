@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlatformeMove : MonoBehaviour
 {
-    [SerializeField] enum MovementType { horizontal, vertical, rotation};
+    [SerializeField] enum MovementType { horizontal, vertical, rotationX, rotationY, rotationZ};
     [SerializeField] MovementType type;
     [SerializeField] float length, speed;
     public float timer = 1;
@@ -30,9 +30,17 @@ public class PlatformeMove : MonoBehaviour
         {
             MoveVertical();
         }
-        if (type == MovementType.rotation)
+        if (type == MovementType.rotationX)
         {
-            Rotate();
+            Rotate(Vector3.right);
+        }
+        if (type == MovementType.rotationY)
+        {
+            Rotate(Vector3.up);
+        }
+        if (type == MovementType.rotationZ)
+        {
+            Rotate(Vector3.forward);
         }
     }
     public void MoveHorizontal()
@@ -69,8 +77,8 @@ public class PlatformeMove : MonoBehaviour
         }
 
     }
-    public void Rotate()
+    public void Rotate(Vector3 axis)
     {
-        platform.Rotate(new Vector3(0, 1, 0) * speed * Time.deltaTime, Space.Self);
+        platform.Rotate(axis * speed * Time.deltaTime, Space.Self);
     }
 }
