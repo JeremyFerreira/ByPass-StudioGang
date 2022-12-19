@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3324052443545894223}
   - component: {fileID: 3324052443545894220}
   - component: {fileID: 7809518783278960319}
+  - component: {fileID: 2229142380429639418}
   m_Layer: 10
   m_Name: Water
   m_TagString: Untagged
@@ -116,3 +117,16 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   priority: 1
+--- !u!114 &2229142380429639418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3324052443545894210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d8346d20da84748a03ba023762c3fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  watermat: {fileID: 2100000, guid: 848918a99d11f25f110026ca44295342, type: 2}

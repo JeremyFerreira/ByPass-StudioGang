@@ -58,7 +58,7 @@ v2f vert (appdata_t v)
 	v2f o;
 	o.vertex = UnityObjectToClipPos(v.vertex);
 	o.uvgrab = ComputeGrabScreenPos(o.vertex);
-	o.uvbump = TRANSFORM_TEX( v.texcoord, _BumpMap );
+	o.uvbump = TRANSFORM_TEX( v.texcoord, _BumpMap);
 	o.uvmain = TRANSFORM_TEX( v.texcoord, _MainTex );
 	UNITY_TRANSFER_FOG(o,o.vertex);
 	return o;
