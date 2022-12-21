@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 4883337611559792534}
   - component: {fileID: 4543463312393808619}
   - component: {fileID: 6752232508841689284}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Grappin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,6 +401,7 @@ MonoBehaviour:
   grappinObject: {fileID: 5053277201783861314}
   _inputSO: {fileID: 11400000, guid: 40c0e1913835e4a49a03467f7cb001c3, type: 2}
   grappinRumble: {fileID: 11400000, guid: f8f33ca4a70db714bb4fa168abfdd4e6, type: 2}
+  particule: {fileID: 5081612714300481558}
 --- !u!114 &4543463312393808619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5529,8 +5530,7 @@ GameObject:
   - component: {fileID: 3674050574781018334}
   - component: {fileID: 6525830566824418398}
   - component: {fileID: 7350254015409547228}
-  - component: {fileID: 4162913132780707373}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5546,7 +5546,7 @@ Transform:
   m_GameObject: {fileID: 2691676603502428417}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8146044995959987859}
@@ -5602,19 +5602,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4162913132780707373
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2691676603502428417}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2748102575968491025
 GameObject:
   m_ObjectHideFlags: 0
@@ -5722,7 +5709,7 @@ GameObject:
   - component: {fileID: 3216501673375838791}
   - component: {fileID: 1949096220954410466}
   - component: {fileID: 4388867677458516264}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Pistol 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6434,8 +6421,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5062620623195579143}
-  - component: {fileID: 5487410316856818798}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: GrabPointEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6458,20 +6444,6 @@ Transform:
   m_Father: {fileID: 3323633299581411831}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5487410316856818798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4740669262915534776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3d2b6ffa9e1ef340a12ca73015c58cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grapplingGun: {fileID: 4883337611559792534}
-  particule: {fileID: 5081612714300481558}
 --- !u!1 &4749123274124901668
 GameObject:
   m_ObjectHideFlags: 0
@@ -6593,7 +6565,7 @@ GameObject:
   - component: {fileID: 8146044995959987859}
   - component: {fileID: 4858189149692605686}
   - component: {fileID: 3394531024659756890}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12026,7 +11998,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3564482278742237788}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: gunTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12619,7 +12591,7 @@ Camera:
   m_GameObject: {fileID: 8296643305859675894}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2

@@ -49,6 +49,7 @@ public class GrapplingGun : MonoBehaviour
     public GameObject grappinObject;
     [SerializeField] InputSO _inputSO;
     [SerializeField] RumblerDataConstant grappinRumble;
+    [SerializeField] GameObject particule;
     // LOOPS AND FUNCTIONS///////////////////////////////////////////////////////////////////
     private void OnEnable()
     {
@@ -63,14 +64,19 @@ public class GrapplingGun : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        particule.transform.parent = null;
     }
     void Update()
     {
-        playerController.SetGrappin(isGrappling);
         
-        canGrapple = Physics.Raycast(cam.position, cam.forward, out hit, slowTime.IsSlowTime()? maxDistanceShoot * 1.5f : maxDistanceShoot, whatIsGrappleable);
+    }
+    private void FixedUpdate()
+    {
+        playerController.SetGrappin(isGrappling);
 
-        if(canGrapple && !isGrappling && !hasViser)
+        canGrapple = Physics.Raycast(cam.position, cam.forward, out hit, slowTime.IsSlowTime() ? maxDistanceShoot * 1.5f : maxDistanceShoot, whatIsGrappleable);
+
+        if (canGrapple && !isGrappling && !hasViser)
         {
             crossHair.CrossFade("CrossHairViser", 0, 0);
             hasViser = true;
@@ -82,13 +88,10 @@ public class GrapplingGun : MonoBehaviour
             hasViser = false;
             audioGrappinLock.PlayAudioCue();
         }
-    }
-    private void FixedUpdate()
-    {
         if (isGrappling)
         {
             playerController.GetComponent<Rigidbody>().AddForce((grapplePoint - transform.position) * forcePull);
-            if(Physics.Raycast(cam.position, grapplePoint-gunTip.position, out hit, (grapplePoint - gunTip.position).magnitude, laserLayer))
+            if(Physics.Raycast(cam.position, grapplePoint-gunTip.position, (grapplePoint - gunTip.position).magnitude, laserLayer))
             {
                 StopGrapple();
             }
@@ -102,6 +105,7 @@ public class GrapplingGun : MonoBehaviour
     {
         if (canGrapple)
         {
+
             grapplePoint = hit.point;
             joint = player.gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
@@ -130,6 +134,9 @@ public class GrapplingGun : MonoBehaviour
 
             crossHair.CrossFade("CrossHairLock",0,0);
             playerCam.DoFov(playerCam.fovallRun);
+
+            particule.SetActive(true);
+            particule.transform.position = grapplePoint;
 
         }
         else
@@ -165,6 +172,8 @@ public class GrapplingGun : MonoBehaviour
             {
                 playerCam.DoFov(playerCam.GetFov());
             }
+            particule.SetActive(false);
+
         }
         
 
